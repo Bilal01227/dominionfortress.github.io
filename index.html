@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dominion Fortress</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid #1a1a1a;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #00ffff;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: linear-gradient(to bottom right, #1a001a, #000000);
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        #00ffff33 0px,
+        #00ffff33 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      animation: gridMove 10s linear infinite;
+      opacity: 0.1;
+    }
+
+    @keyframes gridMove {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-50%, -50%); }
+    }
+
+    .neon-glow {
+      color: #00ffff;
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background: #00ffff;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffff;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      background: #111;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid #00ffff44;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .pricing-grid, .grid-cols-3, .grid-cols-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .terms-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    .terms-content {
+      background: #222;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #00ffff;
+    }
+
+    pre {
+      background: #000;
+      color: #0f0;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+
+    a.whatsapp {
+      display: inline-flex;
+      align-items: center;
+      background: #00cc66;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    a.whatsapp:hover {
+      background: #00aa55;
+      box-shadow: 0 0 10px #00ff99;
+    }
+
+    a.whatsapp svg {
+      margin-right: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #000;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display: flex; align-items: center;">
+    <img src="Dominion Fortress Logo.jpg" alt="Logo" style="height: 40px; margin-right: 10px;">
+    <strong>Dominion Fortress</strong>
+  </div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+    <a href="#" onclick="document.getElementById('termsModal').style.display='block'; return false;">Terms & Conditions</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1 class="neon-glow">Secure.<br>Scale.<br>Dominate.</h1>
+  <p>Empowering enterprises with cutting-edge cybersecurity, IT, finance, and growth solutions.</p>
+  <button class="btn">Get Started Now</button>
+</section>
+
+<!-- Services -->
+<section id="services" class="section">
+  <div class="container">
+    <h2 class="neon-glow text-center">Our Core Services</h2>
+    <div class="pricing-grid">
+      <div class="card">
+        <h3>Cybersecurity</h3>
+        <p>Advanced threat detection and mitigation systems to protect your digital assets.</p>
+      </div>
+      <div class="card">
+        <h3>IT & Cloud</h3>
+        <p>Scalable cloud infrastructure and enterprise IT management solutions.</p>
+      </div>
+      <div class="card">
+        <h3>Finance</h3>
+        <p>Strategic financial planning, risk assessment, and investment optimization.</p>
+      </div>
+      <div class="card">
+        <h3>Growth & Marketing</h3>
+        <p>Data-driven marketing strategies and customer acquisition frameworks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="section">
+  <div class="container">
+    <h2 class="neon-glow text-center">Flexible Pricing Plans</h2>
+    <div class="pricing-grid">
+      <div class="card">
+        <h3>Basic Package</h3>
+        <h2>$100/mo</h2>
+        <ul>
+          <li>• Cyber Audit</li>
+          <li>• Cloud Backup</li>
+          <li>• Email Support</li>
+        </ul>
+        <button class="btn">Choose Plan</button>
+      </div>
+      <div class="card">
+        <h3>Medium Package</h3>
+        <h2>$150/mo</h2>
+        <ul>
+          <li>• Full Security Suite</li>
+          <li>• Dedicated Engineer</li>
+          <li>• Priority Support</li>
+        </ul>
+        <button class="btn">Choose Plan</button>
+      </div>
+      <div class="card">
+        <h3>Premium Package</h3>
+        <h2>$400/mo</h2>
+        <ul>
+          <li>• Custom Solutions</li>
+          <li>• On-site Team</li>
+          <li>• 24/7 Emergency Response</li>
+        </ul>
+        <button class="btn">Choose Plan</button>
+      </div>
+      <div class="card">
+        <h3>Overall Package</h3>
+        <h2>$1,500/mo</h2>
+        <ul>
+          <li>• All Services</li>
+          <li>• Executive Advisory Board</li>
+          <li>• Live Threat Monitoring</li>
+        </ul>
+        <button class="btn">Choose Plan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" class="section" style="background:#000;">
+  <div class="container">
+    <h2 class="neon-glow text-center">What Our Clients Say</h2>
+    <div class="pricing-grid">
+      <div class="card">
+        <p>"Dominion Fortress transformed our security infrastructure overnight."</p>
+        <strong>- Sarah Johnson, CTO TechNova</strong>
+      </div>
+      <div class="card">
+        <p>"Their finance advisory team is second to none."</p>
+        <strong>- Michael Chen, CEO FinEdge</strong>
+      </div>
+      <div class="card">
+        <p>"They built us a scalable growth engine that’s driving real results."</p>
+        <strong>- Emily Roberts, CMO GrowthHub</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section" style="background:#000;">
+  <div class="container">
+    <div style="text-align:center;">
+      <h2 class="neon-glow">Let's Build Your Fortress</h2>
+      <p>Ready to secure your business? Connect with our experts today and take the first step toward digital dominance.</p>
+      <a href=" https://wa.me/YOUR_WHATSAPP_NUMBER " target="_blank" class="whatsapp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.96a1.03 1.03 0 0 0-.359-.07 1.828 1.828 0 0 0-1.329.693C13.008 15.5 12.086 17 9.06 17H8.5c-.222 0-.444-.013-.664-.038a2.828 2.828 0 0 1-2.03-1.133 2.898 2.898 0 0 1-.587-2.003c.024-.218.057-.43.1-.64a8.01 8.01 0 0 1 4.513-4.513c.216-.044.426-.077.64-.1.712-.065 1.396.155 2.003.587.472.33.864.76 1.133 1.329.13.273.15.57.07.868l-.82 3.281a.999 .999 0 0 0 .196.995l.001.001z"/>
+        </svg>
+        Chat with Founder on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; Dominion Fortress • All Rights Reserved
+</footer>
+
+<!-- Terms Modal -->
+<div id="termsModal" class="terms-modal">
+  <div class="terms-content">
+    <span class="close-btn" onclick="document.getElementById('termsModal').style.display='none'">×</span>
+    <h1>Dominion Fortress - Terms & Conditions</h1>
+    <p><em>Effective Date: July 10, 2025</em></p>
+
+    <h2>1. Introduction</h2>
+    <p>By engaging with Dominion Fortress for any services including but not limited to cybersecurity, IT development, finance, marketing, training, or consultancy — the client agrees to these Terms & Conditions. These terms apply regardless of service delivery method (online platforms, website, direct agreement).</p>
+
+    <h2>2. Scope of Services</h2>
+    <ul>
+      <li>Cybersecurity (Red Team, Blue Team, Purple Team, Threat Intelligence, Incident Response)</li>
+      <li>IT Development, Infrastructure &amp; Cloud Solutions</li>
+      <li>Financial Modeling, Risk Management &amp; Strategic Consulting</li>
+      <li>Digital Marketing, Social Media Growth &amp; Brand Development</li>
+      <li>AI, Emerging Tech, Blockchain, and Specialized Services</li>
+      <li>Training, Certifications &amp; Leadership Development</li>
+    </ul>
+
+    <h2>3. Results Disclaimer &amp; No Guarantee Clause</h2>
+    <p>Dominion Fortress does not guarantee specific outcomes such as successful system breaches (for Red Team), 100% vulnerability elimination, guaranteed marketing growth, or specific financial returns. The absence of desired results does not imply incompetence or breach of agreement, provided services were delivered as outlined.</p>
+
+    <h2>4. Payment Terms</h2>
+    <p>All payments cover the Company's time, expertise, intellectual property, tools, and effort, regardless of final outcomes. Delays caused by the client may result in project delays, not refunds.</p>
+
+    <h2>5. Refund Policy</h2>
+    <p>Refunds are only applicable if Dominion Fortress fails to initiate or deliver any work. If work has been performed, no refund applies even if the final results do not meet expectations.</p>
+
+    <h2>6. Client Responsibilities</h2>
+    <p>The client must provide accurate, timely information and obtain legal authorization for cybersecurity tests where applicable. Failure to meet responsibilities voids any service guarantees.</p>
+
+    <h2>7. Limitation of Liability</h2>
+    <p>Dominion Fortress is not liable for legal consequences arising from unauthorized requests, loss of revenue, or third-party actions beyond its control. Total liability is strictly limited to the amount paid for the service.</p>
+
+    <h2>8. Confidentiality & Data Protection</h2>
+    <p>All client information is treated as confidential. The Company cannot be held liable for breaches beyond its control (e.g., global cyberattacks).</p>
+
+    <h2>9. Intellectual Property</h2>
+    <p>All tools and methodologies remain the exclusive property of Dominion Fortress unless otherwise agreed in writing.</p>
+
+    <h2>10. Cancellation Policy</h2>
+    <p>If work has begun, payment for time and resources invested will be deducted before any refund consideration. If substantial work is completed, no refund applies.</p>
+
+    <h2>11. Dispute Resolution</h2>
+    <p>Disputes should first be addressed through professional dialogue. Defamation or threats may result in legal action.</p>
+
+    <h2>12. Platform-Specific Terms</h2>
+    <p>For services booked through platforms like Fiverr or Upwork, their respective ToS apply in addition to these Terms.</p>
+
+    <h2>13. Jurisdiction</h2>
+    <p>These Terms are governed by the laws of Pakistan. Legal disputes will be handled in the relevant jurisdiction.</p>
+
+    <h2>14. Modifications</h2>
+    <p>Dominion Fortress reserves the right to update these Terms at any time. Clients will be notified of material changes where applicable.</p>
+
+    <h2>15. Acknowledgment</h2>
+    <p>By proceeding with Dominion Fortress services, you acknowledge reading, understanding, and agreeing to these Terms & Conditions.</p>
+  </div>
+</div>
+
+</body>
+</html>
