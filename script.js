@@ -3,7 +3,6 @@
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
   document.body.classList.toggle("light-mode");
-
   const isDark = document.body.classList.contains("dark-mode");
   localStorage.setItem("darkMode", isDark);
 }
@@ -35,9 +34,9 @@ function animateCounter(id, endValue) {
     start += increment;
     if (start >= endValue) {
       clearInterval(timer);
-      element.textContent = endValue;
+      element.textContent = endValue.toFixed(2);
     } else {
-      element.textContent = start;
+      element.textContent = start.toFixed(2);
     }
   }, 30);
 }
