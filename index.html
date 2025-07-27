@@ -3,294 +3,560 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Dominion Fortress offers cybersecurity, IT, finance, and growth solutions for modern enterprises. Secure. Scale. Dominate.">
   <title>Dominion Fortress</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
+  <!-- Modern, clean fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    /* --- Embedded CSS (style.css) --- */
+    /* --- Embedded CSS --- */
     :root {
-      --primary-color: #00ffff;
-      --primary-glow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
-      --secondary-color: #ff00ff;
-      --dark-bg: #0d0d0d;
-      --card-bg: #1a1a1a;
-      --accent-dark: #111;
+      /* Fortress Theme Colors */
+      --primary-bg: #0F172A; /* Deep Blue/Black */
+      --secondary-bg: #1e293b;
+      --accent-color: #00D4FF; /* Electric Cyan */
+      --cta-color-green: #10B981; /* Green */
+      --cta-color-orange: #F97316; /* Orange */
+      --text-light: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --card-bg: #1e293b;
+      --transition-speed: 0.3s;
     }
 
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--dark-bg);
-      color: white;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--text-light);
       overflow-x: hidden;
-      transition: background-color 0.5s ease, color 0.5s ease;
+      line-height: 1.6;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4, h5, h6 {
       font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-top: 0;
+    }
+
+    h1 { font-size: 2.5rem; } /* 40px */
+    h2 { font-size: 2rem; }   /* 32px */
+    h3 { font-size: 1.5rem; } /* 24px */
+    @media (min-width: 768px) {
+        h1 { font-size: 3rem; } /* 48px on larger screens */
     }
 
     .container {
+      width: 90%;
       max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
+      margin: 0 auto;
+      padding: 0 15px;
     }
 
+    a {
+        color: var(--accent-color);
+        text-decoration: none;
+    }
+    a:hover {
+        color: #70e0ff; /* Lighter cyan on hover */
+    }
+
+    /* --- Header --- */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.85);
-      border-bottom: 1px solid #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      background: rgba(15, 23, 42, 0.95); /* Slightly transparent primary-bg */
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 0;
     }
 
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: var(--primary-color);
-      font-weight: bold;
-      position: relative;
-      padding: 5px 0;
-      transition: color 0.3s ease;
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--primary-color);
-      transition: width 0.3s ease;
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-light);
+    }
+    .logo-icon {
+        margin-right: 10px;
+        color: var(--accent-color);
     }
 
-    nav a:hover {
-      color: var(--secondary-color);
+    nav ul {
+        display: flex;
+        list-style: none;
     }
-
-    nav a:hover::after {
-      width: 100%;
+    nav ul li { margin-left: 1.5rem; }
+    nav ul li a {
+        font-weight: 600;
+        transition: color var(--transition-speed);
     }
+    nav ul li a:hover { color: var(--accent-color); }
 
     .mobile-menu-btn {
       display: none;
       font-size: 1.5rem;
       cursor: pointer;
-      color: var(--primary-color);
       background: none;
       border: none;
+      color: var(--accent-color);
     }
 
     @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #000;
-        position: absolute;
-        top: 100%;
+      nav ul {
+        position: fixed;
+        top: 70px; /* Height of header */
         left: 0;
         width: 100%;
+        background: var(--primary-bg);
+        flex-direction: column;
+        align-items: center;
         padding: 1rem 0;
-        border-top: 1px solid #1a1a1a;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        transform: translateY(-150%);
+        transition: transform var(--transition-speed) ease-in-out;
       }
-      nav.active {
-        display: flex;
-        animation: fadeIn 0.3s ease forwards;
+      nav ul.active {
+        transform: translateY(0);
+      }
+      nav ul li {
+        margin: 0.75rem 0;
       }
       .mobile-menu-btn {
         display: block;
       }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #1a001a, #000000);
-      padding: 6rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(0, 255, 255, 0.1) 0px,
-        rgba(0, 255, 255, 0.1) 10px,
-        transparent 10px,
-        transparent 20px
-      );
-      animation: gridMove 20s linear infinite;
-      opacity: 0.2;
-      z-index: 0;
-    }
-
-    @keyframes gridMove {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-50%, -50%); }
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        animation: fadeInUp 1s ease-out 0.5s both;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-
-    .neon-glow {
-      color: var(--primary-color);
-      text-shadow: var(--primary-glow);
-      animation: pulseGlow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseGlow {
-        0% { text-shadow: var(--primary-glow); }
-        100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff; }
-    }
-
+    /* --- Buttons --- */
     .btn {
+      display: inline-block;
       padding: 12px 24px;
-      background: var(--primary-color);
-      color: black;
-      font-weight: bold;
-      border: none;
       border-radius: 8px;
+      font-weight: 700;
+      text-align: center;
       cursor: pointer;
-      transition: all 0.3s ease, transform 0.2s ease;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      margin-top: 1rem;
+      transition: all var(--transition-speed) ease, transform 0.1s ease;
+      border: none;
       font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transition: 0.5s;
-      z-index: -1;
+    .btn-primary {
+        background-color: var(--accent-color);
+        color: #0F172A;
     }
-
-    .btn:hover {
-      box-shadow: 0 0 15px var(--primary-color);
-      transform: translateY(-3px) scale(1.05);
+    .btn-primary:hover {
+        background-color: #70e0ff;
+        box-shadow: 0 0 15px var(--accent-color);
+        transform: translateY(-2px);
     }
-
-    .btn:hover::before {
-      left: 100%;
+    .btn-secondary {
+        background-color: var(--cta-color-green);
+        color: white;
     }
-
-    .btn:active {
-       transform: translateY(-1px) scale(1.02);
+    .btn-secondary:hover {
+        background-color: #0d9d6a;
+        box-shadow: 0 0 15px var(--cta-color-green);
+        transform: translateY(-2px);
     }
+    .btn-large { padding: 16px 32px; font-size: 1.1rem; }
 
+    /* --- Sections --- */
     .section {
-      padding: 5rem 2rem;
-      background: var(--accent-dark);
-      position: relative;
+      padding: 5rem 0;
     }
-
     .section-title {
         text-align: center;
         margin-bottom: 3rem;
+    }
+    .section-title h2 {
+        display: inline-block;
         position: relative;
+        padding-bottom: 15px;
     }
-
-    .section-title::after {
-        content: '';
-        display: block;
-        width: 100px;
-        height: 3px;
-        background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-        margin: 10px auto;
-        border-radius: 50%;
-    }
-
-    .card {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 10px;
-      border: 1px solid rgba(0, 255, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .card::before {
+    .section-title h2::after {
         content: '';
         position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-        z-index: -1;
-        border-radius: 12px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        animation: borderAnimation 3s ease-in-out infinite;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--accent-color);
+        border-radius: 2px;
     }
 
-    .card:hover {
-      transform: translateY(-10px) perspective(1000px) rotateX(5deg);
-      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
-      border-color: rgba(0, 255, 255, 0.5);
+    /* --- Hero --- */
+    .hero {
+      background: linear-gradient(135deg, #0c1425, #0a111f);
+      padding: 6rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .hero h1 {
+        margin-bottom: 1.5rem;
+        color: var(--accent-color);
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    }
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: var(--text-muted);
     }
 
-    .card:hover::before {
-        opacity: 1;
-    }
-
-    @keyframes borderAnimation {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    .pricing-grid {
+    /* --- Services --- */
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+    }
+    .service-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      text-align: center;
+    }
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-color: var(--accent-color);
+    }
+    .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+    }
+    .service-card h3 { margin-bottom: 0.75rem; }
+
+    /* --- Stats --- */
+     .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .stat-card {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        border: 1px solid rgba(0, 212, 255, 0.1);
+        transition: transform 0.3s ease;
+        animation: float 3s ease-in-out infinite;
+        animation-delay: calc(var(--delay) * 0.5s);
+    }
+    .stat-card:nth-child(1) { --delay: 0; }
+    .stat-card:nth-child(2) { --delay: 1; }
+    .stat-card:nth-child(3) { --delay: 2; }
+    .stat-card:nth-child(4) { --delay: 3; }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        margin-bottom: 0.5rem;
+        font-family: 'Orbitron', sans-serif;
+    }
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-muted);
     }
 
+    /* --- Pricing --- */
+    .pricing-intro {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3rem auto;
+        color: var(--text-muted);
+    }
+    .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    .package-card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        transition: transform var(--transition-speed), border-color var(--transition-speed);
+    }
+    .package-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+    }
+    .package-card.featured {
+        border-color: var(--accent-color);
+        position: relative;
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        transform: scale(1.02);
+    }
+    .package-card.featured:hover {
+        transform: scale(1.02) translateY(-5px);
+    }
+    .package-card.featured::before {
+        content: 'MOST POPULAR';
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent-color);
+        color: #0F172A;
+        font-size: 0.75rem;
+        font-weight: bold;
+        padding: 5px 15px;
+        border-radius: 20px;
+    }
+    .package-name { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent-color); }
+    .package-price {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+    .package-price span { font-size: 1rem; font-weight: normal; color: var(--text-muted); }
+    .package-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 auto 0; /* Push button to bottom */
+    }
+    .package-features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px dashed var(--border-color);
+    }
+    .package-features li:last-child { border-bottom: none; }
+    .package-features li::before {
+        content: "✓";
+        color: var(--cta-color-green);
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .detailed-pricing {
+        background: var(--secondary-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 3rem;
+    }
+    .pricing-header {
+        background: var(--primary-bg);
+        padding: 1rem;
+        text-align: center;
+        font-weight: 700;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .pricing-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .pricing-table th, .pricing-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .pricing-table th {
+        background: rgba(30, 41, 59, 0.7);
+        font-weight: 600;
+    }
+    .pricing-table tr:last-child td {
+        border-bottom: none;
+    }
+    .pricing-table tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+    }
+    @media (max-width: 768px) {
+        .pricing-table, .pricing-table thead, .pricing-table tbody, .pricing-table th, .pricing-table td, .pricing-table tr {
+            display: block;
+        }
+        .pricing-table thead tr { position: absolute; top: -9999px; left: -9999px; }
+        .pricing-table tr { border: 1px solid var(--border-color); margin-bottom: 10px; border-radius: 10px; overflow: hidden; }
+        .pricing-table td {
+            border: none;
+            position: relative;
+            padding-left: 50%;
+        }
+        .pricing-table td::before {
+            content: attr(data-label) ": ";
+            position: absolute;
+            left: 15px;
+            width: 45%;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+    }
+
+    /* --- Testimonials --- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+    .testimonial-card::before {
+        content: """;
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        font-size: 4rem;
+        color: var(--accent-color);
+        opacity: 0.2;
+        font-family: serif;
+    }
+    .testimonial-text { margin-bottom: 1rem; font-style: italic; }
+    .testimonial-author { font-weight: 600; }
+
+    /* --- Why Choose Us --- */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    .feature-item {
+        display: flex;
+        align-items: flex-start;
+    }
+    .feature-icon {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        color: var(--accent-color);
+        min-width: 30px; /* Ensures icon doesn't shrink */
+    }
+
+    /* --- CTA --- */
+    .cta-section {
+        background: linear-gradient(135deg, #0c1e3e, #0a172f);
+        text-align: center;
+        padding: 4rem 0;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+    }
+    .cta-section h2 {
+        margin-bottom: 1.5rem;
+        color: var(--accent-color);
+    }
+    .cta-section p {
+        max-width: 600px;
+        margin: 0 auto 2rem auto;
+        color: var(--text-muted);
+    }
+
+    /* --- Contact --- */
+    .contact-options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .contact-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+        background: var(--card-bg);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        width: 200px;
+        transition: transform var(--transition-speed);
+    }
+    .contact-option:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+    }
+    .contact-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+    }
+    .contact-option a {
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background: #0a0f1a;
+      padding: 3rem 0 1.5rem 0;
+      border-top: 1px solid var(--border-color);
+    }
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+    }
+    .footer-column ul {
+        list-style: none;
+        padding: 0;
+    }
+    .footer-column ul li {
+        margin-bottom: 0.5rem;
+    }
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .social-icons a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: var(--card-bg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background var(--transition-speed);
+    }
+    .social-icons a:hover {
+        background: var(--accent-color);
+        color: #0F172A;
+    }
+    .copyright {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    /* --- Terms Modal --- */
     .terms-modal {
       display: none;
       position: fixed;
@@ -302,237 +568,77 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-
     .terms-modal.active {
         display: block;
         opacity: 1;
     }
-
     .terms-content {
-      background: #222;
+      background: var(--card-bg);
       padding: 2rem;
       border-radius: 12px;
       max-width: 800px;
       margin: auto;
-      border: 1px solid var(--primary-color);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      border: 1px solid var(--accent-color);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
       animation: modalPopIn 0.4s ease-out;
     }
-
     @keyframes modalPopIn {
         0% { transform: scale(0.8); opacity: 0; }
         100% { transform: scale(1); opacity: 1; }
     }
-
     .close-btn {
       float: right;
       font-size: 1.5rem;
       cursor: pointer;
-      color: var(--primary-color);
+      color: var(--accent-color);
       transition: color 0.2s ease;
+      background: none;
+      border: none;
     }
-
     .close-btn:hover {
-        color: var(--secondary-color);
+        color: var(--cta-color-orange);
         transform: rotate(90deg);
     }
 
-    a.whatsapp {
-      display: inline-flex;
-      align-items: center;
-      background: #00cc66;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 1rem;
-      transition: all 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0, 204, 102, 0.3);
-    }
-
-    a.whatsapp:hover {
-      background: #00aa55;
-      box-shadow: 0 0 15px #00ff99, 0 6px 15px rgba(0, 204, 102, 0.5);
-      transform: translateY(-3px);
-    }
-
-    a.whatsapp:active {
-       transform: translateY(-1px);
-    }
-
-    a.whatsapp svg {
-      margin-right: 8px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #000;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .dark-mode {
-      background: var(--dark-bg);
-      color: white;
-    }
-
-    .light-mode {
-      background: #f0f0f0;
-      color: #333;
-    }
-    .light-mode .card {
-        background: #ffffff;
-        border: 1px solid #ddd;
-    }
-    .light-mode .hero {
-        background: linear-gradient(135deg, #e0f7fa, #bbdefb);
-        color: #333;
-    }
-    .light-mode .section {
-        background: #e3f2fd;
-    }
-    .light-mode .terms-content {
-        background: #ffffff;
-        color: #333;
-    }
-    .light-mode header {
-        background: rgba(255, 255, 255, 0.85);
-        border-bottom: 1px solid #ccc;
-    }
-    .light-mode nav a {
-        color: #0077c2;
-    }
-
-    .toggle-btn {
-      cursor: pointer;
-      background: #222;
-      border: 1px solid var(--primary-color);
-      padding: 10px 15px;
-      border-radius: 5px;
-      color: var(--primary-color);
-      margin-left: 1rem;
-      transition: all 0.3s ease;
-      font-family: 'Orbitron', sans-serif;
-    }
-
-    .toggle-btn:hover {
-        background: #444;
-        box-shadow: 0 0 8px var(--primary-color);
-        transform: scale(1.05);
-    }
-
-    .light-mode .toggle-btn {
-        background: #e0e0e0;
-        border: 1px solid #0077c2;
-        color: #0077c2;
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-    }
-
-    /* Stats Section Specific Styles */
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .stat-card {
-        text-align: center;
-        padding: 1.5rem;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 10px;
-        border: 1px solid rgba(0, 255, 255, 0.1);
-        transition: transform 0.3s ease;
-        animation: float 3s ease-in-out infinite;
-        animation-delay: calc(var(--delay) * 0.5s);
-    }
-
-    .stat-card:nth-child(1) { --delay: 0; }
-    .stat-card:nth-child(2) { --delay: 1; }
-    .stat-card:nth-child(3) { --delay: 2; }
-    .stat-card:nth-child(4) { --delay: 3; }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-
-    .stat-value {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-        font-family: 'Orbitron', sans-serif;
-    }
-
-    .stat-label {
-        font-size: 1rem;
-        color: #aaa;
-    }
-
-    /* 3D Parallax Effect for Hero */
-    .parallax-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        transform: translateZ(-1px) scale(2); /* Creates parallax */
-        z-index: 0;
-    }
-    .layer-1 { background: radial-gradient(circle at 20% 30%, rgba(26, 0, 26, 0.8), transparent 40%), radial-gradient(circle at 80% 70%, rgba(0, 0, 0, 0.8), transparent 40%); }
-    .layer-2 { background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(0,255,255,0.05)" stroke-width="1"/></svg>'); opacity: 0.3; }
+    /* --- Utility Classes --- */
+    .text-center { text-align: center; }
+    .mt-1 { margin-top: 1rem; }
+    .mt-2 { margin-top: 2rem; }
+    .mb-1 { margin-bottom: 1rem; }
+    .mb-2 { margin-bottom: 2rem; }
 
   </style>
 </head>
-<body class="dark-mode">
+<body>
 
-<!-- Dark Mode Toggle Button -->
-<div style="position: fixed; top: 1rem; right: 2rem; z-index: 1001;">
-  <button class="toggle-btn" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙/☀️</button>
-</div>
-
+<!-- Header -->
 <header>
-  <div style="display: flex; align-items: center;">
-    <!-- Using a simple placeholder SVG for the logo -->
-    <svg style="height:40px; margin-right: 10px;" viewBox="0 0 100 100">
-      <rect x="20" y="20" width="60" height="60" rx="5" fill="none" stroke="var(--primary-color)" stroke-width="3"/>
-      <polygon points="50,10 70,30 30,30" fill="var(--primary-color)" />
-      <circle cx="50" cy="60" r="10" fill="none" stroke="var(--primary-color)" stroke-width="2"/>
-    </svg>
-    <strong>Dominion Fortress</strong>
+  <div class="container header-content">
+    <a href="#" class="logo">
+      <!-- Simple SVG Shield Icon -->
+      <svg class="logo-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      Dominion Fortress
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle navigation">☰</button>
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" onclick="openTerms(); return false;">Terms</a></li>
+      </ul>
+    </nav>
   </div>
-  <div>
-    <button class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('active')" aria-label="Toggle navigation">☰</button>
-  </div>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#stats">Stats</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#contact">Contact</a>
-    <a href="#" onclick="openTerms(); return false;">Terms & Conditions</a>
-  </nav>
 </header>
 
 <!-- Hero Section -->
 <section class="hero">
-  <!-- Parallax Background Layers -->
-  <div class="parallax-layer layer-1"></div>
-  <div class="parallax-layer layer-2"></div>
-  <div class="hero-content">
-    <h1 class="neon-glow">Secure.<br>Scale.<br>Dominate.</h1>
+  <div class="container hero-content">
+    <h1>Secure. Scale. Dominate.</h1>
     <p>Empowering enterprises with cutting-edge cybersecurity, IT, finance, and growth solutions.</p>
-    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get Started Now</button>
+    <a href="#contact" class="btn btn-primary btn-large">Get My Fortress Plan</a>
   </div>
 </section>
 
@@ -540,51 +646,55 @@
 <section id="services" class="section">
   <div class="container">
     <div class="section-title">
-      <h2 class="neon-glow">Our Core Services</h2>
+      <h2>Our Core Services</h2>
     </div>
-    <div class="pricing-grid">
-      <div class="card">
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🛡️</div>
         <h3>Cybersecurity</h3>
-        <p>Advanced threat detection and mitigation systems to protect your digital assets.</p>
+        <p>Advanced threat detection, penetration testing, and 24/7 monitoring.</p>
       </div>
-      <div class="card">
+      <div class="service-card">
+        <div class="service-icon">☁️</div>
         <h3>IT & Cloud</h3>
-        <p>Scalable cloud infrastructure and enterprise IT management solutions.</p>
+        <p>Scalable cloud infrastructure, migration, and remote management.</p>
       </div>
-      <div class="card">
+      <div class="service-card">
+        <div class="service-icon">💸</div>
         <h3>Finance</h3>
-        <p>Strategic financial planning, risk assessment, and investment optimization.</p>
+        <p>Strategic financial planning, risk audit, and virtual CFO services.</p>
       </div>
-      <div class="card">
+      <div class="service-card">
+        <div class="service-icon">📈</div>
         <h3>Growth & Marketing</h3>
-        <p>Data-driven marketing strategies and customer acquisition frameworks.</p>
+        <p>Data-driven marketing strategies, SEO, and lead generation.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Stats Section -->
-<section id="stats" class="section" style="background: #000;">
+<section class="section" style="background: var(--secondary-bg);">
   <div class="container">
     <div class="section-title">
-      <h2 class="neon-glow">Global Reach</h2>
+      <h2>Global Impact</h2>
     </div>
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-value" id="clientsCount">0</div>
-        <div class="stat-label">Clients</div>
+        <div class="stat-label">Clients Protected</div>
       </div>
       <div class="stat-card">
         <div class="stat-value" id="projectsCount">0</div>
-        <div class="stat-label">Projects</div>
+        <div class="stat-label">Projects Secured</div>
       </div>
       <div class="stat-card">
         <div class="stat-value" id="uptimeCount">0</div>
-        <div class="stat-label">Uptime %</div>
+        <div class="stat-label">Average Uptime %</div>
       </div>
       <div class="stat-card">
         <div class="stat-value" id="teamCount">0</div>
-        <div class="stat-label">Team Members</div>
+        <div class="stat-label">Experts Onboard</div>
       </div>
     </div>
   </div>
@@ -594,103 +704,282 @@
 <section id="pricing" class="section">
   <div class="container">
     <div class="section-title">
-      <h2 class="neon-glow">Flexible Pricing Plans</h2>
+      <h2>Transparent Pricing</h2>
     </div>
-    <div class="pricing-grid">
-      <div class="card">
-        <h3>Basic Package</h3>
-        <h2>$100/mo</h2>
-        <ul>
-          <li>• Cyber Audit</li>
-          <li>• Cloud Backup</li>
-          <li>• Email Support</li>
+    <div class="pricing-intro">
+      <p>Choose a service or package that fits your needs. Custom quotes available for enterprise clients.</p>
+    </div>
+
+    <!-- Combined Service Packages -->
+    <div class="packages-grid">
+      <div class="package-card">
+        <h3 class="package-name">Starter Fortress</h3>
+        <div class="package-price">$297<span>/month</span></div>
+        <ul class="package-features">
+          <li>Cybersecurity Audit</li>
+          <li>Cloud Backup (100GB)</li>
+          <li>Email/DNS Setup</li>
         </ul>
-        <button class="btn">Choose Plan</button>
+        <a href="#contact" class="btn btn-secondary mt-1">Get Started</a>
       </div>
-      <div class="card">
-        <h3>Medium Package</h3>
-        <h2>$150/mo</h2>
-        <ul>
-          <li>• Full Security Suite</li>
-          <li>• Dedicated Engineer</li>
-          <li>• Priority Support</li>
+      <div class="package-card featured">
+        <h3 class="package-name">Growth Fortress</h3>
+        <div class="package-price">$697<span>/month</span></div>
+        <ul class="package-features">
+          <li>Full Security Suite</li>
+          <li>1 Dedicated Engineer</li>
+          <li>IT Support & Basic Finance</li>
+          <li>Priority Response</li>
         </ul>
-        <button class="btn">Choose Plan</button>
+        <a href="#contact" class="btn btn-primary mt-1">Get Started</a>
       </div>
-      <div class="card">
-        <h3>Premium Package</h3>
-        <h2>$400/mo</h2>
-        <ul>
-          <li>• Custom Solutions</li>
-          <li>• On-site Team</li>
-          <li>• 24/7 Emergency Response</li>
+      <div class="package-card">
+        <h3 class="package-name">Elite Fortress</h3>
+        <div class="package-price">$1,997<span>/month</span></div>
+        <ul class="package-features">
+          <li>Red Team Testing</li>
+          <li>24/7 Threat Monitoring</li>
+          <li>Full Cloud Infrastructure</li>
+          <li>Growth Strategy Plan</li>
+          <li>Monthly Executive Report</li>
         </ul>
-        <button class="btn">Choose Plan</button>
+        <a href="#contact" class="btn btn-secondary mt-1">Get Started</a>
       </div>
-      <div class="card">
-        <h3>Overall Package</h3>
-        <h2>$1,500/mo</h2>
-        <ul>
-          <li>• All Services</li>
-          <li>• Executive Advisory Board</li>
-          <li>• Live Threat Monitoring</li>
-        </ul>
-        <button class="btn">Choose Plan</button>
+    </div>
+
+    <!-- Detailed Pricing Tables -->
+    <div class="detailed-pricing">
+      <div class="pricing-header">
+        <h3>🔍 Detailed Service Pricing</h3>
       </div>
+      <!-- Cybersecurity -->
+      <table class="pricing-table">
+        <thead>
+          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">🔐 CYBERSECURITY SERVICES</th></tr>
+          <tr><th>Service</th><th>Description</th><th>Price (USD)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Service">Cybersecurity Audit</td><td data-label="Description">Full vulnerability assessment</td><td data-label="Price">$199 (one-time)</td></tr>
+          <tr><td data-label="Service">Red Team</td><td data-label="Description">Simulated attack testing</td><td data-label="Price">$899/month or $1,499</td></tr>
+          <tr><td data-label="Service">Pen Testing (Web/App)</td><td data-label="Description">Custom test with report</td><td data-label="Price">$599/app</td></tr>
+          <tr><td data-label="Service">Threat Monitoring</td><td data-label="Description">Real-time alerts & response</td><td data-label="Price">$999/month</td></tr>
+          <tr><td data-label="Service">Firewall/Endpoint Setup</td><td data-label="Description">Configure & secure devices</td><td data-label="Price">$249/deployment</td></tr>
+          <tr><td data-label="Service">Consultation</td><td data-label="Description">1-on-1 custom planning</td><td data-label="Price">$99/hr</td></tr>
+          <tr><td data-label="Service">Dark Web Monitoring</td><td data-label="Description">Track leaked/sold data</td><td data-label="Price">$149/month</td></tr>
+          <tr><td data-label="Service">Malware Removal</td><td data-label="Description">Fix + report + prevention</td><td data-label="Price">$249 (one-time)</td></tr>
+          <tr><td data-label="Service">Compliance Support</td><td data-label="Description">GDPR, HIPAA docs/config</td><td data-label="Price">From $699/project</td></tr>
+        </tbody>
+      </table>
+
+      <!-- IT & Cloud -->
+      <table class="pricing-table">
+        <thead>
+          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">☁️ IT & CLOUD INFRASTRUCTURE</th></tr>
+          <tr><th>Service</th><th>Description</th><th>Price (USD)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Service">Cloud Migration</td><td data-label="Description">Secure shift to AWS/GCP/Azure</td><td data-label="Price">$499 (basic) / $1,299+</td></tr>
+          <tr><td data-label="Service">Remote IT Management</td><td data-label="Description">Monthly system management</td><td data-label="Price">$399/month</td></tr>
+          <tr><td data-label="Service">Backup & Recovery</td><td data-label="Description">Cloud & physical backups</td><td data-label="Price">$149/month (100GB)</td></tr>
+          <tr><td data-label="Service">Server Setup</td><td data-label="Description">Fast, secure deployment</td><td data-label="Price">$299/server</td></tr>
+          <tr><td data-label="Service">Email/DNS Config</td><td data-label="Description">Professional secure setup</td><td data-label="Price">$99/domain</td></tr>
+          <tr><td data-label="Service">System Health Check</td><td data-label="Description">Optimize speed/security</td><td data-label="Price">$149/system</td></tr>
+          <tr><td data-label="Service">VPN Setup</td><td data-label="Description">Encrypted network</td><td data-label="Price">$249/project</td></tr>
+          <tr><td data-label="Service">Device Encryption</td><td data-label="Description">Secure employee devices</td><td data-label="Price">$99/device</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Finance -->
+      <table class="pricing-table">
+        <thead>
+          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">💸 FINANCE & ACCOUNTING</th></tr>
+          <tr><th>Service</th><th>Description</th><th>Price (USD)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Service">Startup Planning</td><td data-label="Description">Business model + cashflow</td><td data-label="Price">$299/project</td></tr>
+          <tr><td data-label="Service">Virtual CFO</td><td data-label="Description">Weekly check-ins + ops</td><td data-label="Price">$799/month</td></tr>
+          <tr><td data-label="Service">Investment Kit</td><td data-label="Description">Pitch deck + valuation</td><td data-label="Price">$499/project</td></tr>
+          <tr><td data-label="Service">Tax Optimization</td><td data-label="Description">Max savings legally</td><td data-label="Price">$149/$349/month</td></tr>
+          <tr><td data-label="Service">Risk Audit</td><td data-label="Description">Identify ops weaknesses</td><td data-label="Price">$249/project</td></tr>
+          <tr><td data-label="Service">Bookkeeping Setup</td><td data-label="Description">Full system setup</td><td data-label="Price">$149/$399/month</td></tr>
+          <tr><td data-label="Service">Cash Flow Forecast</td><td data-label="Description">3-12 month forecast</td><td data-label="Price">$199/report</td></tr>
+          <tr><td data-label="Service">Fundraising Strategy</td><td data-label="Description">Pitch, equity, investor tips</td><td data-label="Price">$499/project</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Growth & Marketing -->
+      <table class="pricing-table">
+        <thead>
+          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">📈 GROWTH & MARKETING</th></tr>
+          <tr><th>Service</th><th>Description</th><th>Price (USD)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Service">SEO Optimization</td><td data-label="Description">On-site + off-site strategy</td><td data-label="Price">$399/month</td></tr>
+          <tr><td data-label="Service">Paid Ads (Meta/Google)</td><td data-label="Description">Setup + management</td><td data-label="Price">$199 + 15% ad spend</td></tr>
+          <tr><td data-label="Service">Lead Gen Funnel</td><td data-label="Description">High-converting pages</td><td data-label="Price">$599/project</td></tr>
+          <tr><td data-label="Service">Email Marketing</td><td data-label="Description">Templates + autoresponder</td><td data-label="Price">$149/project</td></tr>
+          <tr><td data-label="Service">Sales Copywriting</td><td data-label="Description">Funnel, site, ads</td><td data-label="Price">$49–$149/page</td></tr>
+          <tr><td data-label="Service">Brand Identity</td><td data-label="Description">Logo, colors, tone</td><td data-label="Price">$299–$599</td></tr>
+          <tr><td data-label="Service">Social Media Strategy</td><td data-label="Description">Content calendar</td><td data-label="Price">$199/month</td></tr>
+          <tr><td data-label="Service">Content Creation</td><td data-label="Description">Captions + visuals</td><td data-label="Price">$10/post or $149/mo (20)</td></tr>
+        </tbody>
+      </table>
+
+       <!-- Add-Ons -->
+      <table class="pricing-table">
+        <thead>
+          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">📝 Add-Ons (Optional)</th></tr>
+          <tr><th>Add-On</th><th>Description</th><th>Price (USD)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Add-On">Executive Report</td><td data-label="Description">Analytics + threat + finance</td><td data-label="Price">$149/month</td></tr>
+          <tr><td data-label="Add-On">On-Site Visit (Local)</td><td data-label="Description">Physical audit/setup (PK)</td><td data-label="Price">$299/day</td></tr>
+          <tr><td data-label="Add-On">Express Delivery</td><td data-label="Description">Complete in 1 day</td><td data-label="Price">+50% base price</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
 <!-- Testimonials -->
-<section id="testimonials" class="section" style="background:#000;">
+<section id="testimonials" class="section" style="background: var(--secondary-bg);">
   <div class="container">
     <div class="section-title">
-      <h2 class="neon-glow">What Our Clients Say</h2>
+      <h2>What Our Clients Say</h2>
     </div>
-    <div class="pricing-grid">
-      <div class="card">
-        <p>"Dominion Fortress transformed our security infrastructure overnight."</p>
-        <strong>- Sarah Johnson, CTO TechNova</strong>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Dominion Fortress transformed our security infrastructure overnight. The peace of mind is priceless."</p>
+        <p class="testimonial-author">- Sarah Johnson, CTO, TechNova</p>
       </div>
-      <div class="card">
-        <p>"Their finance advisory team is second to none."</p>
-        <strong>- Michael Chen, CEO FinEdge</strong>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Their finance advisory team is second to none. We’ve seen a 40% increase in ROI since partnering."</p>
+        <p class="testimonial-author">- Michael Chen, CEO, FinEdge</p>
       </div>
-      <div class="card">
-        <p>"They built us a scalable growth engine that’s driving real results."</p>
-        <strong>- Emily Roberts, CMO GrowthHub</strong>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"They built us a scalable growth engine that’s driving real results across all channels."</p>
+        <p class="testimonial-author">- Emily Roberts, CMO, GrowthHub</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Contact -->
-<section id="contact" class="section" style="background:#000;">
+<!-- Why Choose Us -->
+<section id="why-us" class="section">
   <div class="container">
     <div class="section-title">
-      <h2 class="neon-glow">Let's Build Your Fortress</h2>
+      <h2>Why Choose Dominion Fortress?</h2>
     </div>
-    <p class="text-center">Ready to secure your business? Connect with our experts today and take the first step toward digital dominance.</p>
-    <div class="text-center">
-      <a href="https://wa.me/447352407926" target="_blank" class="whatsapp" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.96a1.03 1.03 0 0 0-.359-.07 1.828 1.828 0 0 0-1.329.693C13.008 15.5 12.086 17 9.06 17H8.5c-.222 0-.444-.013-.664-.038a2.828 2.828 0 0 1-2.03-1.133 2.898 2.898 0 0 1-.587-2.003c.024-.218.057-.43.1-.64a8.01 8.01 0 0 1 4.513-4.513c.216-.044.426-.077.64-.1.712-.065 1.396.155 2.003.587.472.33.864.76 1.133 1.329.13.273.15.57.07.868l-.82 3.281a.999 .999 0 0 0 .196.995l.001.001z"/>
-        </svg>
-        Chat with Founder on WhatsApp
-      </a>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🔒</div>
+        <div>
+          <h3>Military-Grade Security</h3>
+          <p>Our experts use battle-tested techniques to protect your assets.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌐</div>
+        <div>
+          <h3>Global Expertise</h3>
+          <p>Team with experience across continents and industries.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <div>
+          <h3>Lightning-Fast Results</h3>
+          <p>We deliver actionable insights and implementations quickly.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤝</div>
+        <div>
+          <h3>Transparent Partnership</h3>
+          <p>No hidden fees. No jargon. Just clear communication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Build Your Digital Fortress?</h2>
+    <p>Get a free, no-obligation strategy session tailored to your business needs.</p>
+    <a href="#contact" class="btn btn-primary btn-large">Book Free Strategy Call</a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Get In Touch</h2>
+    </div>
+    <p class="text-center">Have questions or ready to get started? Reach out to us directly.</p>
+    <div class="contact-options">
+      <div class="contact-option">
+        <div class="contact-icon">💬</div>
+        <h3>Chat</h3>
+        <a href="https://wa.me/447352407926" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <div class="contact-option">
+        <div class="contact-icon">📧</div>
+        <h3>Email</h3>
+        <a href="mailto:contact@dominionfortress.com">contact@dominionfortress.com</a> <!-- Placeholder -->
+      </div>
+      <div class="contact-option">
+        <div class="contact-icon">📞</div>
+        <h3>Call</h3>
+        <a href="tel:+447352407926">+44 7352 407926</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
-  &copy; <span id="currentYear"></span> Dominion Fortress • All Rights Reserved
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Dominion Fortress</h3>
+        <p>Empowering enterprises with next-gen tech solutions since 2010.</p>
+        <div class="social-icons">
+          <!-- Placeholder links -->
+          <a href="#" aria-label="Twitter"><span>🐦</span></a>
+          <a href="#" aria-label="LinkedIn"><span>👔</span></a>
+          <a href="#" aria-label="Facebook"><span>📘</span></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#" onclick="openTerms(); return false;">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li> <!-- Placeholder -->
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; <span id="currentYear"></span> Dominion Fortress. All rights reserved.
+    </div>
+  </div>
 </footer>
 
 <!-- Terms Modal -->
 <div id="termsModal" class="terms-modal">
   <div class="terms-content">
-    <span class="close-btn" onclick="closeTerms()">&times;</span>
+    <button class="close-btn" onclick="closeTerms()" aria-label="Close">&times;</button>
     <h1>Dominion Fortress - Terms & Conditions</h1>
     <p><em>Effective Date: July 10, 2025</em></p>
     <h2>1. Introduction</h2>
@@ -733,44 +1022,30 @@
   </div>
 </div>
 
-<!-- Embedded JavaScript (script.js) -->
+<!-- Embedded JavaScript -->
 <script>
   // --- Set Current Year in Footer ---
   document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-  // --- Dark Mode Toggle ---
-  function toggleDarkMode() {
-    const body = document.body;
-    body.classList.toggle("dark-mode");
-    body.classList.toggle("light-mode");
+  // --- Mobile Menu Toggle ---
+  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.toggle('active');
+  });
 
-    const isDark = body.classList.contains("dark-mode");
-    localStorage.setItem("darkMode", isDark);
-  }
-
-  window.onload = function () {
-    const savedMode = localStorage.getItem("darkMode") === "true";
-    const body = document.body;
-    if (savedMode) {
-      body.classList.add("dark-mode");
-    } else {
-      body.classList.add("light-mode");
-    }
-  };
+  // --- Dark Mode Toggle (Removed for simplicity, but can be re-added) ---
+  // (Logic was in previous versions)
 
   // --- Terms Modal ---
   function openTerms() {
     const modal = document.getElementById('termsModal');
     modal.classList.add('active');
-    // Prevent background scroll
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
   }
 
   function closeTerms() {
     const modal = document.getElementById('termsModal');
     modal.classList.remove('active');
-    // Re-enable background scroll
-    document.body.style.overflow = '';
+    document.body.style.overflow = ''; // Re-enable scroll
   }
 
   // Close modal if clicked outside content
@@ -781,12 +1056,12 @@
     }
   }
 
-  // --- Animated Counters ---
+  // --- Animated Counters (Simplified version) ---
   function animateCounter(id, endValue, decimals = 0) {
     const element = document.getElementById(id);
     let start = 0;
-    const duration = 2000; // ms
-    const increment = (endValue - start) / (duration / 16); // ~60fps
+    const duration = 2000;
+    const increment = (endValue - start) / (duration / 16);
 
     const tick = () => {
         start += increment;
@@ -801,35 +1076,22 @@
   }
 
   // --- Intersection Observer for Stats ---
-  const statsSection = document.getElementById("stats");
+  const statsSection = document.querySelector('.stats-grid'); // Target the grid container
   if (statsSection) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Animate counters when section is in view
           animateCounter("clientsCount", 1200);
           animateCounter("projectsCount", 3400);
-          animateCounter("uptimeCount", 99.99, 2); // 2 decimal places
+          animateCounter("uptimeCount", 99.99, 2);
           animateCounter("teamCount", 230);
-          // Stop observing after animation starts
-          observer.unobserve(statsSection);
+          observer.unobserve(statsSection); // Stop observing after animation
         }
       });
-    }, { threshold: 0.1 }); // Trigger when 10% is visible
+    }, { threshold: 0.1 });
 
     observer.observe(statsSection);
   }
-
-  // --- Simple Parallax Effect for Hero (on scroll) ---
-  window.addEventListener('scroll', function() {
-    const scrollPosition = window.scrollY;
-    const layers = document.querySelectorAll('.parallax-layer');
-    layers.forEach((layer, index) => {
-        const speed = (index + 1) * 0.05; // Different speeds for layers
-        const yPos = -(scrollPosition * speed);
-        layer.style.transform = `translateZ(-1px) scale(2) translateY(${yPos}px)`;
-    });
-  });
 
 </script>
 
