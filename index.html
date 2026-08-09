@@ -1,1099 +1,2454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Dominion Fortress offers cybersecurity, IT, finance, and growth solutions for modern enterprises. Secure. Scale. Dominate.">
-  <title>Dominion Fortress</title>
-  <!-- Modern, clean fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    /* --- Embedded CSS --- */
-    :root {
-      /* Fortress Theme Colors */
-      --primary-bg: #0F172A; /* Deep Blue/Black */
-      --secondary-bg: #1e293b;
-      --accent-color: #00D4FF; /* Electric Cyan */
-      --cta-color-green: #10B981; /* Green */
-      --cta-color-orange: #F97316; /* Orange */
-      --text-light: #f1f5f9;
-      --text-muted: #94a3b8;
-      --border-color: #334155;
-      --card-bg: #1e293b;
-      --transition-speed: 0.3s;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: var(--primary-bg);
-      color: var(--text-light);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-top: 0;
-    }
-
-    h1 { font-size: 2.5rem; } /* 40px */
-    h2 { font-size: 2rem; }   /* 32px */
-    h3 { font-size: 1.5rem; } /* 24px */
-    @media (min-width: 768px) {
-        h1 { font-size: 3rem; } /* 48px on larger screens */
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
-    a {
-        color: var(--accent-color);
-        text-decoration: none;
-    }
-    a:hover {
-        color: #70e0ff; /* Lighter cyan on hover */
-    }
-
-    /* --- Header --- */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      background: rgba(15, 23, 42, 0.95); /* Slightly transparent primary-bg */
-      border-bottom: 1px solid var(--border-color);
-      padding: 1rem 0;
-    }
-
-    .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-light);
-    }
-    .logo-icon {
-        margin-right: 10px;
-        color: var(--accent-color);
-    }
-
-    nav ul {
-        display: flex;
-        list-style: none;
-    }
-    nav ul li { margin-left: 1.5rem; }
-    nav ul li a {
-        font-weight: 600;
-        transition: color var(--transition-speed);
-    }
-    nav ul li a:hover { color: var(--accent-color); }
-
-    .mobile-menu-btn {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-      color: var(--accent-color);
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        position: fixed;
-        top: 70px; /* Height of header */
-        left: 0;
-        width: 100%;
-        background: var(--primary-bg);
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
-        border-top: 1px solid var(--border-color);
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        transform: translateY(-150%);
-        transition: transform var(--transition-speed) ease-in-out;
-      }
-      nav ul.active {
-        transform: translateY(0);
-      }
-      nav ul li {
-        margin: 0.75rem 0;
-      }
-      .mobile-menu-btn {
-        display: block;
-      }
-    }
-
-    /* --- Buttons --- */
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-align: center;
-      cursor: pointer;
-      transition: all var(--transition-speed) ease, transform 0.1s ease;
-      border: none;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    .btn-primary {
-        background-color: var(--accent-color);
-        color: #0F172A;
-    }
-    .btn-primary:hover {
-        background-color: #70e0ff;
-        box-shadow: 0 0 15px var(--accent-color);
-        transform: translateY(-2px);
-    }
-    .btn-secondary {
-        background-color: var(--cta-color-green);
-        color: white;
-    }
-    .btn-secondary:hover {
-        background-color: #0d9d6a;
-        box-shadow: 0 0 15px var(--cta-color-green);
-        transform: translateY(-2px);
-    }
-    .btn-large { padding: 16px 32px; font-size: 1.1rem; }
-
-    /* --- Sections --- */
-    .section {
-      padding: 5rem 0;
-    }
-    .section-title {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    .section-title h2 {
-        display: inline-block;
-        position: relative;
-        padding-bottom: 15px;
-    }
-    .section-title h2::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: var(--accent-color);
-        border-radius: 2px;
-    }
-
-    /* --- Hero --- */
-    .hero {
-      background: linear-gradient(135deg, #0c1425, #0a111f);
-      padding: 6rem 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    .hero h1 {
-        margin-bottom: 1.5rem;
-        color: var(--accent-color);
-        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-    }
-    .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        color: var(--text-muted);
-    }
-
-    /* --- Services --- */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .service-card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 1.5rem;
-      border: 1px solid var(--border-color);
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-      text-align: center;
-    }
-    .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        border-color: var(--accent-color);
-    }
-    .service-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: var(--accent-color);
-    }
-    .service-card h3 { margin-bottom: 0.75rem; }
-
-    /* --- Stats --- */
-     .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-    .stat-card {
-        text-align: center;
-        padding: 1.5rem;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 10px;
-        border: 1px solid rgba(0, 212, 255, 0.1);
-        transition: transform 0.3s ease;
-        animation: float 3s ease-in-out infinite;
-        animation-delay: calc(var(--delay) * 0.5s);
-    }
-    .stat-card:nth-child(1) { --delay: 0; }
-    .stat-card:nth-child(2) { --delay: 1; }
-    .stat-card:nth-child(3) { --delay: 2; }
-    .stat-card:nth-child(4) { --delay: 3; }
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-    .stat-value {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: var(--accent-color);
-        margin-bottom: 0.5rem;
-        font-family: 'Orbitron', sans-serif;
-    }
-    .stat-label {
-        font-size: 1rem;
-        color: var(--text-muted);
-    }
-
-    /* --- Pricing --- */
-    .pricing-intro {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 3rem auto;
-        color: var(--text-muted);
-    }
-    .packages-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 4rem;
-    }
-    .package-card {
-        background: var(--card-bg);
-        border-radius: 10px;
-        padding: 2rem;
-        border: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-        transition: transform var(--transition-speed), border-color var(--transition-speed);
-    }
-    .package-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent-color);
-    }
-    .package-card.featured {
-        border-color: var(--accent-color);
-        position: relative;
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-        transform: scale(1.02);
-    }
-    .package-card.featured:hover {
-        transform: scale(1.02) translateY(-5px);
-    }
-    .package-card.featured::before {
-        content: 'MOST POPULAR';
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--accent-color);
-        color: #0F172A;
-        font-size: 0.75rem;
-        font-weight: bold;
-        padding: 5px 15px;
-        border-radius: 20px;
-    }
-    .package-name { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent-color); }
-    .package-price {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-    }
-    .package-price span { font-size: 1rem; font-weight: normal; color: var(--text-muted); }
-    .package-features {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 auto 0; /* Push button to bottom */
-    }
-    .package-features li {
-        padding: 0.5rem 0;
-        border-bottom: 1px dashed var(--border-color);
-    }
-    .package-features li:last-child { border-bottom: none; }
-    .package-features li::before {
-        content: "✓";
-        color: var(--cta-color-green);
-        font-weight: bold;
-        margin-right: 10px;
-    }
-
-    .detailed-pricing {
-        background: var(--secondary-bg);
-        border-radius: 10px;
-        overflow: hidden;
-        margin-top: 3rem;
-    }
-    .pricing-header {
-        background: var(--primary-bg);
-        padding: 1rem;
-        text-align: center;
-        font-weight: 700;
-        border-bottom: 1px solid var(--border-color);
-    }
-    .pricing-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .pricing-table th, .pricing-table td {
-        padding: 1rem;
-        text-align: left;
-        border-bottom: 1px solid var(--border-color);
-    }
-    .pricing-table th {
-        background: rgba(30, 41, 59, 0.7);
-        font-weight: 600;
-    }
-    .pricing-table tr:last-child td {
-        border-bottom: none;
-    }
-    .pricing-table tr:hover td {
-        background: rgba(255, 255, 255, 0.02);
-    }
-    @media (max-width: 768px) {
-        .pricing-table, .pricing-table thead, .pricing-table tbody, .pricing-table th, .pricing-table td, .pricing-table tr {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Identify publicly visible security exposure, obvious risk signals, and areas that may deserve deeper assessment with Dominion Fortress.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dominion-fortress.com/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dominion-fortress.com/">
+    <meta property="og:title" content="Free External Security Exposure Review | Dominion Fortress">
+    <meta property="og:description" content="Find out what attackers can see about your business. Get a free external security exposure review.">
+    <meta property="og:image" content="https://dominion-fortress.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free External Security Exposure Review | Dominion Fortress">
+    <meta name="twitter:description" content="Identify publicly visible security exposure before attackers exploit it.">
+    
+    <title>Free External Security Exposure Review | Dominion Fortress</title>
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - DESIGN SYSTEM
+           ============================================ */
+        :root {
+            --color-bg-primary: #0a0e14;
+            --color-bg-secondary: #111827;
+            --color-bg-tertiary: #1a2332;
+            --color-bg-card: #151d29;
+            --color-bg-card-hover: #1c2638;
+            
+            --color-text-primary: #f8fafc;
+            --color-text-secondary: #94a3b8;
+            --color-text-muted: #64748b;
+            
+            --color-accent-primary: #0ea5e9;
+            --color-accent-secondary: #0284c7;
+            --color-accent-glow: rgba(14, 165, 233, 0.15);
+            
+            --color-border: #1e293b;
+            --color-border-light: #334155;
+            
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-error: #ef4444;
+            
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            --spacing-4xl: 6rem;
+            
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+            
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 350ms ease;
+            
+            --container-max: 1200px;
+            --header-height: 72px;
+        }
+        
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
             display: block;
         }
-        .pricing-table thead tr { position: absolute; top: -9999px; left: -9999px; }
-        .pricing-table tr { border: 1px solid var(--border-color); margin-bottom: 10px; border-radius: 10px; overflow: hidden; }
-        .pricing-table td {
-            border: none;
-            position: relative;
-            padding-left: 50%;
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-fast);
         }
-        .pricing-table td::before {
-            content: attr(data-label) ": ";
-            position: absolute;
-            left: 15px;
-            width: 45%;
-            font-weight: bold;
+        
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        
+        ul, ol {
+            list-style: none;
+        }
+        
+        input, textarea, select {
+            font-family: inherit;
+            font-size: inherit;
+        }
+        
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .text-center { text-align: center; }
+        .text-muted { color: var(--color-text-muted); }
+        .text-accent { color: var(--color-accent-primary); }
+        
+        /* ============================================
+           LAYOUT UTILITIES
+           ============================================ */
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+        
+        .section {
+            padding: var(--spacing-4xl) 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: var(--spacing-3xl) 0;
+            }
+        }
+        
+        .grid {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+        
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        @media (max-width: 1024px) {
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 640px) {
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+        }
+        
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            border-radius: var(--border-radius-md);
+            transition: all var(--transition-base);
             white-space: nowrap;
         }
-    }
-
-    /* --- Testimonials --- */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .testimonial-card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 1.5rem;
-      border: 1px solid var(--border-color);
-      position: relative;
-    }
-    .testimonial-card::before {
-        content: """;
-        position: absolute;
-        top: 10px;
-        left: 15px;
-        font-size: 4rem;
-        color: var(--accent-color);
-        opacity: 0.2;
-        font-family: serif;
-    }
-    .testimonial-text { margin-bottom: 1rem; font-style: italic; }
-    .testimonial-author { font-weight: 600; }
-
-    /* --- Why Choose Us --- */
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-    }
-    .feature-item {
-        display: flex;
-        align-items: flex-start;
-    }
-    .feature-icon {
-        font-size: 1.5rem;
-        margin-right: 1rem;
-        color: var(--accent-color);
-        min-width: 30px; /* Ensures icon doesn't shrink */
-    }
-
-    /* --- CTA --- */
-    .cta-section {
-        background: linear-gradient(135deg, #0c1e3e, #0a172f);
-        text-align: center;
-        padding: 4rem 0;
-        border-top: 1px solid var(--border-color);
-        border-bottom: 1px solid var(--border-color);
-    }
-    .cta-section h2 {
-        margin-bottom: 1.5rem;
-        color: var(--accent-color);
-    }
-    .cta-section p {
-        max-width: 600px;
-        margin: 0 auto 2rem auto;
-        color: var(--text-muted);
-    }
-
-    /* --- Contact --- */
-    .contact-options {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-    .contact-option {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 1.5rem;
-        background: var(--card-bg);
-        border-radius: 10px;
-        border: 1px solid var(--border-color);
-        width: 200px;
-        transition: transform var(--transition-speed);
-    }
-    .contact-option:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent-color);
-    }
-    .contact-icon {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        color: var(--accent-color);
-    }
-    .contact-option a {
-        font-weight: 600;
-        margin-top: 0.5rem;
-    }
-
-    /* --- Footer --- */
-    footer {
-      background: #0a0f1a;
-      padding: 3rem 0 1.5rem 0;
-      border-top: 1px solid var(--border-color);
-    }
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-    .footer-column h3 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        color: var(--accent-color);
-    }
-    .footer-column ul {
-        list-style: none;
-        padding: 0;
-    }
-    .footer-column ul li {
-        margin-bottom: 0.5rem;
-    }
-    .social-icons {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-    .social-icons a {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        background: var(--card-bg);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background var(--transition-speed);
-    }
-    .social-icons a:hover {
-        background: var(--accent-color);
-        color: #0F172A;
-    }
-    .copyright {
-        text-align: center;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--border-color);
-        color: var(--text-muted);
-        font-size: 0.9rem;
-    }
-
-    /* --- Terms Modal --- */
-    .terms-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.95);
-      z-index: 9999;
-      overflow-y: auto;
-      padding: 2rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .terms-modal.active {
-        display: block;
-        opacity: 1;
-    }
-    .terms-content {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 800px;
-      margin: auto;
-      border: 1px solid var(--accent-color);
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-      animation: modalPopIn 0.4s ease-out;
-    }
-    @keyframes modalPopIn {
-        0% { transform: scale(0.8); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-    .close-btn {
-      float: right;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--accent-color);
-      transition: color 0.2s ease;
-      background: none;
-      border: none;
-    }
-    .close-btn:hover {
-        color: var(--cta-color-orange);
-        transform: rotate(90deg);
-    }
-
-    /* --- Utility Classes --- */
-    .text-center { text-align: center; }
-    .mt-1 { margin-top: 1rem; }
-    .mt-2 { margin-top: 2rem; }
-    .mb-1 { margin-bottom: 1rem; }
-    .mb-2 { margin-bottom: 2rem; }
-
-  </style>
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+            color: white;
+            box-shadow: 0 4px 14px var(--color-accent-glow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.25);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border-light);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--color-accent-primary);
+            background: var(--color-accent-glow);
+        }
+        
+        .btn-full {
+            width: 100%;
+        }
+        
+        .btn-icon {
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+        }
+        
+        /* ============================================
+           HEADER / NAVIGATION
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(10, 14, 20, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            transition: all var(--transition-base);
+        }
+        
+        .header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+        
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+        
+        .logo span {
+            color: var(--color-accent-primary);
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+        
+        .nav-link {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            transition: color var(--transition-fast);
+        }
+        
+        .nav-link:hover {
+            color: var(--color-text-primary);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: var(--spacing-sm);
+        }
+        
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text-primary);
+            transition: all var(--transition-base);
+        }
+        
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: var(--color-bg-secondary);
+                flex-direction: column;
+                padding: var(--spacing-xl);
+                gap: var(--spacing-lg);
+                border-bottom: 1px solid var(--color-border);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all var(--transition-base);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .nav-cta-desktop {
+                display: none;
+            }
+        }
+        
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            padding-top: calc(var(--header-height) + var(--spacing-4xl));
+            padding-bottom: var(--spacing-4xl);
+            background: radial-gradient(ellipse at top, rgba(14, 165, 233, 0.08), transparent 60%);
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+            }
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .hero-visual {
+            position: relative;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-xl);
+            overflow: hidden;
+        }
+        
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent-primary), transparent);
+        }
+        
+        .security-dashboard {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+        
+        .dashboard-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--color-bg-tertiary);
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--color-border);
+        }
+        
+        .dashboard-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-accent-primary);
+            box-shadow: 0 0 10px var(--color-accent-glow);
+            animation: pulse 2s infinite;
+        }
+        
+        .dashboard-indicator.warning {
+            background: var(--color-warning);
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+        }
+        
+        .dashboard-indicator.success {
+            background: var(--color-success);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
+        
+        .dashboard-label {
+            flex: 1;
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .dashboard-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+        
+        .illustrative-badge {
+            position: absolute;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            font-size: 0.625rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* ============================================
+           CREDIBILITY STRIP
+           ============================================ */
+        .credibility-strip {
+            background: var(--color-bg-secondary);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-2xl) 0;
+        }
+        
+        .credibility-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+        }
+        
+        @media (max-width: 1024px) {
+            .credibility-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .credibility-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .credibility-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .credibility-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-accent-glow);
+            border-radius: var(--border-radius-md);
+            color: var(--color-accent-primary);
+        }
+        
+        .credibility-title {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+        
+        .credibility-text {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            max-width: 200px;
+        }
+        
+        /* ============================================
+           PROBLEM SECTION
+           ============================================ */
+        .problem-section {
+            background: var(--color-bg-secondary);
+        }
+        
+        .problem-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+        
+        @media (max-width: 640px) {
+            .problem-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background: var(--color-bg-card);
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--color-border);
+        }
+        
+        .problem-check {
+            color: var(--color-accent-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .problem-text {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .disclaimer-box {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-md);
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: var(--border-radius-md);
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        
+        /* ============================================
+           WHAT WE REVIEW
+           ============================================ */
+        .review-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            transition: all var(--transition-base);
+        }
+        
+        .review-card:hover {
+            border-color: var(--color-accent-primary);
+            background: var(--color-bg-card-hover);
+            transform: translateY(-4px);
+        }
+        
+        .review-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-accent-glow);
+            border-radius: var(--border-radius-md);
+            color: var(--color-accent-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .review-title {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .review-text {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        /* ============================================
+           DELIVERABLES SECTION
+           ============================================ */
+        .deliverables-section {
+            background: var(--color-bg-secondary);
+        }
+        
+        .deliverable-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-2xl);
+            max-width: 700px;
+            margin: var(--spacing-2xl) auto 0;
+        }
+        
+        .deliverable-list {
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .deliverable-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .deliverable-check {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-accent-glow);
+            border-radius: 50%;
+            color: var(--color-accent-primary);
+            flex-shrink: 0;
+        }
+        
+        .deliverable-text {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+        }
+        
+        /* ============================================
+           HOW IT WORKS
+           ============================================ */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: var(--spacing-2xl) auto 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-border);
+        }
+        
+        @media (min-width: 769px) {
+            .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 64px;
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        @media (min-width: 769px) {
+            .timeline-item {
+                width: 50%;
+                padding-left: 0;
+                padding-right: 48px;
+                text-align: right;
+            }
+            
+            .timeline-item:nth-child(even) {
+                margin-left: 50%;
+                padding-left: 48px;
+                padding-right: 0;
+                text-align: left;
+            }
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 16px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            background: var(--color-accent-primary);
+            border: 3px solid var(--color-bg-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--color-accent-glow);
+        }
+        
+        @media (min-width: 769px) {
+            .timeline-dot {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        .timeline-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .timeline-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .timeline-text {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+        }
+        
+        /* ============================================
+           WHY US SECTION
+           ============================================ */
+        .why-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            height: 100%;
+        }
+        
+        .why-title {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-primary);
+        }
+        
+        .why-text {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
+        .services-section {
+            background: var(--color-bg-secondary);
+        }
+        
+        .service-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            transition: all var(--transition-base);
+        }
+        
+        .service-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-4px);
+        }
+        
+        .service-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .service-text {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .service-link {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-accent-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .service-link:hover {
+            gap: var(--spacing-sm);
+        }
+        
+        /* ============================================
+           PRICING / PATH SECTION
+           ============================================ */
+        .path-section {
+            background: linear-gradient(180deg, var(--color-bg-primary), var(--color-bg-secondary));
+        }
+        
+        .path-container {
+            max-width: 800px;
+            margin: var(--spacing-2xl) auto 0;
+        }
+        
+        .path-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-lg);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: var(--spacing-md);
+            transition: all var(--transition-base);
+        }
+        
+        .path-item:hover {
+            border-color: var(--color-accent-primary);
+        }
+        
+        .path-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .path-arrow {
+            color: var(--color-accent-primary);
+            flex-shrink: 0;
+        }
+        
+        .path-content {
+            flex: 1;
+        }
+        
+        .path-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .path-price {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+        }
+        
+        .path-disclaimer {
+            margin-top: var(--spacing-lg);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-align: center;
+        }
+        
+        /* ============================================
+           PROCESS CREDIBILITY
+           ============================================ */
+        .process-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin: var(--spacing-2xl) 0;
+        }
+        
+        .process-step {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+        
+        .process-arrow {
+            color: var(--color-accent-primary);
+        }
+        
+        @media (max-width: 640px) {
+            .process-diagram {
+                flex-direction: column;
+            }
+            
+            .process-arrow {
+                transform: rotate(90deg);
+            }
+        }
+        
+        /* ============================================
+           FAQ SECTION
+           ============================================ */
+        .faq-section {
+            background: var(--color-bg-secondary);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-lg) 0;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            transition: color var(--transition-fast);
+        }
+        
+        .faq-question:hover {
+            color: var(--color-accent-primary);
+        }
+        
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent-primary);
+            transition: transform var(--transition-base);
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-base);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .faq-answer-inner {
+            padding-bottom: var(--spacing-lg);
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+        }
+        
+        /* ============================================
+           FINAL CTA SECTION
+           ============================================ */
+        .final-cta {
+            background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.1), transparent 70%);
+            text-align: center;
+        }
+        
+        .final-cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .final-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-xl);
+        }
+        
+        /* ============================================
+           CONTACT FORM
+           ============================================ */
+        .contact-section {
+            background: var(--color-bg-secondary);
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-text-primary);
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            color: var(--color-text-primary);
+            transition: border-color var(--transition-fast);
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent-primary);
+        }
+        
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--color-text-muted);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-error {
+            font-size: 0.75rem;
+            color: var(--color-error);
+            margin-top: var(--spacing-xs);
+            display: none;
+        }
+        
+        .form-group.error .form-error {
+            display: block;
+        }
+        
+        .form-group.error .form-input,
+        .form-group.error .form-select,
+        .form-group.error .form-textarea {
+            border-color: var(--color-error);
+        }
+        
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--color-bg-primary);
+            border-top: 1px solid var(--color-border);
+            padding: var(--spacing-3xl) 0 var(--spacing-xl);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+        }
+        
+        .footer-brand {
+            max-width: 300px;
+        }
+        
+        .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-tagline {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        
+        .footer-title {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+        
+        .footer-link {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .footer-link:hover {
+            color: var(--color-text-primary);
+        }
+        
+        .footer-bottom {
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+        
+        .footer-copyright {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+        }
+        
+        /* ============================================
+           MOBILE STICKY CTA
+           ============================================ */
+        .mobile-sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-bg-secondary);
+            border-top: 1px solid var(--color-border);
+            padding: var(--spacing-md) var(--spacing-lg);
+            padding-bottom: env(safe-area-inset-bottom);
+            z-index: 999;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-sticky-cta {
+                display: block;
+            }
+        }
+        
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--transition-slow), transform var(--transition-slow);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ============================================
+           SVG ICONS
+           ============================================ */
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .icon-sm {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .icon-lg {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
 </head>
 <body>
-
-<!-- Header -->
-<header>
-  <div class="container header-content">
-    <a href="#" class="logo">
-      <!-- Simple SVG Shield Icon -->
-      <svg class="logo-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-      Dominion Fortress
-    </a>
-    <button class="mobile-menu-btn" aria-label="Toggle navigation">☰</button>
-    <nav>
-      <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#why-us">Why Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#" onclick="openTerms(); return false;">Terms</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<!-- Hero Section -->
-<section class="hero">
-  <div class="container hero-content">
-    <h1>Secure. Scale. Dominate.</h1>
-    <p>Empowering enterprises with cutting-edge cybersecurity, IT, finance, and growth solutions.</p>
-    <a href="#contact" class="btn btn-primary btn-large">Get My Fortress Plan</a>
-  </div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2>Our Core Services</h2>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🛡️</div>
-        <h3>Cybersecurity</h3>
-        <p>Advanced threat detection, penetration testing, and 24/7 monitoring.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">☁️</div>
-        <h3>IT & Cloud</h3>
-        <p>Scalable cloud infrastructure, migration, and remote management.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">💸</div>
-        <h3>Finance</h3>
-        <p>Strategic financial planning, risk audit, and virtual CFO services.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📈</div>
-        <h3>Growth & Marketing</h3>
-        <p>Data-driven marketing strategies, SEO, and lead generation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Stats Section -->
-<section class="section" style="background: var(--secondary-bg);">
-  <div class="container">
-    <div class="section-title">
-      <h2>Global Impact</h2>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-value" id="clientsCount">0</div>
-        <div class="stat-label">Clients Protected</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="projectsCount">0</div>
-        <div class="stat-label">Projects Secured</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="uptimeCount">0</div>
-        <div class="stat-label">Average Uptime %</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="teamCount">0</div>
-        <div class="stat-label">Experts Onboard</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Pricing Section -->
-<section id="pricing" class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2>Transparent Pricing</h2>
-    </div>
-    <div class="pricing-intro">
-      <p>Choose a service or package that fits your needs. Custom quotes available for enterprise clients.</p>
-    </div>
-
-    <!-- Combined Service Packages -->
-    <div class="packages-grid">
-      <div class="package-card">
-        <h3 class="package-name">Starter Fortress</h3>
-        <div class="package-price">$297<span>/month</span></div>
-        <ul class="package-features">
-          <li>Cybersecurity Audit</li>
-          <li>Cloud Backup (100GB)</li>
-          <li>Email/DNS Setup</li>
-        </ul>
-        <a href="#contact" class="btn btn-secondary mt-1">Get Started</a>
-      </div>
-      <div class="package-card featured">
-        <h3 class="package-name">Growth Fortress</h3>
-        <div class="package-price">$697<span>/month</span></div>
-        <ul class="package-features">
-          <li>Full Security Suite</li>
-          <li>1 Dedicated Engineer</li>
-          <li>IT Support & Basic Finance</li>
-          <li>Priority Response</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary mt-1">Get Started</a>
-      </div>
-      <div class="package-card">
-        <h3 class="package-name">Elite Fortress</h3>
-        <div class="package-price">$1,997<span>/month</span></div>
-        <ul class="package-features">
-          <li>Red Team Testing</li>
-          <li>24/7 Threat Monitoring</li>
-          <li>Full Cloud Infrastructure</li>
-          <li>Growth Strategy Plan</li>
-          <li>Monthly Executive Report</li>
-        </ul>
-        <a href="#contact" class="btn btn-secondary mt-1">Get Started</a>
-      </div>
-    </div>
-
-    <!-- Detailed Pricing Tables -->
-    <div class="detailed-pricing">
-      <div class="pricing-header">
-        <h3>🔍 Detailed Service Pricing</h3>
-      </div>
-      <!-- Cybersecurity -->
-      <table class="pricing-table">
-        <thead>
-          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">🔐 CYBERSECURITY SERVICES</th></tr>
-          <tr><th>Service</th><th>Description</th><th>Price (USD)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td data-label="Service">Cybersecurity Audit</td><td data-label="Description">Full vulnerability assessment</td><td data-label="Price">$199 (one-time)</td></tr>
-          <tr><td data-label="Service">Red Team</td><td data-label="Description">Simulated attack testing</td><td data-label="Price">$899/month or $1,499</td></tr>
-          <tr><td data-label="Service">Pen Testing (Web/App)</td><td data-label="Description">Custom test with report</td><td data-label="Price">$599/app</td></tr>
-          <tr><td data-label="Service">Threat Monitoring</td><td data-label="Description">Real-time alerts & response</td><td data-label="Price">$999/month</td></tr>
-          <tr><td data-label="Service">Firewall/Endpoint Setup</td><td data-label="Description">Configure & secure devices</td><td data-label="Price">$249/deployment</td></tr>
-          <tr><td data-label="Service">Consultation</td><td data-label="Description">1-on-1 custom planning</td><td data-label="Price">$99/hr</td></tr>
-          <tr><td data-label="Service">Dark Web Monitoring</td><td data-label="Description">Track leaked/sold data</td><td data-label="Price">$149/month</td></tr>
-          <tr><td data-label="Service">Malware Removal</td><td data-label="Description">Fix + report + prevention</td><td data-label="Price">$249 (one-time)</td></tr>
-          <tr><td data-label="Service">Compliance Support</td><td data-label="Description">GDPR, HIPAA docs/config</td><td data-label="Price">From $699/project</td></tr>
-        </tbody>
-      </table>
-
-      <!-- IT & Cloud -->
-      <table class="pricing-table">
-        <thead>
-          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">☁️ IT & CLOUD INFRASTRUCTURE</th></tr>
-          <tr><th>Service</th><th>Description</th><th>Price (USD)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td data-label="Service">Cloud Migration</td><td data-label="Description">Secure shift to AWS/GCP/Azure</td><td data-label="Price">$499 (basic) / $1,299+</td></tr>
-          <tr><td data-label="Service">Remote IT Management</td><td data-label="Description">Monthly system management</td><td data-label="Price">$399/month</td></tr>
-          <tr><td data-label="Service">Backup & Recovery</td><td data-label="Description">Cloud & physical backups</td><td data-label="Price">$149/month (100GB)</td></tr>
-          <tr><td data-label="Service">Server Setup</td><td data-label="Description">Fast, secure deployment</td><td data-label="Price">$299/server</td></tr>
-          <tr><td data-label="Service">Email/DNS Config</td><td data-label="Description">Professional secure setup</td><td data-label="Price">$99/domain</td></tr>
-          <tr><td data-label="Service">System Health Check</td><td data-label="Description">Optimize speed/security</td><td data-label="Price">$149/system</td></tr>
-          <tr><td data-label="Service">VPN Setup</td><td data-label="Description">Encrypted network</td><td data-label="Price">$249/project</td></tr>
-          <tr><td data-label="Service">Device Encryption</td><td data-label="Description">Secure employee devices</td><td data-label="Price">$99/device</td></tr>
-        </tbody>
-      </table>
-
-      <!-- Finance -->
-      <table class="pricing-table">
-        <thead>
-          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">💸 FINANCE & ACCOUNTING</th></tr>
-          <tr><th>Service</th><th>Description</th><th>Price (USD)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td data-label="Service">Startup Planning</td><td data-label="Description">Business model + cashflow</td><td data-label="Price">$299/project</td></tr>
-          <tr><td data-label="Service">Virtual CFO</td><td data-label="Description">Weekly check-ins + ops</td><td data-label="Price">$799/month</td></tr>
-          <tr><td data-label="Service">Investment Kit</td><td data-label="Description">Pitch deck + valuation</td><td data-label="Price">$499/project</td></tr>
-          <tr><td data-label="Service">Tax Optimization</td><td data-label="Description">Max savings legally</td><td data-label="Price">$149/$349/month</td></tr>
-          <tr><td data-label="Service">Risk Audit</td><td data-label="Description">Identify ops weaknesses</td><td data-label="Price">$249/project</td></tr>
-          <tr><td data-label="Service">Bookkeeping Setup</td><td data-label="Description">Full system setup</td><td data-label="Price">$149/$399/month</td></tr>
-          <tr><td data-label="Service">Cash Flow Forecast</td><td data-label="Description">3-12 month forecast</td><td data-label="Price">$199/report</td></tr>
-          <tr><td data-label="Service">Fundraising Strategy</td><td data-label="Description">Pitch, equity, investor tips</td><td data-label="Price">$499/project</td></tr>
-        </tbody>
-      </table>
-
-      <!-- Growth & Marketing -->
-      <table class="pricing-table">
-        <thead>
-          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">📈 GROWTH & MARKETING</th></tr>
-          <tr><th>Service</th><th>Description</th><th>Price (USD)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td data-label="Service">SEO Optimization</td><td data-label="Description">On-site + off-site strategy</td><td data-label="Price">$399/month</td></tr>
-          <tr><td data-label="Service">Paid Ads (Meta/Google)</td><td data-label="Description">Setup + management</td><td data-label="Price">$199 + 15% ad spend</td></tr>
-          <tr><td data-label="Service">Lead Gen Funnel</td><td data-label="Description">High-converting pages</td><td data-label="Price">$599/project</td></tr>
-          <tr><td data-label="Service">Email Marketing</td><td data-label="Description">Templates + autoresponder</td><td data-label="Price">$149/project</td></tr>
-          <tr><td data-label="Service">Sales Copywriting</td><td data-label="Description">Funnel, site, ads</td><td data-label="Price">$49–$149/page</td></tr>
-          <tr><td data-label="Service">Brand Identity</td><td data-label="Description">Logo, colors, tone</td><td data-label="Price">$299–$599</td></tr>
-          <tr><td data-label="Service">Social Media Strategy</td><td data-label="Description">Content calendar</td><td data-label="Price">$199/month</td></tr>
-          <tr><td data-label="Service">Content Creation</td><td data-label="Description">Captions + visuals</td><td data-label="Price">$10/post or $149/mo (20)</td></tr>
-        </tbody>
-      </table>
-
-       <!-- Add-Ons -->
-      <table class="pricing-table">
-        <thead>
-          <tr><th colspan="3" style="text-align:center; background: rgba(30, 41, 59, 0.9);">📝 Add-Ons (Optional)</th></tr>
-          <tr><th>Add-On</th><th>Description</th><th>Price (USD)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td data-label="Add-On">Executive Report</td><td data-label="Description">Analytics + threat + finance</td><td data-label="Price">$149/month</td></tr>
-          <tr><td data-label="Add-On">On-Site Visit (Local)</td><td data-label="Description">Physical audit/setup (PK)</td><td data-label="Price">$299/day</td></tr>
-          <tr><td data-label="Add-On">Express Delivery</td><td data-label="Description">Complete in 1 day</td><td data-label="Price">+50% base price</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section id="testimonials" class="section" style="background: var(--secondary-bg);">
-  <div class="container">
-    <div class="section-title">
-      <h2>What Our Clients Say</h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <p class="testimonial-text">"Dominion Fortress transformed our security infrastructure overnight. The peace of mind is priceless."</p>
-        <p class="testimonial-author">- Sarah Johnson, CTO, TechNova</p>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"Their finance advisory team is second to none. We’ve seen a 40% increase in ROI since partnering."</p>
-        <p class="testimonial-author">- Michael Chen, CEO, FinEdge</p>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"They built us a scalable growth engine that’s driving real results across all channels."</p>
-        <p class="testimonial-author">- Emily Roberts, CMO, GrowthHub</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Why Choose Us -->
-<section id="why-us" class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2>Why Choose Dominion Fortress?</h2>
-    </div>
-    <div class="features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">🔒</div>
-        <div>
-          <h3>Military-Grade Security</h3>
-          <p>Our experts use battle-tested techniques to protect your assets.</p>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="https://dominion-fortress.com/" class="logo">DOMINION <span>FORTRESS</span></a>
+            
+            <nav class="nav">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#services" class="nav-link">Security Services</a></li>
+                    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="#why-us" class="nav-link">Why Us</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li class="nav-cta-desktop">
+                        <button class="btn btn-primary" onclick="scrollToContact()">Get Security Review</button>
+                    </li>
+                </ul>
+                
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
         </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🌐</div>
-        <div>
-          <h3>Global Expertise</h3>
-          <p>Team with experience across continents and industries.</p>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero section">
+            <div class="container hero-grid">
+                <div class="hero-content fade-in">
+                    <p class="eyebrow">External Security Exposure Review</p>
+                    <h1>Find Out What Attackers Can See About Your Business.</h1>
+                    <p>Identify publicly visible assets, obvious exposure points, and security risks before they become someone else's opportunity.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToContact()">
+                            GET MY FREE SECURITY REVIEW
+                        </button>
+                        <button class="btn btn-secondary" onclick="openWhatsApp('Hello Dominion Fortress, I would like to chat with your security team.')">
+                            CHAT WITH SECURITY TEAM
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="hero-visual fade-in">
+                    <div class="security-dashboard">
+                        <div class="dashboard-row">
+                            <div class="dashboard-indicator"></div>
+                            <span class="dashboard-label">Public Assets Discovered</span>
+                            <span class="dashboard-value">Analyzing...</span>
+                        </div>
+                        <div class="dashboard-row">
+                            <div class="dashboard-indicator warning"></div>
+                            <span class="dashboard-label">Exposed Services</span>
+                            <span class="dashboard-value">Review Needed</span>
+                        </div>
+                        <div class="dashboard-row">
+                            <div class="dashboard-indicator success"></div>
+                            <span class="dashboard-label">SSL Configuration</span>
+                            <span class="dashboard-value">Secure</span>
+                        </div>
+                        <div class="dashboard-row">
+                            <div class="dashboard-indicator"></div>
+                            <span class="dashboard-label">DNS Records</span>
+                            <span class="dashboard-value">Mapped</span>
+                        </div>
+                        <div class="dashboard-row">
+                            <div class="dashboard-indicator warning"></div>
+                            <span class="dashboard-label">Technology Fingerprints</span>
+                            <span class="dashboard-value">Detected</span>
+                        </div>
+                    </div>
+                    <span class="illustrative-badge">Illustrative Security Exposure View</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credibility Strip -->
+        <section class="credibility-strip">
+            <div class="container credibility-grid">
+                <div class="credibility-item fade-in">
+                    <div class="credibility-icon">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h4 class="credibility-title">Authorization First</h4>
+                    <p class="credibility-text">Security testing is performed only with appropriate client authorization.</p>
+                </div>
+                
+                <div class="credibility-item fade-in">
+                    <div class="credibility-icon">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h4 class="credibility-title">Clear Scope</h4>
+                    <p class="credibility-text">Know what is being assessed before work begins.</p>
+                </div>
+                
+                <div class="credibility-item fade-in">
+                    <div class="credibility-icon">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h4 class="credibility-title">Actionable Findings</h4>
+                    <p class="credibility-text">Prioritized findings designed to help you decide what to fix.</p>
+                </div>
+                
+                <div class="credibility-item fade-in">
+                    <div class="credibility-icon">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="credibility-title">Direct Communication</h4>
+                    <p class="credibility-text">Communicate directly with the team handling your engagement.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="problem-section section">
+            <div class="container problem-content">
+                <div class="text-center fade-in">
+                    <h2>Your Attack Surface Is Larger Than You Think.</h2>
+                    <p>Organizations often expose more to the public internet than they realize. Without visibility, you cannot protect what you do not know exists.</p>
+                </div>
+                
+                <div class="problem-list fade-in">
+                    <div class="problem-item">
+                        <svg class="icon icon-sm problem-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span class="problem-text">Domains and subdomains</span>
+                    </div>
+                    <div class="problem-item">
+                        <svg class="icon icon-sm problem-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span class="problem-text">Public-facing applications</span>
+                    </div>
+                    <div class="problem-item">
+                        <svg class="icon icon-sm problem-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span class="problem-text">Remote access services</span>
+                    </div>
+                    <div class="problem-item">
+                        <svg class="icon icon-sm problem-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span class="problem-text">Cloud infrastructure</span>
+                    </div>
+                    <div class="problem-item">
+                        <svg class="icon icon-sm problem-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span class="problem-text">Authentication endpoints</span>
+                    </div>
+                    <div class="problem-item">
+                        <svg class="icon icon-sm problem-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span class="problem-text">Technology fingerprints</span>
+                    </div>
+                    <div class="problem-item">
+                        <svg class="icon icon-sm problem-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span class="problem-text">Security configuration issues</span>
+                    </div>
+                    <div class="problem-item">
+                        <svg class="icon icon-sm problem-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span class="problem-text">Information leakage</span>
+                    </div>
+                </div>
+                
+                <div class="disclaimer-box fade-in">
+                    Public exposure does not automatically mean compromise. It does mean those assets deserve visibility and appropriate security controls.
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Review -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center fade-in">
+                    <h2>What We Look At</h2>
+                    <p>Our initial review focuses on externally visible security indicators.</p>
+                </div>
+                
+                <div class="grid grid-3" style="margin-top: var(--spacing-2xl);">
+                    <div class="review-card fade-in">
+                        <div class="review-icon">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <h4 class="review-title">External Assets</h4>
+                        <p class="review-text">Identify publicly visible domains, subdomains, and infrastructure.</p>
+                    </div>
+                    
+                    <div class="review-card fade-in">
+                        <div class="review-icon">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                                <line x1="6" y1="18" x2="6.01" y2="18"/>
+                            </svg>
+                        </div>
+                        <h4 class="review-title">Exposed Services</h4>
+                        <p class="review-text">Review publicly accessible services and obvious exposure points.</p>
+                    </div>
+                    
+                    <div class="review-card fade-in">
+                        <div class="review-icon">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                        </div>
+                        <h4 class="review-title">Application Exposure</h4>
+                        <p class="review-text">Look for visible application entry points and security-relevant indicators.</p>
+                    </div>
+                    
+                    <div class="review-card fade-in">
+                        <div class="review-icon">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h4 class="review-title">Configuration Signals</h4>
+                        <p class="review-text">Identify obvious configuration weaknesses that warrant further review.</p>
+                    </div>
+                    
+                    <div class="review-card fade-in">
+                        <div class="review-icon">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <h4 class="review-title">Technology Exposure</h4>
+                        <p class="review-text">Understand what information your public-facing systems reveal.</p>
+                    </div>
+                    
+                    <div class="review-card fade-in">
+                        <div class="review-icon">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                        <h4 class="review-title">Risk Prioritization</h4>
+                        <p class="review-text">Highlight areas that deserve deeper assessment or remediation.</p>
+                    </div>
+                </div>
+                
+                <p class="text-center text-muted" style="margin-top: var(--spacing-xl); font-size: 0.8125rem;">
+                    This initial review is not a substitute for a full penetration test or comprehensive security audit.
+                </p>
+            </div>
+        </section>
+
+        <!-- Deliverables Section -->
+        <section class="deliverables-section section">
+            <div class="container">
+                <div class="text-center fade-in">
+                    <h2>A Clear Starting Point for Better Security</h2>
+                    <p>Understand your external exposure with actionable insights.</p>
+                </div>
+                
+                <div class="deliverable-card fade-in">
+                    <h3>What You Receive</h3>
+                    <div class="deliverable-list">
+                        <div class="deliverable-item">
+                            <div class="deliverable-check">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="deliverable-text">Initial external exposure summary</span>
+                        </div>
+                        <div class="deliverable-item">
+                            <div class="deliverable-check">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="deliverable-text">Key observations about your public footprint</span>
+                        </div>
+                        <div class="deliverable-item">
+                            <div class="deliverable-check">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="deliverable-text">Areas requiring attention</span>
+                        </div>
+                        <div class="deliverable-item">
+                            <div class="deliverable-check">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="deliverable-text">Recommended next steps</span>
+                        </div>
+                        <div class="deliverable-item">
+                            <div class="deliverable-check">
+                                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="deliverable-text">Guidance on whether deeper testing is appropriate</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-full" onclick="scrollToContact()" style="max-width: 300px;">
+                            REQUEST MY REVIEW
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section" id="how-it-works">
+            <div class="container">
+                <div class="text-center fade-in">
+                    <h2>How It Works</h2>
+                    <p>Four simple steps to understand your security exposure.</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <p class="timeline-number">Step 01</p>
+                        <h4 class="timeline-title">Request</h4>
+                        <p class="timeline-text">Tell us about your organization and what you want reviewed.</p>
+                    </div>
+                    
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <p class="timeline-number">Step 02</p>
+                        <h4 class="timeline-title">Scope</h4>
+                        <p class="timeline-text">We confirm the appropriate scope and authorization requirements.</p>
+                    </div>
+                    
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <p class="timeline-number">Step 03</p>
+                        <h4 class="timeline-title">Review</h4>
+                        <p class="timeline-text">We examine the agreed external exposure.</p>
+                    </div>
+                    
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <p class="timeline-number">Step 04</p>
+                        <h4 class="timeline-title">Next Step</h4>
+                        <p class="timeline-text">You receive findings and practical recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us -->
+        <section class="section" id="why-us" style="background: var(--color-bg-secondary);">
+            <div class="container">
+                <div class="text-center fade-in">
+                    <h2>Security Without the Noise.</h2>
+                    <p>Professional security assessment focused on what matters.</p>
+                </div>
+                
+                <div class="grid grid-4" style="margin-top: var(--spacing-2xl);">
+                    <div class="why-card fade-in">
+                        <h4 class="why-title">Clear Scope</h4>
+                        <p class="why-text">Know what is being assessed and why.</p>
+                    </div>
+                    
+                    <div class="why-card fade-in">
+                        <h4 class="why-title">Actionable Reporting</h4>
+                        <p class="why-text">Understand what matters and what to address first.</p>
+                    </div>
+                    
+                    <div class="why-card fade-in">
+                        <h4 class="why-title">Security-First Approach</h4>
+                        <p class="why-text">Focus on reducing practical exposure rather than generating meaningless technical noise.</p>
+                    </div>
+                    
+                    <div class="why-card fade-in">
+                        <h4 class="why-title">Long-Term Support</h4>
+                        <p class="why-text">When deeper work is required, continue into assessment, testing, remediation, monitoring, or security advisory services.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services-section section" id="services">
+            <div class="container">
+                <div class="text-center fade-in">
+                    <h2>Cybersecurity Services</h2>
+                    <p>Comprehensive security solutions for modern organizations.</p>
+                </div>
+                
+                <div class="grid grid-3" style="margin-top: var(--spacing-2xl);">
+                    <div class="service-card fade-in">
+                        <h4 class="service-title">Penetration Testing</h4>
+                        <p class="service-text">Authorized testing of applications, networks, and systems to identify exploitable weaknesses.</p>
+                        <button class="service-link" onclick="scrollToContact()">
+                            Discuss Scope
+                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <h4 class="service-title">Vulnerability Assessment</h4>
+                        <p class="service-text">Structured identification and prioritization of vulnerabilities across agreed assets.</p>
+                        <button class="service-link" onclick="scrollToContact()">
+                            Discuss Scope
+                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <h4 class="service-title">External Attack Surface Assessment</h4>
+                        <p class="service-text">Understand what your organization exposes to the public internet.</p>
+                        <button class="service-link" onclick="scrollToContact()">
+                            Discuss Scope
+                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <h4 class="service-title">Red Team Testing</h4>
+                        <p class="service-text">Controlled adversarial testing designed to evaluate detection and response capabilities.</p>
+                        <button class="service-link" onclick="scrollToContact()">
+                            Discuss Scope
+                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <h4 class="service-title">Security Monitoring</h4>
+                        <p class="service-text">Ongoing visibility into security events and potential threats.</p>
+                        <button class="service-link" onclick="scrollToContact()">
+                            Discuss Scope
+                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <h4 class="service-title">Incident Response</h4>
+                        <p class="service-text">Support for investigating and responding to security incidents.</p>
+                        <button class="service-link" onclick="scrollToContact()">
+                            Discuss Scope
+                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Path / Pricing -->
+        <section class="path-section section">
+            <div class="container">
+                <div class="text-center fade-in">
+                    <h2>Start With Visibility, Scale As Needed</h2>
+                    <p>Begin with a free review and expand your security program as required.</p>
+                </div>
+                
+                <div class="path-container">
+                    <div class="path-item fade-in">
+                        <svg class="icon path-arrow" viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                        <div class="path-content">
+                            <h4 class="path-title">FREE — External Security Exposure Review</h4>
+                            <p class="path-price">Initial assessment of publicly visible assets</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-item fade-in">
+                        <svg class="icon path-arrow" viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                        <div class="path-content">
+                            <h4 class="path-title">Cybersecurity Audit</h4>
+                            <p class="path-price">Starting from $199</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-item fade-in">
+                        <svg class="icon path-arrow" viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                        <div class="path-content">
+                            <h4 class="path-title">Penetration Testing</h4>
+                            <p class="path-price">Starting from $599</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-item fade-in">
+                        <svg class="icon path-arrow" viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                        <div class="path-content">
+                            <h4 class="path-title">Ongoing Security / Retainer</h4>
+                            <p class="path-price">Custom scope based on your needs</p>
+                        </div>
+                    </div>
+                    
+                    <p class="path-disclaimer">Prices are starting points only. Final pricing depends on scope, complexity, and specific requirements.</p>
+                    
+                    <div class="text-center" style="margin-top: var(--spacing-xl);">
+                        <button class="btn btn-primary" onclick="scrollToContact()">DISCUSS YOUR SECURITY NEEDS</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Credibility -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center fade-in">
+                    <h2>A Professional Security Engagement Starts With the Right Process.</h2>
+                    <p>Security work should begin with authorization, scope definition, evidence-based assessment, clear reporting, and practical remediation guidance.</p>
+                </div>
+                
+                <div class="process-diagram fade-in">
+                    <div class="process-step">Authorization</div>
+                    <svg class="icon process-arrow" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                    <div class="process-step">Scope</div>
+                    <svg class="icon process-arrow" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                    <div class="process-step">Assessment</div>
+                    <svg class="icon process-arrow" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                    <div class="process-step">Evidence</div>
+                    <svg class="icon process-arrow" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                    <div class="process-step">Reporting</div>
+                    <svg class="icon process-arrow" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                    <div class="process-step">Remediation</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section section" id="faq">
+            <div class="container faq-container">
+                <div class="text-center fade-in">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Everything you need to know about our security review process.</p>
+                </div>
+                
+                <div style="margin-top: var(--spacing-2xl);">
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            What is an external security exposure review?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                An external security exposure review identifies publicly visible assets, services, and security-relevant information about your organization. It helps you understand what attackers can discover without direct access to your internal systems.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            Is this a penetration test?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                No. This is an initial review of externally visible information. A penetration test involves authorized attempts to exploit vulnerabilities. We offer penetration testing as a separate, deeper engagement.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            Do I need authorization?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Yes. All security assessments require proper authorization. For the free external review, we confirm you have the authority to request assessment of the specified domains or assets.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            What systems can be reviewed?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                We review publicly accessible assets such as domains, subdomains, web applications, and internet-facing services. Internal systems require different engagement types with appropriate authorization.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            What will I receive?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                You will receive a summary of externally visible assets, key observations, areas that may deserve attention, and recommendations for next steps. This is not a full penetration test report.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            How long does the review take?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                The initial external review typically takes 1-3 business days depending on the scope and complexity of your external footprint.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            What happens if you find a serious issue?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                We will highlight critical findings in our review and provide guidance on immediate steps. For serious vulnerabilities, we recommend prompt remediation and can discuss deeper assessment options.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            Can Dominion Fortress perform a full penetration test afterward?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Yes. If the initial review indicates a need for deeper testing, we can discuss penetration testing, vulnerability assessments, or other security services tailored to your requirements.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            Do you work with international clients?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Yes. We work with organizations globally. All engagements are conducted remotely with appropriate authorization and communication channels.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" aria-expanded="false">
+                            How do I get started?
+                            <svg class="icon faq-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Fill out the form below with your contact information and security concerns. Our team will review your request and reach out to confirm scope and next steps.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta section">
+            <div class="container final-cta-content">
+                <div class="fade-in">
+                    <h2>Know What You're Exposing Before Someone Else Finds It.</h2>
+                    <p>Request your initial external security exposure review and get a clearer picture of where your organization should focus.</p>
+                    <div class="final-cta-buttons">
+                        <button class="btn btn-primary" onclick="scrollToContact()">GET MY FREE SECURITY REVIEW</button>
+                        <button class="btn btn-secondary" onclick="openWhatsApp('Hello Dominion Fortress, I would like to chat with your security team.')">CHAT WITH SECURITY TEAM</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-section section" id="contact">
+            <div class="container form-container">
+                <div class="text-center fade-in">
+                    <h2>Request Your Security Review</h2>
+                    <p>Tell us about your organization and what you'd like us to assess.</p>
+                </div>
+                
+                <form id="contactForm" class="fade-in" style="margin-top: var(--spacing-2xl);" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" class="form-input" placeholder="John Doe" required>
+                        <p class="form-error">Please enter your full name.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Work Email *</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="john@company.com" required>
+                        <p class="form-error">Please enter a valid email address.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="company">Company *</label>
+                        <input type="text" id="company" name="company" class="form-input" placeholder="Your Company Ltd." required>
+                        <p class="form-error">Please enter your company name.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="website">Website / Domain *</label>
+                        <input type="text" id="website" name="website" class="form-input" placeholder="example.com" required>
+                        <p class="form-error">Please enter your website or domain.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="country">Country *</label>
+                        <input type="text" id="country" name="country" class="form-input" placeholder="United States" required>
+                        <p class="form-error">Please enter your country.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="concern">Security Concern *</label>
+                        <select id="concern" name="concern" class="form-select" required>
+                            <option value="">Select a concern...</option>
+                            <option value="External exposure">External exposure</option>
+                            <option value="Penetration testing">Penetration testing</option>
+                            <option value="Vulnerability assessment">Vulnerability assessment</option>
+                            <option value="Web application security">Web application security</option>
+                            <option value="Cloud security">Cloud security</option>
+                            <option value="Incident response">Incident response</option>
+                            <option value="Security monitoring">Security monitoring</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <p class="form-error">Please select a security concern.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone / WhatsApp (Optional)</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 234 567 8900">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Additional Details (Optional)</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Tell us more about your security needs..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">REQUEST SECURITY REVIEW</button>
+                    
+                    <p class="text-center text-muted" style="margin-top: var(--spacing-md); font-size: 0.8125rem;">
+                        By submitting this form, you confirm you have authorization to request security assessment for the specified assets.
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">DOMINION FORTRESS</div>
+                    <p class="footer-tagline">Cybersecurity, technology, and business solutions.</p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services" class="footer-link">Security Services</a></li>
+                        <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
+                        <li><a href="#why-us" class="footer-link">Why Us</a></li>
+                        <li><a href="#faq" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://dominion-fortress.com/privacy" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="https://dominion-fortress.com/terms" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                        <li><a href="https://dominion-fortress.com/" class="footer-link">Main Website</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright" id="copyright">© 2024 Dominion Fortress. All rights reserved.</p>
+            </div>
         </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">⚡</div>
-        <div>
-          <h3>Lightning-Fast Results</h3>
-          <p>We deliver actionable insights and implementations quickly.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🤝</div>
-        <div>
-          <h3>Transparent Partnership</h3>
-          <p>No hidden fees. No jargon. Just clear communication.</p>
-        </div>
-      </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <button class="btn btn-primary btn-full" onclick="scrollToContact()">Get Free Security Review</button>
     </div>
-  </div>
-</section>
 
-<!-- CTA Section -->
-<section class="cta-section">
-  <div class="container">
-    <h2>Ready to Build Your Digital Fortress?</h2>
-    <p>Get a free, no-obligation strategy session tailored to your business needs.</p>
-    <a href="#contact" class="btn btn-primary btn-large">Book Free Strategy Call</a>
-  </div>
-</section>
+    <script>
+        // ============================================
+        // CONFIGURATION
+        // ============================================
+        const CONFIG = {
+            whatsappNumber: "447352407926",
+            companyName: "Dominion Fortress",
+            websiteUrl: "https://dominion-fortress.com/",
+            gaMeasurementId: "",
+            metaPixelId: ""
+        };
 
-<!-- Contact -->
-<section id="contact" class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2>Get In Touch</h2>
-    </div>
-    <p class="text-center">Have questions or ready to get started? Reach out to us directly.</p>
-    <div class="contact-options">
-      <div class="contact-option">
-        <div class="contact-icon">💬</div>
-        <h3>Chat</h3>
-        <a href="https://wa.me/447352407926" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-      <div class="contact-option">
-        <div class="contact-icon">📧</div>
-        <h3>Email</h3>
-        <a href="mailto:contact@dominionfortress.com">contact@dominionfortress.com</a> <!-- Placeholder -->
-      </div>
-      <div class="contact-option">
-        <div class="contact-icon">📞</div>
-        <h3>Call</h3>
-        <a href="tel:+447352407926">+44 7352 407926</a>
-      </div>
-    </div>
-  </div>
-</section>
+        // ============================================
+        // UTM TRACKING
+        // ============================================
+        function captureUTMParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmParams = {};
+            
+            ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(param => {
+                const value = urlParams.get(param);
+                if (value) {
+                    utmParams[param] = value;
+                    sessionStorage.setItem(param, value);
+                } else {
+                    utmParams[param] = sessionStorage.getItem(param) || '';
+                }
+            });
+            
+            return utmParams;
+        }
 
-<!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-column">
-        <h3>Dominion Fortress</h3>
-        <p>Empowering enterprises with next-gen tech solutions since 2010.</p>
-        <div class="social-icons">
-          <!-- Placeholder links -->
-          <a href="#" aria-label="Twitter"><span>🐦</span></a>
-          <a href="#" aria-label="LinkedIn"><span>👔</span></a>
-          <a href="#" aria-label="Facebook"><span>📘</span></a>
-        </div>
-      </div>
-      <div class="footer-column">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="#" onclick="openTerms(); return false;">Terms & Conditions</a></li>
-          <li><a href="#">Privacy Policy</a></li> <!-- Placeholder -->
-        </ul>
-      </div>
-    </div>
-    <div class="copyright">
-      &copy; <span id="currentYear"></span> Dominion Fortress. All rights reserved.
-    </div>
-  </div>
-</footer>
+        // Capture UTMs on page load
+        const utmData = captureUTMParameters();
 
-<!-- Terms Modal -->
-<div id="termsModal" class="terms-modal">
-  <div class="terms-content">
-    <button class="close-btn" onclick="closeTerms()" aria-label="Close">&times;</button>
-    <h1>Dominion Fortress - Terms & Conditions</h1>
-    <p><em>Effective Date: July 10, 2025</em></p>
-    <h2>1. Introduction</h2>
-    <p>By engaging with Dominion Fortress for any services including but not limited to cybersecurity, IT development, finance, marketing, training, or consultancy — the client agrees to these Terms & Conditions. These terms apply regardless of service delivery method (online platforms, website, direct agreement).</p>
-    <h2>2. Scope of Services</h2>
-    <ul>
-      <li>Cybersecurity (Red Team, Blue Team, Purple Team, Threat Intelligence, Incident Response)</li>
-      <li>IT Development, Infrastructure &amp; Cloud Solutions</li>
-      <li>Financial Modeling, Risk Management &amp; Strategic Consulting</li>
-      <li>Digital Marketing, Social Media Growth &amp; Brand Development</li>
-      <li>AI, Emerging Tech, Blockchain, and Specialized Services</li>
-      <li>Training, Certifications &amp; Leadership Development</li>
-    </ul>
-    <h2>3. Results Disclaimer & No Guarantee Clause</h2>
-    <p>Dominion Fortress does not guarantee specific outcomes such as successful system breaches (for Red Team), 100% vulnerability elimination, guaranteed marketing growth, or specific financial returns. The absence of desired results does not imply incompetence or breach of agreement, provided services were delivered as outlined.</p>
-    <h2>4. Payment Terms</h2>
-    <p>All payments cover the Company's time, expertise, intellectual property, tools, and effort, regardless of final outcomes. Delays caused by the client may result in project delays, not refunds.</p>
-    <h2>5. Refund Policy</h2>
-    <p>Refunds are only applicable if Dominion Fortress fails to initiate or deliver any work. If work has been performed, no refund applies even if the final results do not meet expectations.</p>
-    <h2>6. Client Responsibilities</h2>
-    <p>The client must provide accurate, timely information and obtain legal authorization for cybersecurity tests where applicable. Failure to meet responsibilities voids any service guarantees.</p>
-    <h2>7. Limitation of Liability</h2>
-    <p>Dominion Fortress is not liable for legal consequences arising from unauthorized requests, loss of revenue, or third-party actions beyond its control. Total liability is strictly limited to the amount paid for the service.</p>
-    <h2>8. Confidentiality & Data Protection</h2>
-    <p>All client information is treated as confidential. The Company cannot be held liable for breaches beyond its control (e.g., global cyberattacks).</p>
-    <h2>9. Intellectual Property</h2>
-    <p>All tools and methodologies remain the exclusive property of Dominion Fortress unless otherwise agreed in writing.</p>
-    <h2>10. Cancellation Policy</h2>
-    <p>If work has begun, payment for time and resources invested will be deducted before any refund consideration. If substantial work is completed, no refund applies.</p>
-    <h2>11. Dispute Resolution</h2>
-    <p>Disputes should first be addressed through professional dialogue. Defamation or threats may result in legal action.</p>
-    <h2>12. Platform-Specific Terms</h2>
-    <p>For services booked through platforms like Fiverr or Upwork, their respective ToS apply in addition to these Terms.</p>
-    <h2>13. Jurisdiction</h2>
-    <p>These Terms are governed by the laws of Pakistan. Legal disputes will be handled in the relevant jurisdiction.</p>
-    <h2>14. Modifications</h2>
-    <p>Dominion Fortress reserves the right to update these Terms at any time. Clients will be notified of material changes where applicable.</p>
-    <h2>15. Acknowledgment</h2>
-    <p>By proceeding with Dominion Fortress services, you acknowledge reading, understanding, and agreeing to these Terms & Conditions.</p>
-  </div>
-</div>
+        // ============================================
+        // ANALYTICS TRACKING
+        // ============================================
+        function trackEvent(eventName, data = {}) {
+            console.log(`[Analytics] Event: ${eventName}`, data);
+            
+            // Google Analytics
+            if (CONFIG.gaMeasurementId && window.gtag) {
+                window.gtag('event', eventName, data);
+            }
+            
+            // Meta Pixel
+            if (CONFIG.metaPixelId && window.fbq) {
+                window.fbq('track', eventName, data);
+            }
+        }
 
-<!-- Embedded JavaScript -->
-<script>
-  // --- Set Current Year in Footer ---
-  document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // ============================================
+        // WHATSAPP INTEGRATION
+        // ============================================
+        function openWhatsApp(message) {
+            if (!CONFIG.whatsappNumber) {
+                alert('WhatsApp number not configured. Please contact us via email.');
+                return;
+            }
+            
+            const encodedMessage = encodeURIComponent(message.trim());
+            const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodedMessage}`;
+            
+            trackEvent('whatsapp_click', { message_type: 'general' });
+            
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
 
-  // --- Mobile Menu Toggle ---
-  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-    document.querySelector('nav ul').classList.toggle('active');
-  });
+        // ============================================
+        // SCROLL FUNCTIONS
+        // ============================================
+        function scrollToContact() {
+            const contactSection = document.getElementById('contact');
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            trackEvent('hero_cta_click');
+        }
 
-  // --- Dark Mode Toggle (Removed for simplicity, but can be re-added) ---
-  // (Logic was in previous versions)
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
 
-  // --- Terms Modal ---
-  function openTerms() {
-    const modal = document.getElementById('termsModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scroll
-  }
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
 
-  function closeTerms() {
-    const modal = document.getElementById('termsModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = ''; // Re-enable scroll
-  }
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
 
-  // Close modal if clicked outside content
-  window.onclick = function(event) {
-    const modal = document.getElementById('termsModal');
-    if (event.target === modal) {
-      closeTerms();
+        // ============================================
+        // HEADER SCROLL EFFECT
+        // ============================================
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // FAQ ACCORDION
+        // ============================================
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                    question.setAttribute('aria-expanded', 'true');
+                    trackEvent('faq_open', { question: question.textContent.trim() });
+                }
+            });
+        });
+
+        // ============================================
+        // FORM VALIDATION & SUBMISSION
+        // ============================================
+        const contactForm = document.getElementById('contactForm');
+
+        function validateField(field) {
+            const value = field.value.trim();
+            const isRequired = field.hasAttribute('required');
+            
+            if (isRequired && !value) {
+                return false;
+            }
+            
+            if (field.type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(value);
+            }
+            
+            return true;
+        }
+
+        function showError(field) {
+            field.closest('.form-group').classList.add('error');
+        }
+
+        function clearError(field) {
+            field.closest('.form-group').classList.remove('error');
+        }
+
+        // Real-time validation
+        contactForm.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('blur', () => {
+                if (!validateField(field)) {
+                    showError(field);
+                } else {
+                    clearError(field);
+                }
+            });
+            
+            field.addEventListener('input', () => {
+                clearError(field);
+            });
+        });
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Validate all fields
+            contactForm.querySelectorAll('input, select, textarea').forEach(field => {
+                if (!validateField(field)) {
+                    showError(field);
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                trackEvent('form_error', { fields_invalid: true });
+                return;
+            }
+            
+            // Build WhatsApp message
+            let message = `Hello ${CONFIG.companyName},\n\n`;
+            message += `I would like to request the Free External Security Exposure Review.\n\n`;
+            message += `Name: ${data.fullName}\n`;
+            message += `Email: ${data.email}\n`;
+            message += `Company: ${data.company}\n`;
+            message += `Website: ${data.website}\n`;
+            message += `Country: ${data.country}\n`;
+            message += `Security Concern: ${data.concern}\n`;
+            
+            if (data.phone) {
+                message += `Phone: ${data.phone}\n`;
+            }
+            
+            if (data.message) {
+                message += `\nAdditional Details:\n${data.message}\n`;
+            }
+            
+            // Add UTM data if available
+            if (utmData.utm_source || utmData.utm_campaign) {
+                message += `\n---\nSource: ${utmData.utm_source || 'direct'}\nCampaign: ${utmData.utm_campaign || 'unknown'}`;
+            }
+            
+            message += `\n\nThank you.`;
+            
+            // Track and redirect
+            trackEvent('form_submitted', {
+                concern: data.concern,
+                company: data.company
+            });
+            
+            openWhatsApp(message);
+            
+            // Show success message
+            contactForm.innerHTML = `
+                <div class="text-center" style="padding: var(--spacing-2xl);">
+                    <svg class="icon icon-lg" style="color: var(--color-success); margin: 0 auto var(--spacing-md);" viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <h3 style="margin-bottom: var(--spacing-sm);">Request Received!</h3>
+                    <p>You will be redirected to WhatsApp to complete your request.</p>
+                    <p class="text-muted" style="margin-top: var(--spacing-md); font-size: 0.875rem;">
+                        If WhatsApp doesn't open, please contact us directly at our business number.
+                    </p>
+                </div>
+            `;
+        });
+
+        // ============================================
+        // INTERSECTION OBSERVER FOR ANIMATIONS
+        // ============================================
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // DYNAMIC COPYRIGHT YEAR
+        // ============================================
+        document.getElementById('copyright').textContent = 
+            `© ${new Date().getFullYear()} Dominion Fortress. All rights reserved.`;
+
+        // ============================================
+        // SERVICE CARD CLICKS
+        // ============================================
+        document.querySelectorAll('.service-link').forEach(link => {
+            link.addEventListener('click', () => {
+                trackEvent('service_click', { service: link.parentElement.querySelector('.service-title').textContent });
+            });
+        });
+
+        // ============================================
+        // FINAL CTA TRACKING
+        // ============================================
+        document.querySelectorAll('.final-cta .btn-primary').forEach(btn => {
+            btn.addEventListener('click', () => {
+                trackEvent('final_cta_click');
+            });
+        });
+
+        // ============================================
+        // FORM STARTED TRACKING
+        // ============================================
+        let formTracked = false;
+        contactForm.addEventListener('focus', () => {
+            if (!formTracked) {
+                trackEvent('form_started');
+                formTracked = true;
+            }
+        }, { once: true });
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dominion Fortress",
+        "url": "https://dominion-fortress.com/",
+        "description": "Cybersecurity, technology, and business solutions.",
+        "offers": {
+            "@type": "Offer",
+            "name": "External Security Exposure Review",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free initial external security exposure review"
+        }
     }
-  }
-
-  // --- Animated Counters (Simplified version) ---
-  function animateCounter(id, endValue, decimals = 0) {
-    const element = document.getElementById(id);
-    let start = 0;
-    const duration = 2000;
-    const increment = (endValue - start) / (duration / 16);
-
-    const tick = () => {
-        start += increment;
-        if (start >= endValue) {
-            element.textContent = endValue.toFixed(decimals);
-        } else {
-            element.textContent = start.toFixed(decimals);
-            requestAnimationFrame(tick);
-        }
-    };
-    tick();
-  }
-
-  // --- Intersection Observer for Stats ---
-  const statsSection = document.querySelector('.stats-grid'); // Target the grid container
-  if (statsSection) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter("clientsCount", 1200);
-          animateCounter("projectsCount", 3400);
-          animateCounter("uptimeCount", 99.99, 2);
-          animateCounter("teamCount", 230);
-          observer.unobserve(statsSection); // Stop observing after animation
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observer.observe(statsSection);
-  }
-
-</script>
-
+    </script>
 </body>
 </html>
