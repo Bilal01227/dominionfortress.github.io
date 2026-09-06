@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://dominion-fortress.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://dominion-fortress.com/get-started/</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://dominion-fortress.com/cybersecurity/</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://dominion-fortress.com/ai/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dominion-fortress.com/development/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
