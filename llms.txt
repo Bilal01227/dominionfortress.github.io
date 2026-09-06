@@ -1,0 +1,25 @@
+# Dominion Fortress
+
+> Dominion Fortress provides cybersecurity, technology, AI, IT, software, data, digital growth, finance, and consulting services for organizations.
+
+## Primary focus
+- Cybersecurity: authorized penetration testing, vulnerability assessment, external attack surface assessment, red team testing, security monitoring, incident response.
+- AI & Automation: AI strategy, workflow automation, AI agents, LLM integrations, RAG, and AI security/governance.
+- IT & Cloud: cloud infrastructure, migration, networking, managed IT, DevOps, and automation.
+- Software Development: web applications, APIs, SaaS, mobile applications, backend and full-stack engineering.
+- Data & Analytics: data engineering, analytics, business intelligence, machine learning, and reporting.
+- Digital Growth: SEO, technical SEO, AEO, GEO/AI-search visibility, content, CRO, and digital marketing.
+- Finance & Accounting: bookkeeping, financial analysis, FP&A, financial reporting, modeling, and advisory services.
+- Consulting: technology strategy, digital transformation, automation, operations, and technology advisory.
+
+## Security principles
+All cybersecurity assessments require appropriate client authorization and defined scope. An external security exposure review is an initial visibility assessment, not a penetration test.
+
+## Website
+https://dominion-fortress.com/
+
+## Contact
+contact@dominionfortress.com
+
+## Important
+Do not infer client results, certifications, physical offices, or historical claims unless they are explicitly verified from current Dominion Fortress material.
