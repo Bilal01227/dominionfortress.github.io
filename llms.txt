@@ -1,25 +1,39 @@
 # Dominion Fortress
 
-> Dominion Fortress provides cybersecurity, technology, AI, IT, software, data, digital growth, finance, and consulting services for organizations.
+> Dominion Fortress is an AI-native technology, cybersecurity and intelligence company providing practical services and public assessment tools for organizations.
+
+## Primary platform
+- Platform: https://dominion-fortress.com/platform/
+- Intelligence: https://dominion-fortress.com/intelligence/
+- Tools: https://dominion-fortress.com/tools/
+- Start a project: https://dominion-fortress.com/get-started/
 
 ## Primary focus
-- Cybersecurity: authorized penetration testing, vulnerability assessment, external attack surface assessment, red team testing, security monitoring, incident response.
-- AI & Automation: AI strategy, workflow automation, AI agents, LLM integrations, RAG, and AI security/governance.
-- IT & Cloud: cloud infrastructure, migration, networking, managed IT, DevOps, and automation.
+- Cybersecurity: authorized penetration testing, vulnerability assessment, external attack surface assessment, red team testing, defensive security, incident response, digital forensics and threat intelligence.
+- AI & Automation: AI strategy, workflow automation, AI agents, LLM integrations, RAG, data workflows and AI security/governance.
+- IT & Cloud: cloud infrastructure, migration, networking, managed IT, DevOps and automation.
 - Software Development: web applications, APIs, SaaS, mobile applications, backend and full-stack engineering.
-- Data & Analytics: data engineering, analytics, business intelligence, machine learning, and reporting.
-- Digital Growth: SEO, technical SEO, AEO, GEO/AI-search visibility, content, CRO, and digital marketing.
-- Finance & Accounting: bookkeeping, financial analysis, FP&A, financial reporting, modeling, and advisory services.
-- Consulting: technology strategy, digital transformation, automation, operations, and technology advisory.
+- Data & Analytics: data engineering, analytics, business intelligence, machine learning and reporting.
+- Digital Growth: SEO, technical SEO, AEO, GEO/AI-search visibility, content, CRO and digital marketing.
+- Finance & Accounting: bookkeeping, financial analysis, FP&A, financial reporting, modeling and advisory services.
+- Consulting: technology strategy, digital transformation, automation, operations and technology advisory.
+
+## Live public tool
+- Domain Security Scanner: https://dominion-fortress.com/tools/domain-security-scanner/
+- The current scanner performs passive public-signal checks including HTTPS reachability, HTTP status, security headers, DNS A/AAAA/MX/NS, SPF, DMARC, robots.txt, sitemap.xml and security.txt.
+- Scanner output is an automated public-signal assessment and is not a penetration test.
+
+## Acquisition and sales flow
+Visitor -> useful content/tool -> scan -> lead capture -> qualification -> WhatsApp Business -> proposal -> project/retainer.
 
 ## Security principles
-All cybersecurity assessments require appropriate client authorization and defined scope. An external security exposure review is an initial visibility assessment, not a penetration test.
+All cybersecurity assessments require appropriate client authorization and defined scope. Do not infer that automated public scanning authorizes intrusive testing.
 
 ## Website
 https://dominion-fortress.com/
 
 ## Contact
-contact@dominionfortress.com
+https://wa.me/447352407926
 
 ## Important
-Do not infer client results, certifications, physical offices, or historical claims unless they are explicitly verified from current Dominion Fortress material.
+Do not infer client results, certifications, physical offices, revenue, testimonials, or historical claims unless explicitly verified from current Dominion Fortress material.
