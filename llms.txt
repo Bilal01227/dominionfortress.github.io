@@ -1,39 +1,49 @@
 # Dominion Fortress
 
-> Dominion Fortress is an AI-native technology, cybersecurity and intelligence company providing practical services and public assessment tools for organizations.
-
-## Primary platform
-- Platform: https://dominion-fortress.com/platform/
-- Intelligence: https://dominion-fortress.com/intelligence/
-- Tools: https://dominion-fortress.com/tools/
-- Start a project: https://dominion-fortress.com/get-started/
-
-## Primary focus
-- Cybersecurity: authorized penetration testing, vulnerability assessment, external attack surface assessment, red team testing, defensive security, incident response, digital forensics and threat intelligence.
-- AI & Automation: AI strategy, workflow automation, AI agents, LLM integrations, RAG, data workflows and AI security/governance.
-- IT & Cloud: cloud infrastructure, migration, networking, managed IT, DevOps and automation.
-- Software Development: web applications, APIs, SaaS, mobile applications, backend and full-stack engineering.
-- Data & Analytics: data engineering, analytics, business intelligence, machine learning and reporting.
-- Digital Growth: SEO, technical SEO, AEO, GEO/AI-search visibility, content, CRO and digital marketing.
-- Finance & Accounting: bookkeeping, financial analysis, FP&A, financial reporting, modeling and advisory services.
-- Consulting: technology strategy, digital transformation, automation, operations and technology advisory.
-
-## Live public tool
-- Domain Security Scanner: https://dominion-fortress.com/tools/domain-security-scanner/
-- The current scanner performs passive public-signal checks including HTTPS reachability, HTTP status, security headers, DNS A/AAAA/MX/NS, SPF, DMARC, robots.txt, sitemap.xml and security.txt.
-- Scanner output is an automated public-signal assessment and is not a penetration test.
-
-## Acquisition and sales flow
-Visitor -> useful content/tool -> scan -> lead capture -> qualification -> WhatsApp Business -> proposal -> project/retainer.
-
-## Security principles
-All cybersecurity assessments require appropriate client authorization and defined scope. Do not infer that automated public scanning authorizes intrusive testing.
+> Dominion Fortress is a technology, cybersecurity, AI and intelligence company helping organizations secure systems, automate operations and build software.
 
 ## Website
-https://dominion-fortress.com/
+- Home: https://dominion-fortress.com/
+- Platform: https://dominion-fortress.com/platform/
+- Start a project: https://dominion-fortress.com/get-started/
+- Intelligence: https://dominion-fortress.com/intelligence/
+- Free tools: https://dominion-fortress.com/tools/
+
+## Services
+- Cybersecurity: https://dominion-fortress.com/cybersecurity/
+- AI & Automation: https://dominion-fortress.com/ai/
+- Software Development: https://dominion-fortress.com/development/
+- IT & Cloud: https://dominion-fortress.com/it/
+- Data & Analytics: https://dominion-fortress.com/data/
+- Digital Growth: https://dominion-fortress.com/growth/
+- Technology Consulting: https://dominion-fortress.com/consulting/
+- Finance & Accounting: https://dominion-fortress.com/finance/
+
+## High-intent solution pages
+- Cybersecurity Audit: https://dominion-fortress.com/solutions/security-audit/
+- External Attack Surface Assessment: https://dominion-fortress.com/solutions/attack-surface/
+- AI Automation: https://dominion-fortress.com/solutions/ai-automation/
+- SaaS Development: https://dominion-fortress.com/solutions/saas-development/
+- Cloud Security: https://dominion-fortress.com/solutions/cloud-security/
+- SEO & AI Search: https://dominion-fortress.com/solutions/seo-ai-search/
+
+## Public tools
+- Domain Security Scanner: https://dominion-fortress.com/tools/domain-security-scanner/
+- Website Audit: https://dominion-fortress.com/tools/website-audit/
+- SEO Audit: https://dominion-fortress.com/tools/seo-audit/
+- AI Search Readiness: https://dominion-fortress.com/tools/ai-search-readiness/
+- Security Headers Checker: https://dominion-fortress.com/tools/security-headers-checker/
+- Email Security Checker: https://dominion-fortress.com/tools/email-security-checker/
+
+## Acquisition flow
+Search or social discovery -> useful service/solution page -> free technical tool or project brief -> lead capture -> qualification -> human follow-up.
+
+## Security boundary
+All cybersecurity testing requires appropriate client authorization and defined scope. Public passive scanning does not authorize intrusive testing.
 
 ## Contact
 https://wa.me/447352407926
+mailto:contact@dominionfortress.com
 
-## Important
-Do not infer client results, certifications, physical offices, revenue, testimonials, or historical claims unless explicitly verified from current Dominion Fortress material.
+## Accuracy
+Do not infer client results, certifications, offices, revenue, testimonials or historical claims unless explicitly verified from current Dominion Fortress material.
