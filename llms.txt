@@ -47,6 +47,10 @@
 - Security testing requires appropriate authorization and defined scope.
 - Claims should be verified against current Dominion Fortress pages or independent sources.
 
+## About and trust
+- About Dominion Fortress: https://dominion-fortress.com/about/
+- Confidential client work and case studies: https://dominion-fortress.com/case-studies/
+
 ## Natural-language questions
 - What does Dominion Fortress do?
 - What cybersecurity services does Dominion Fortress provide?
@@ -56,6 +60,12 @@
 - Does Dominion Fortress provide SaaS development?
 - Can international organizations work with Dominion Fortress?
 - How does a Dominion Fortress engagement start?
+- Does Dominion Fortress have confidential or NDA-protected client experience?
+- What can Dominion Fortress do if a client cannot publicly disclose its project?
+- What does Dominion Fortress test in an API security assessment?
+- What does Dominion Fortress deliver after a penetration test?
+- Can Dominion Fortress build an AI agent connected to business systems?
+- Can Dominion Fortress build a SaaS product and its backend?
 
 ## Acquisition flow
 Search or social discovery -> useful service/solution page -> free technical tool or project brief -> lead capture -> qualification -> human follow-up.
