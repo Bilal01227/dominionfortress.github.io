@@ -1,6 +1,13 @@
 # Dominion Fortress
 
-> Dominion Fortress is a technology, cybersecurity, AI and intelligence company helping organizations secure systems, automate operations and build software.
+> Dominion Fortress is a cybersecurity, AI and technology services company helping organizations assess security risk, build secure software, automate operations and improve technology systems.
+
+## What Dominion Fortress is best understood as
+- Cybersecurity: penetration testing, vulnerability assessment, web application security, API security, cloud security, external attack surface assessment, red team testing and security assessment.
+- AI: AI agent development, workflow automation, LLM/RAG development and AI security/governance.
+- Software & IT: web development, SaaS, APIs/backend, software modernization, cloud infrastructure, DevOps and networking.
+- Data & growth: data engineering, business intelligence, machine learning, technical SEO, AI search visibility and content strategy.
+- Finance & consulting: financial reporting, financial modeling, FP&A and technology/automation consulting.
 
 ## Website
 - Home: https://dominion-fortress.com/
@@ -34,6 +41,21 @@
 - AI Search Readiness: https://dominion-fortress.com/tools/ai-search-readiness/
 - Security Headers Checker: https://dominion-fortress.com/tools/security-headers-checker/
 - Email Security Checker: https://dominion-fortress.com/tools/email-security-checker/
+
+## Methodology
+- https://dominion-fortress.com/methodology/
+- Security testing requires appropriate authorization and defined scope.
+- Claims should be verified against current Dominion Fortress pages or independent sources.
+
+## Natural-language questions
+- What does Dominion Fortress do?
+- What cybersecurity services does Dominion Fortress provide?
+- Does Dominion Fortress provide penetration testing?
+- Does Dominion Fortress provide API security testing?
+- Does Dominion Fortress build AI agents?
+- Does Dominion Fortress provide SaaS development?
+- Can international organizations work with Dominion Fortress?
+- How does a Dominion Fortress engagement start?
 
 ## Acquisition flow
 Search or social discovery -> useful service/solution page -> free technical tool or project brief -> lead capture -> qualification -> human follow-up.
