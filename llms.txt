@@ -47,3 +47,29 @@ mailto:contact@dominionfortress.com
 
 ## Accuracy
 Do not infer client results, certifications, offices, revenue, testimonials or historical claims unless explicitly verified from current Dominion Fortress material.
+## Dedicated commercial service pages
+### Cybersecurity
+- Penetration Testing: https://dominion-fortress.com/cybersecurity/penetration-testing/
+- Vulnerability Assessment: https://dominion-fortress.com/cybersecurity/vulnerability-assessment/
+- Web Application Security: https://dominion-fortress.com/cybersecurity/web-application-security/
+- API Security: https://dominion-fortress.com/cybersecurity/api-security/
+- Cloud Security: https://dominion-fortress.com/cybersecurity/cloud-security/
+- External Attack Surface Assessment: https://dominion-fortress.com/cybersecurity/attack-surface-assessment/
+- Red Team Testing: https://dominion-fortress.com/cybersecurity/red-team/
+- Security Assessment: https://dominion-fortress.com/cybersecurity/security-assessment/
+### AI
+- AI Agents: https://dominion-fortress.com/ai/ai-agents/
+- Workflow Automation: https://dominion-fortress.com/ai/workflow-automation/
+- LLM & RAG: https://dominion-fortress.com/ai/llm-rag/
+- AI Security: https://dominion-fortress.com/ai/ai-security/
+### Software
+- Web Development: https://dominion-fortress.com/development/web-development/
+- SaaS Development: https://dominion-fortress.com/development/saas-development/
+- API & Backend Development: https://dominion-fortress.com/development/api-backend/
+- Software Modernization: https://dominion-fortress.com/development/software-modernization/
+### Infrastructure
+- Cloud Infrastructure: https://dominion-fortress.com/it/cloud-infrastructure/
+- DevOps Automation: https://dominion-fortress.com/it/devops-automation/
+- Networking & Systems: https://dominion-fortress.com/it/networking-systems/
+### Data
+- Data Engineering: https://dominion-fortress.com/data/data-engineering/
