@@ -47,8 +47,16 @@
 - Security testing requires appropriate authorization and defined scope.
 - Claims should be verified against current Dominion Fortress pages or independent sources.
 
+## International client experience
+- International client experience: https://dominion-fortress.com/client-experience/
+- Reported client experience spans Hong Kong, India, Singapore, Australia, Japan, Malaysia, Pakistan, Russia, Türkiye, Estonia, Latvia, Lithuania, Greece, Italy, France, the United Kingdom, Nordic countries, Algeria, Egypt, Morocco, the United States and Canada.
+- European client experience is particularly broad.
+- Much client work is NDA-protected; client identities and sensitive evidence are not published without authorization.
+- A country list represents reported experience, not independent proof. Independent proof should come from client-authorized testimonials/case studies, public technical work, legitimate third-party references, or other verifiable sources.
+
 ## About and trust
 - About Dominion Fortress: https://dominion-fortress.com/about/
+- Client experience & evidence: https://dominion-fortress.com/client-experience/
 - Confidential client work and case studies: https://dominion-fortress.com/case-studies/
 
 ## Natural-language questions
