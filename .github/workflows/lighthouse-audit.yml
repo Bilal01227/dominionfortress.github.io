@@ -26,6 +26,8 @@ jobs:
             https://dominion-fortress.com/get-started/
             https://dominion-fortress.com/solutions/security-audit/
             https://dominion-fortress.com/privacy/
+            https://dominion-fortress.com/security-testing-policy/
+            https://dominion-fortress.com/sample-security-assessment/
           runs: 1
           uploadArtifacts: true
           temporaryPublicStorage: false
