@@ -77,5 +77,6 @@ jobs:
             '',
             '*INP is field data when available; Lighthouse may not provide a lab value for every run.',
           ];
+          console.log(lines.join('\n'));
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
           NODE
