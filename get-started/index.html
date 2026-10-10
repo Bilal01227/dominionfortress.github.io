@@ -19,7 +19,7 @@ f.addEventListener('submit',async e=>{
   try{
     const r=await fetch('https://qowjbytxepdkmatvidcj.supabase.co/functions/v1/capture-sales-lead-v2',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','apikey':'sb_publishable_d1GZOixUAu5t_HwesfUxVA_7epWwvMV'},
       body:JSON.stringify(b),
       credentials:'omit',
       referrerPolicy:'no-referrer'
