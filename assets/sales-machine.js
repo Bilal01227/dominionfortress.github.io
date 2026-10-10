@@ -1,9 +1,9 @@
 /* Shared design assets are loaded here so every page using the site-wide runtime gets the same UI. */
 (function(){
-  if(!document.querySelector('link[data-df-experience]')){
+  if(!document.querySelector('link[href^="/assets/df-experience.css"]')){
     var link=document.createElement('link');link.rel='stylesheet';link.href='/assets/df-experience.css?v=20261010';link.dataset.dfExperience='1';document.head.appendChild(link);
   }
-  if(!document.querySelector('script[data-df-experience]')){
+  if(!document.querySelector('script[src^="/assets/df-experience.js"]')){
     var script=document.createElement('script');script.src='/assets/df-experience.js?v=20261010';script.defer=true;script.dataset.dfExperience='1';document.head.appendChild(script);
   }
 })();
