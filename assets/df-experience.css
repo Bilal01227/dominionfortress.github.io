@@ -53,8 +53,11 @@ main .card:hover:before,main article:hover:before{opacity:1}
 .core-emblem{animation:df-emblem-float 5s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(59,130,246,.25))}
 .core-emblem:before{animation:df-emblem-shine 4s ease-in-out infinite}
 .live-pill i{animation:df-live-blink 1.8s ease-in-out infinite}
-.visual-caption span{transition:color .2s,border-color .2s,background .2s}
-.visual-caption span:hover{color:#e7fbff;border-color:rgba(103,232,249,.42);background:rgba(24,55,84,.65)}
+.visual-caption span,.visual-caption button{font:inherit;transition:color .2s,border-color .2s,background .2s;cursor:pointer}
+.visual-caption button{color:#9eb1c9;border:1px solid var(--df-line);border-radius:6px;background:rgba(7,12,20,.8);padding:7px 9px;font-size:8px;letter-spacing:.11em}
+.visual-caption button:hover,.visual-caption button[aria-pressed="true"]{color:#e7fbff;border-color:rgba(103,232,249,.5);background:rgba(24,55,84,.78)}
+.core-emblem small{transition:opacity .18s,transform .18s}
+@media(max-width:390px){.visual-caption button{font-size:7px;padding:6px}}
 .hero-proof{position:relative}
 .hero-proof span{transition:color .2s}
 .hero-proof span:hover{color:#e5f5ff}
