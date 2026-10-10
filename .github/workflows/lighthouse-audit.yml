@@ -62,20 +62,27 @@ jobs:
                   seo: score('seo'),
                   lcp: metric('largest-contentful-paint'),
                   inp: metric('interaction-to-next-paint'),
-                  cls: metric('cumulative-layout-shift')
+                  cls: metric('cumulative-layout-shift'),
+                  accessibilityIssues: report.categories.accessibility.auditRefs
+                    .filter(ref => report.audits[ref.id] && report.audits[ref.id].score != null && report.audits[ref.id].score < 1)
+                    .map(ref => report.audits[ref.id].title)
                 });
               } catch {}
             }
           }
           if (!rows.length) throw new Error('No Lighthouse reports were found to summarize.');
+          const uniqueRows = [...new Map(rows.map(row => [row.url, row])).values()];
           const lines = [
             '## Lighthouse audit results',
             '',
             '| URL | Performance | Accessibility | Best practices | SEO | LCP | INP* | CLS |',
             '|---|---:|---:|---:|---:|---:|---:|---:|',
-            ...rows.map(r => `| ${r.url} | ${r.performance} | ${r.accessibility} | ${r.bestPractices} | ${r.seo} | ${r.lcp} | ${r.inp} | ${r.cls} |`),
+            ...uniqueRows.map(r => `| ${r.url} | ${r.performance} | ${r.accessibility} | ${r.bestPractices} | ${r.seo} | ${r.lcp} | ${r.inp} | ${r.cls} |`),
             '',
             '*INP is field data when available; Lighthouse may not provide a lab value for every run.',
+            '',
+            '### Accessibility opportunities',
+            ...uniqueRows.flatMap(r => r.accessibilityIssues.map(issue => `- ${r.url}: ${issue}`)),
           ];
           console.log(lines.join('\n'));
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
