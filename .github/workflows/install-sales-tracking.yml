@@ -14,7 +14,8 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          tag = '<script src="/assets/sales-machine.js" defer></script>'
+          old_tag = '<script src="/assets/sales-machine.js" defer></script>'
+          tag = '<script src="/assets/sales-machine.js?v=20261011" defer></script>'
           for p in sorted(Path('.').rglob('*.html')):
               if p.name == '404.html' or '.git' in p.parts:
                   continue
@@ -22,6 +23,7 @@ jobs:
               s = original.replace('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com')
               s = s.replace('df-experience.css?v=20261010', 'df-experience.css?v=20261011')
               s = s.replace('df-experience.js?v=20261010', 'df-experience.js?v=20261011')
+              s = s.replace(old_tag, tag)
               if tag not in s:
                   s = s.replace('</head>', f'    {tag}\n</head>', 1)
               if s != original:
