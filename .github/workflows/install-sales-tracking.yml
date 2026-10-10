@@ -29,6 +29,25 @@ jobs:
               if s != original:
                   p.write_text(s, encoding='utf-8')
           PY
+      - name: Validate synchronized working tree
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for p in sorted(Path('.').rglob('*.html')):
+              if p.name == '404.html' or '.git' in p.parts:
+                  continue
+              s = p.read_text(encoding='utf-8')
+              required = [
+                  '/assets/sales-machine.js?v=20261011',
+                  '/assets/df-experience.css?v=20261011',
+                  '/assets/df-experience.js?v=20261011',
+              ]
+              if any(item not in s for item in required):
+                  raise SystemExit(f'Shared runtime version missing in {p}')
+          PY
+          node --check assets/df-experience.js
+          node --check assets/sales-machine.js
+          node scripts/validate-site.mjs
       - name: Commit synchronized pages
         run: |
           git config user.name 'github-actions[bot]'
