@@ -121,3 +121,20 @@ main .card:hover:before,main article:hover:before{opacity:1}
 .df-privacy-ack a{text-decoration:underline}
 @media(max-width:700px){.df-consent-banner{left:10px;right:10px;bottom:10px;display:block;padding:15px}.df-consent-actions{justify-content:stretch;margin-top:12px}.df-consent-actions button{flex:1 1 140px}.df-consent-copy p{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.df-reveal,.df-enhanced main>h1,.df-enhanced main>h1+p{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}}
+
+
+/* Consistent accessible reading styles for policy and sample-report pages only. */
+body.df-content-page{margin:0;min-height:100vh;background:#070b12;color:#f5f8ff;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.7}
+body.df-content-page main{max-width:1000px;margin:0 auto;padding:42px 22px 80px}
+body.df-content-page a{color:#67e8f9;text-underline-offset:3px}
+body.df-content-page a:hover{color:#b9f4ff}
+body.df-content-page h1,body.df-content-page h2,body.df-content-page h3{color:#f5f8ff;line-height:1.2}
+body.df-content-page h1{font-size:clamp(2.1rem,5vw,3.5rem);letter-spacing:-.035em}
+body.df-content-page h2{margin-top:2.3rem;font-size:1.45rem}
+body.df-content-page h3{font-size:1.1rem}
+body.df-content-page p,body.df-content-page li{color:#d6e0ef}
+body.df-content-page .muted{color:#b8c8dd;font-size:.9rem}
+body.df-content-page .note,body.df-content-page main article{background:#0c1421;border:1px solid rgba(148,172,205,.3);border-radius:12px;padding:18px;margin:18px 0}
+body.df-content-page .btn{display:inline-block;background:#2563eb;color:#fff!important;padding:11px 14px;border-radius:8px;text-decoration:none;font-weight:700;margin:8px 8px 8px 0}
+body.df-content-page .btn.ghost{background:#111b2b;border:1px solid #566b87}
+body.df-content-page code{color:#b9f4ff;background:#101a29;padding:2px 5px;border-radius:4px}
