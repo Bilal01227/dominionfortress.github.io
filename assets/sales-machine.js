@@ -1,3 +1,12 @@
+/* Shared design assets are loaded here so every page using the site-wide runtime gets the same UI. */
+(function(){
+  if(!document.querySelector('link[data-df-experience]')){
+    var link=document.createElement('link');link.rel='stylesheet';link.href='/assets/df-experience.css?v=20261010';link.dataset.dfExperience='1';document.head.appendChild(link);
+  }
+  if(!document.querySelector('script[data-df-experience]')){
+    var script=document.createElement('script');script.src='/assets/df-experience.js?v=20261010';script.defer=true;script.dataset.dfExperience='1';document.head.appendChild(script);
+  }
+})();
 (function(){
   const ENDPOINT='https://qowjbytxepdkmatvidcj.supabase.co/functions/v1/track-website-event';
   const KEY='df_session_id';
