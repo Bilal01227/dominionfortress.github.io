@@ -1,29 +1,35 @@
-name: Install Dominion Fortress sales tracking
+name: Synchronize Dominion Fortress site runtime
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
-  install-tracking:
+  synchronize-site:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Inject tracker into homepage
+      - name: Update shared asset versions and install opt-in analytics on all pages
         run: |
           python - <<'PY'
           from pathlib import Path
-          p=Path('index.html')
-          s=p.read_text(encoding='utf-8')
-          tag='<script src="/assets/sales-machine.js" defer></script>'
-          if tag not in s:
-              s=s.replace('</head>', f'    {tag}\n</head>', 1)
-              p.write_text(s, encoding='utf-8')
+          tag = '<script src="/assets/sales-machine.js" defer></script>'
+          for p in sorted(Path('.').rglob('*.html')):
+              if p.name == '404.html' or '.git' in p.parts:
+                  continue
+              original = p.read_text(encoding='utf-8')
+              s = original.replace('df-experience.css?v=20261010', 'df-experience.css?v=20261011')
+              s = s.replace('df-experience.js?v=20261010', 'df-experience.js?v=20261011')
+              if tag not in s:
+                  s = s.replace('</head>', f'    {tag}\n</head>', 1)
+              if s != original:
+                  p.write_text(s, encoding='utf-8')
           PY
-      - name: Commit injected tracker
+      - name: Commit synchronized pages
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add index.html
-          git diff --cached --quiet || git commit -m 'Install first-party website sales tracking'
+          git add -A -- '*.html'
+          git diff --cached --quiet || git commit -m 'Synchronize site runtime across HTML pages'
           git push
