@@ -45,4 +45,20 @@ jobs:
           grep -q 'https://dominion-fortress.com/sitemap.xml' /tmp/robots.txt
           grep -q 'mailto:contact.dominionfortress@gmail.com' /tmp/security.txt
           grep -q 'https://dominion-fortress.com/security-testing-policy/' /tmp/security.txt
-          echo 'Deployed route and contact smoke tests passed.'
+          public_key='sb_publishable_d1GZOixUAu5t_HwesfUxVA_7epWwvMV'
+          functions_base='https://qowjbytxepdkmatvidcj.supabase.co/functions/v1'
+          cors_status=$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' -X OPTIONS \
+            -H 'Origin: https://dominion-fortress.com' \
+            -H 'Access-Control-Request-Method: POST' \
+            -H 'Access-Control-Request-Headers: content-type,apikey' \
+            "$functions_base/capture-sales-lead-v2")
+          test "$cors_status" = '204'
+          lead_status=$(curl --silent --show-error --output /tmp/lead-api.json --write-out '%{http_code}' -X POST \
+            -H 'Origin: https://dominion-fortress.com' -H 'Content-Type: application/json' -H "apikey: $public_key" \
+            --data '{}' "$functions_base/capture-sales-lead-v2")
+          test "$lead_status" = '400'
+          tracking_status=$(curl --silent --show-error --output /tmp/tracking-api.json --write-out '%{http_code}' -X POST \
+            -H 'Origin: https://dominion-fortress.com' -H 'Content-Type: application/json' -H "apikey: $public_key" \
+            --data '{}' "$functions_base/track-website-event")
+          test "$tracking_status" = '400'
+          echo 'Deployed route, CORS, and API validation smoke tests passed.'
