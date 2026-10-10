@@ -57,6 +57,12 @@ main .card:hover:before,main article:hover:before{opacity:1}
 .visual-caption button{color:#9eb1c9;border:1px solid var(--df-line);border-radius:6px;background:rgba(7,12,20,.8);padding:7px 9px;font-size:8px;letter-spacing:.11em}
 .visual-caption button:hover,.visual-caption button[aria-pressed="true"]{color:#e7fbff;border-color:rgba(103,232,249,.5);background:rgba(24,55,84,.78)}
 .core-emblem small{transition:opacity .18s,transform .18s}
+.hero-visual[data-mode="AUTOMATE"] .core-emblem{filter:drop-shadow(0 0 30px rgba(103,232,249,.34))}
+.hero-visual[data-mode="AUTOMATE"] .core-orbit{border-color:rgba(103,232,249,.32)}
+.hero-visual[data-mode="BUILD"] .core-emblem{filter:drop-shadow(0 0 30px rgba(240,68,82,.25))}
+.hero-visual[data-mode="BUILD"] .orbit-two{border-color:rgba(240,68,82,.32)}
+.hero-visual[data-mode="DEFEND"] .core-emblem{filter:drop-shadow(0 0 30px rgba(59,130,246,.38))}
+.hero-visual[data-mode="DEFEND"] .orbit-one{border-color:rgba(96,165,250,.34)}
 @media(max-width:390px){.visual-caption button{font-size:7px;padding:6px}}
 .hero-proof{position:relative}
 .hero-proof span{transition:color .2s}
