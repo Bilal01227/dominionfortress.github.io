@@ -38,6 +38,17 @@ if (!files.includes('privacy/index.html') || !files.includes('security-testing-p
 const sourceFiles = files.filter(file => /\.(html|js|txt|xml)$/i.test(file));
 const oldEmailFiles = sourceFiles.filter(file => fs.readFileSync(path.join(root, file), 'utf8').includes('contact@dominionfortress.com'));
 if (oldEmailFiles.length) throw new Error('Old contact email found in: ' + oldEmailFiles.join(', '));
+const llms = fs.readFileSync(path.join(root, 'llms.txt'), 'utf8');
+const siteRoutes = new Set([...expectedRoutes]);
+const llmsRoutes = [...llms.matchAll(/https:\/\/dominion-fortress\.com\/[^\s)]+/g)]
+  .map(match => match[0].replace(/[.,]$/, '').replace('https://dominion-fortress.com', ''));
+const missingLlmsRoutes = [...new Set(llmsRoutes.filter(route => !siteRoutes.has(route)))];
+if (missingLlmsRoutes.length) throw new Error('Broken routes in llms.txt: ' + missingLlmsRoutes.join(', '));
+if (!files.includes('.well-known/security.txt')) throw new Error('security.txt is missing.');
+const securityTxt = fs.readFileSync(path.join(root, '.well-known/security.txt'), 'utf8');
+if (!securityTxt.includes('mailto:contact.dominionfortress@gmail.com') || !securityTxt.includes('https://dominion-fortress.com/security-testing-policy/')) {
+  throw new Error('security.txt contact or policy URL is incorrect.');
+}
 const sharedJs = fs.readFileSync(path.join(root, 'assets/df-experience.js'), 'utf8');
 if (!sharedJs.includes('contact.dominionfortress@gmail.com')) throw new Error('Verified contact email missing from shared experience script.');
 
