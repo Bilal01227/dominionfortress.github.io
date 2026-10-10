@@ -16,17 +16,20 @@ jobs:
           from pathlib import Path
           old_tag = '<script src="/assets/sales-machine.js" defer></script>'
           old_versioned_tag = '<script src="/assets/sales-machine.js?v=20261011" defer></script>'
-          tag = '<script src="/assets/sales-machine.js?v=20261012" defer></script>'
+          old_versioned_tag2 = '<script src="/assets/sales-machine.js?v=20261012" defer></script>'
+          tag = '<script src="/assets/sales-machine.js?v=20261013" defer></script>'
           for p in sorted(Path('.').rglob('*.html')):
               if p.name == '404.html' or '.git' in p.parts:
                   continue
               original = p.read_text(encoding='utf-8')
               s = original.replace('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com')
               s = s.replace('df-experience.css?v=20261010', 'df-experience.css?v=20261012')
-              s = s.replace('df-experience.css?v=20261011', 'df-experience.css?v=20261012')
+              s = s.replace('df-experience.css?v=20261011', 'df-experience.css?v=20261013')
+              s = s.replace('df-experience.css?v=20261012', 'df-experience.css?v=20261013')
               s = s.replace('df-experience.js?v=20261010', 'df-experience.js?v=20261012')
-              s = s.replace('df-experience.js?v=20261011', 'df-experience.js?v=20261012')
-              s = s.replace(old_tag, tag).replace(old_versioned_tag, tag)
+              s = s.replace('df-experience.js?v=20261011', 'df-experience.js?v=20261013')
+              s = s.replace('df-experience.js?v=20261012', 'df-experience.js?v=20261013')
+              s = s.replace(old_tag, tag).replace(old_versioned_tag, tag).replace(old_versioned_tag2, tag)
               if tag not in s:
                   s = s.replace('</head>', f'    {tag}\n</head>', 1)
               if s != original:
@@ -41,9 +44,9 @@ jobs:
                   continue
               s = p.read_text(encoding='utf-8')
               required = [
-                  '/assets/sales-machine.js?v=20261012',
-                  '/assets/df-experience.css?v=20261012',
-                  '/assets/df-experience.js?v=20261012',
+                  '/assets/sales-machine.js?v=20261013',
+                  '/assets/df-experience.css?v=20261013',
+                  '/assets/df-experience.js?v=20261013',
               ]
               if any(item not in s for item in required):
                   raise SystemExit(f'Shared runtime version missing in {p}')
