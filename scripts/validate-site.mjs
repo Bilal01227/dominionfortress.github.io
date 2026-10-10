@@ -35,6 +35,13 @@ if (!files.includes('privacy/index.html') || !files.includes('security-testing-p
   throw new Error('Required privacy or security-testing policy page is missing.');
 }
 
+const unsynchronizedPages = htmlFiles.filter(file => {
+  const html = fs.readFileSync(path.join(root, file), 'utf8');
+  return !html.includes('/assets/sales-machine.js?v=20261011')
+    || !html.includes('/assets/df-experience.css?v=20261011')
+    || !html.includes('/assets/df-experience.js?v=20261011');
+});
+if (unsynchronizedPages.length) throw new Error('Pages missing current shared runtime: ' + unsynchronizedPages.join(', '));
 const sourceFiles = files.filter(file => /\.(html|js|txt|xml)$/i.test(file));
 const oldEmailFiles = sourceFiles.filter(file => fs.readFileSync(path.join(root, file), 'utf8').includes('contact@dominionfortress.com'));
 if (oldEmailFiles.length) throw new Error('Old contact email found in: ' + oldEmailFiles.join(', '));
