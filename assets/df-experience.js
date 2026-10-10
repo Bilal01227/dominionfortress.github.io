@@ -11,7 +11,40 @@ if(!nav){nav=document.createElement('header');nav.className='df-global-nav';nav.
 if(nav&&!nav.querySelector('.df-global-brand')&&!nav.querySelector('.brand-symbol')){const brand=nav.querySelector('.brand');if(brand){brand.innerHTML=mark;brand.classList.add('df-global-brand')}}
 const menu=nav&&nav.querySelector('.df-menu-toggle, .menu-toggle');const links=nav&&nav.querySelector('.df-global-links, #primary-navigation, .links');
 if(menu&&links&&!menu.dataset.dfBound&&menu.classList.contains('df-menu-toggle')){menu.dataset.dfBound='1';menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));links.classList.toggle('df-open',!open);links.classList.toggle('open',!open);menu.setAttribute('aria-label',open?'Open navigation menu':'Close navigation menu')});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.setAttribute('aria-expanded','false');links.classList.remove('df-open','open')}))}
-let siteFooter=document.querySelector('footer');if(!siteFooter){siteFooter=document.createElement('footer');siteFooter.className='df-site-footer';body.appendChild(siteFooter)}siteFooter.classList.add('df-site-footer');if(!siteFooter.querySelector('.df-footer-grid')){siteFooter.insertAdjacentHTML('beforeend','<div class="df-footer-grid"><div class="df-footer-about"><a class="df-footer-brand" href="/" aria-label="Dominion Fortress home">'+mark+'</a><p>Secure systems. Smarter operations. Software built for what comes next.</p><span class="df-footer-tagline">SECURE <i>•</i> SCALE <i>•</i> DOMINATE</span></div><div class="df-footer-column"><h2>Explore</h2><a href="/cybersecurity/">Cybersecurity</a><a href="/ai/">AI &amp; Automation</a><a href="/development/">Software Development</a><a href="/it/">Cloud &amp; IT</a><a href="/data/">Data &amp; Analytics</a><a href="/growth/">Growth &amp; Search</a></div><div class="df-footer-column"><h2>Company</h2><a href="/about/">About Dominion Fortress</a><a href="/case-studies/">Case Studies</a><a href="/methodology/">Our Methodology</a><a href="/tools/">Free Tools</a><a href="/get-started/">Start a Project</a></div><div class="df-footer-column df-footer-contact"><h2>Contact</h2><a href="mailto:contact.dominionfortress@gmail.com">contact.dominionfortress@gmail.com</a><a href="'+WA+'" target="_blank" rel="noopener noreferrer">WhatsApp project enquiries ↗</a><p>Remote delivery for international clients.</p></div></div><div class="df-footer-bottom"><span>© <span class="df-current-year"></span> Dominion Fortress. All rights reserved.</span><span>Independent technology &amp; security services.</span><a href="#top" class="df-footer-top">Back to top ↑</a></div>');const year=siteFooter.querySelector('.df-current-year');if(year)year.textContent=String(new Date().getFullYear())}
+let siteFooter=document.querySelector('footer');if(!siteFooter){siteFooter=document.createElement('footer');siteFooter.className='df-site-footer';body.appendChild(siteFooter)}siteFooter.classList.add('df-site-footer');if(!siteFooter.querySelector('.df-footer-grid')){siteFooter.insertAdjacentHTML('beforeend','<div class="df-footer-grid"><div class="df-footer-about"><a class="df-footer-brand" href="/" aria-label="Dominion Fortress home">'+mark+'</a><p>Secure systems. Smarter operations. Software built for what comes next.</p><span class="df-footer-tagline">SECURE <i>•</i> SCALE <i>•</i> DOMINATE</span></div><div class="df-footer-column"><h2>Explore</h2><a href="/cybersecurity/">Cybersecurity</a><a href="/ai/">AI &amp; Automation</a><a href="/development/">Software Development</a><a href="/it/">Cloud &amp; IT</a><a href="/data/">Data &amp; Analytics</a><a href="/growth/">Growth &amp; Search</a></div><div class="df-footer-column"><h2>Company</h2><a href="/about/">About Dominion Fortress</a><a href="/case-studies/">Case Studies</a><a href="/methodology/">Our Methodology</a><a href="/tools/">Free Tools</a><a href="/get-started/">Start a Project</a><a href="/privacy/">Privacy Notice</a><a href="/security-testing-policy/">Security Testing Policy</a><a href="#" class="df-privacy-settings">Privacy Choices</a></div><div class="df-footer-column df-footer-contact"><h2>Contact</h2><a href="mailto:contact.dominionfortress@gmail.com">contact.dominionfortress@gmail.com</a><a href="'+WA+'" target="_blank" rel="noopener noreferrer">WhatsApp project enquiries ↗</a><p>Remote delivery for international clients.</p></div></div><div class="df-footer-bottom"><span>© <span class="df-current-year"></span> Dominion Fortress. All rights reserved.</span><span>Independent technology &amp; security services.</span><a href="#top" class="df-footer-top">Back to top ↑</a></div>');const year=siteFooter.querySelector('.df-current-year');if(year)year.textContent=String(new Date().getFullYear())}
+
+/* Accessible skip navigation */
+const primaryMain=document.querySelector('main');
+if(primaryMain&&!primaryMain.id)primaryMain.id='main';
+if(primaryMain&&!body.querySelector('.df-skip-link')){
+  const skip=document.createElement('a');skip.className='df-skip-link';skip.href='#main';skip.textContent='Skip to main content';body.insertBefore(skip,body.firstChild);
+}
+/* Optional analytics is off until the visitor chooses to allow it. */
+const consentKey='df_analytics_consent';
+const readConsent=()=>{try{return localStorage.getItem(consentKey)||window.__dfAnalyticsConsent||null}catch(_){return window.__dfAnalyticsConsent||null}};
+const consentBanner=()=>{
+  let banner=document.querySelector('.df-consent-banner');
+  if(!banner){
+    banner=document.createElement('section');banner.className='df-consent-banner';banner.setAttribute('aria-label','Privacy choices');banner.setAttribute('aria-live','polite');
+    banner.innerHTML='<div class="df-consent-copy"><strong>Privacy choices</strong><p>Optional analytics helps us understand which pages are useful. It stays off unless you allow it. You can change your choice at any time.</p><a href="/privacy/">Read the Privacy Notice</a></div><div class="df-consent-actions"><button type="button" class="df-consent-accept">Allow analytics</button><button type="button" class="df-consent-reject">Reject optional analytics</button></div>';
+    body.appendChild(banner);
+    banner.querySelector('.df-consent-accept').addEventListener('click',()=>window.DFSetAnalyticsConsent('accepted'));
+    banner.querySelector('.df-consent-reject').addEventListener('click',()=>window.DFSetAnalyticsConsent('rejected'));
+  }
+  banner.hidden=false;
+  return banner;
+};
+window.DFGetAnalyticsConsent=readConsent;
+window.DFSetAnalyticsConsent=value=>{
+  if(value!=='accepted'&&value!=='rejected')return;
+  window.__dfAnalyticsConsent=value;
+  try{localStorage.setItem(consentKey,value)}catch(_){}
+  const banner=document.querySelector('.df-consent-banner');if(banner)banner.hidden=true;
+  window.dispatchEvent(new CustomEvent('df:analytics-consent',{detail:value}));
+};
+if(readConsent())window.dispatchEvent(new CustomEvent('df:analytics-consent',{detail:readConsent()}));else consentBanner();
+document.querySelectorAll('.df-privacy-settings').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();consentBanner();const accept=document.querySelector('.df-consent-accept');if(accept)accept.focus()}));
+
 if(!document.querySelector('.df-scroll-progress')){const bar=document.createElement('div');bar.className='df-scroll-progress';bar.setAttribute('aria-hidden','true');body.appendChild(bar);const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;bar.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%'};addEventListener('scroll',update,{passive:true});addEventListener('resize',update);update()}
 let rail=document.querySelector('.df-contact-rail');if(!rail){rail=document.createElement('div');rail.className='df-contact-rail';rail.setAttribute('aria-label','Quick contact');body.appendChild(rail)}
 let wa=rail.querySelector('.df-wa'),mail=rail.querySelector('.df-mail');if(!wa){wa=document.createElement('a');wa.className='df-contact df-wa';rail.appendChild(wa)}if(!mail){mail=document.createElement('a');mail.className='df-contact df-mail';rail.appendChild(mail)}
