@@ -81,6 +81,10 @@ Search or social discovery -> useful service/solution page -> free technical too
 ## Security boundary
 All cybersecurity testing requires appropriate client authorization and defined scope. Public passive scanning does not authorize intrusive testing.
 
+## Privacy and security policies
+- Privacy Notice: https://dominion-fortress.com/privacy/
+- Security Testing Policy: https://dominion-fortress.com/security-testing-policy/
+
 ## Contact
 https://wa.me/447352407926
 mailto:contact.dominionfortress@gmail.com
