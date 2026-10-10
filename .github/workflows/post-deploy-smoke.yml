@@ -1,5 +1,17 @@
 name: Post-deployment smoke tests
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.well-known/**'
+      - '_config.yml'
+      - 'privacy/**'
+      - 'security-testing-policy/**'
+      - 'sample-security-assessment/**'
+      - 'get-started/**'
+      - 'index.html'
+      - 'assets/**'
+      - '.github/workflows/post-deploy-smoke.yml'
   workflow_run:
     workflows: ["pages build and deployment"]
     types: [completed]
