@@ -1,15 +1,16 @@
 /* Shared assets and privacy-respecting, opt-in first-party analytics. */
 (function(){
   if(!document.querySelector('link[href^="/assets/df-experience.css"]')){
-    var link=document.createElement('link');link.rel='stylesheet';link.href='/assets/df-experience.css?v=20261012';link.dataset.dfExperience='1';document.head.appendChild(link);
+    var link=document.createElement('link');link.rel='stylesheet';link.href='/assets/df-experience.css?v=20261013';link.dataset.dfExperience='1';document.head.appendChild(link);
   }
   if(!document.querySelector('script[src^="/assets/df-experience.js"]')){
-    var script=document.createElement('script');script.src='/assets/df-experience.js?v=20261012';script.defer=true;script.dataset.dfExperience='1';document.head.appendChild(script);
+    var script=document.createElement('script');script.src='/assets/df-experience.js?v=20261013';script.defer=true;script.dataset.dfExperience='1';document.head.appendChild(script);
   }
 })();
 (function(){
   'use strict';
   const ENDPOINT='https://qowjbytxepdkmatvidcj.supabase.co/functions/v1/track-website-event';
+  const PUBLIC_KEY='sb_publishable_d1GZOixUAu5t_HwesfUxVA_7epWwvMV';
   const KEY='df_session_id';
   const START='df_session_started_at';
   let started=false;
@@ -38,11 +39,7 @@
   function send(body,payloadBase){
     try{
       const raw=JSON.stringify({...payloadBase,...body});
-      if(navigator.sendBeacon){
-        const ok=navigator.sendBeacon(ENDPOINT,new Blob([raw],{type:'application/json'}));
-        if(ok)return;
-      }
-      fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:raw,keepalive:true,credentials:'omit',referrerPolicy:'no-referrer'}).catch(()=>{});
+      fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','apikey':PUBLIC_KEY},body:raw,keepalive:true,credentials:'omit',referrerPolicy:'no-referrer'}).catch(()=>{});
     }catch(_){}
   }
   function startTracking(){
