@@ -99,3 +99,25 @@ main .card:hover:before,main article:hover:before{opacity:1}
 .df-footer-top{color:#aab8cc!important;text-decoration:none!important;white-space:nowrap}
 @media(max-width:760px){.df-site-footer{margin-top:70px!important;padding-inline:18px!important}.df-footer-grid{grid-template-columns:1fr 1fr;gap:28px 20px;padding:32px 0 26px}.df-footer-about{grid-column:1/-1}.df-footer-bottom{align-items:flex-start;flex-direction:column;gap:7px}}
 @media(max-width:420px){.df-footer-grid{grid-template-columns:1fr}.df-footer-about{grid-column:auto}}
+
+
+/* Accessibility and privacy controls */
+:focus-visible{outline:3px solid #67e8f9!important;outline-offset:3px!important}
+.df-skip-link{position:fixed;top:8px;left:8px;z-index:10000;transform:translateY(-160%);padding:10px 14px;background:#f5f8ff;color:#07111e!important;border-radius:8px;font-weight:800}
+.df-skip-link:focus{transform:translateY(0)}
+.df-consent-banner{position:fixed;z-index:9998;left:16px;right:16px;bottom:16px;max-width:1000px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:18px 20px;border:1px solid rgba(148,172,205,.3);border-radius:14px;background:rgba(8,13,22,.98);box-shadow:0 18px 70px rgba(0,0,0,.55);color:#f5f8ff}
+.df-consent-banner[hidden]{display:none!important}
+.df-consent-copy{max-width:600px}
+.df-consent-copy strong{display:block;font-size:14px;margin-bottom:4px}
+.df-consent-copy p{margin:0 0 5px;color:#aab8cc;font-size:12px;line-height:1.55}
+.df-consent-copy a{font-size:12px;color:#67e8f9;text-decoration:underline}
+.df-consent-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.df-consent-actions button{border:1px solid rgba(148,172,205,.35);border-radius:8px;padding:9px 12px;background:#111b2b;color:#f5f8ff;font-size:12px;font-weight:750;cursor:pointer}
+.df-consent-actions .df-consent-accept{background:#245bd5;border-color:#5089ff}
+.df-consent-actions button:hover{border-color:#67e8f9}
+.df-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.df-privacy-ack{display:flex!important;align-items:flex-start;gap:10px;font-size:13px;line-height:1.6}
+.df-privacy-ack input{margin-top:5px;flex:0 0 auto}
+.df-privacy-ack a{text-decoration:underline}
+@media(max-width:700px){.df-consent-banner{left:10px;right:10px;bottom:10px;display:block;padding:15px}.df-consent-actions{justify-content:stretch;margin-top:12px}.df-consent-actions button{flex:1 1 140px}.df-consent-copy p{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.df-reveal,.df-enhanced main>h1,.df-enhanced main>h1+p{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}}
