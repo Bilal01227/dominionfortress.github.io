@@ -1,10 +1,10 @@
 /* Shared assets and privacy-respecting, opt-in first-party analytics. */
 (function(){
   if(!document.querySelector('link[href^="/assets/df-experience.css"]')){
-    var link=document.createElement('link');link.rel='stylesheet';link.href='/assets/df-experience.css?v=20261011';link.dataset.dfExperience='1';document.head.appendChild(link);
+    var link=document.createElement('link');link.rel='stylesheet';link.href='/assets/df-experience.css?v=20261012';link.dataset.dfExperience='1';document.head.appendChild(link);
   }
   if(!document.querySelector('script[src^="/assets/df-experience.js"]')){
-    var script=document.createElement('script');script.src='/assets/df-experience.js?v=20261011';script.defer=true;script.dataset.dfExperience='1';document.head.appendChild(script);
+    var script=document.createElement('script');script.src='/assets/df-experience.js?v=20261012';script.defer=true;script.dataset.dfExperience='1';document.head.appendChild(script);
   }
 })();
 (function(){
