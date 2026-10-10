@@ -1,0 +1,48 @@
+name: Post-deployment smoke tests
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+permissions:
+  contents: read
+jobs:
+  smoke-test:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify deployed public routes and contact details
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://dominion-fortress.com'
+          fetch_retry() {
+            local url="$1"
+            local output="$2"
+            for attempt in 1 2 3 4 5; do
+              if curl --fail --silent --show-error --location "$url" -o "$output"; then
+                return 0
+              fi
+              sleep 8
+            done
+            echo "Could not fetch $url" >&2
+            return 1
+          }
+          fetch_retry "$base/" /tmp/home.html
+          fetch_retry "$base/get-started/" /tmp/get-started.html
+          fetch_retry "$base/privacy/" /tmp/privacy.html
+          fetch_retry "$base/security-testing-policy/" /tmp/security-policy.html
+          fetch_retry "$base/sample-security-assessment/" /tmp/sample-report.html
+          fetch_retry "$base/sitemap.xml" /tmp/sitemap.xml
+          fetch_retry "$base/robots.txt" /tmp/robots.txt
+          fetch_retry "$base/.well-known/security.txt" /tmp/security.txt
+          grep -q 'contact.dominionfortress@gmail.com' /tmp/home.html
+          grep -q 'contact.dominionfortress@gmail.com' /tmp/get-started.html
+          ! grep -q 'contact@dominionfortress.com' /tmp/home.html /tmp/get-started.html /tmp/privacy.html /tmp/security-policy.html /tmp/sample-report.html
+          grep -q 'privacy_acknowledged' /tmp/get-started.html
+          grep -q 'Privacy Notice' /tmp/privacy.html
+          grep -q 'Authorization is required' /tmp/security-policy.html
+          grep -q 'Illustrative sample only' /tmp/sample-report.html
+          grep -q 'https://dominion-fortress.com/sitemap.xml' /tmp/robots.txt
+          grep -q 'mailto:contact.dominionfortress@gmail.com' /tmp/security.txt
+          grep -q 'https://dominion-fortress.com/security-testing-policy/' /tmp/security.txt
+          echo 'Deployed route and contact smoke tests passed.'
