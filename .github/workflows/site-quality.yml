@@ -1,0 +1,22 @@
+name: Site quality checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check shared JavaScript syntax
+        run: |
+          node --check assets/df-experience.js
+          node --check assets/sales-machine.js
+      - name: Validate sitemap, contact details, inline scripts and internal links
+        run: node scripts/validate-site.mjs
