@@ -29,3 +29,51 @@ jobs:
           runs: 1
           uploadArtifacts: true
           temporaryPublicStorage: false
+      - name: Publish scores and Core Web Vitals to the workflow summary
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          const dir = '.lighthouseci';
+          const rows = [];
+          if (fs.existsSync(dir)) {
+            for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
+              try {
+                const data = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+                const report = data.lighthouseResult || data;
+                if (!report.categories || !report.audits) continue;
+                const score = key => report.categories[key]?.score == null ? '—' : Math.round(report.categories[key].score * 100);
+                const metric = id => {
+                  const audit = report.audits[id];
+                  if (!audit || audit.numericValue == null) return '—';
+                  const value = audit.numericValue;
+                  if (id === 'largest-contentful-paint' || id === 'first-contentful-paint') return (value / 1000).toFixed(2) + ' s';
+                  if (id === 'cumulative-layout-shift') return value.toFixed(3);
+                  if (id === 'interaction-to-next-paint') return Math.round(value) + ' ms';
+                  return Math.round(value);
+                };
+                rows.push({
+                  url: report.requestedUrl || report.finalDisplayedUrl || file,
+                  performance: score('performance'),
+                  accessibility: score('accessibility'),
+                  bestPractices: score('best-practices'),
+                  seo: score('seo'),
+                  lcp: metric('largest-contentful-paint'),
+                  inp: metric('interaction-to-next-paint'),
+                  cls: metric('cumulative-layout-shift')
+                });
+              } catch {}
+            }
+          }
+          if (!rows.length) throw new Error('No Lighthouse reports were found to summarize.');
+          const lines = [
+            '## Lighthouse audit results',
+            '',
+            '| URL | Performance | Accessibility | Best practices | SEO | LCP | INP* | CLS |',
+            '|---|---:|---:|---:|---:|---:|---:|---:|',
+            ...rows.map(r => `| ${r.url} | ${r.performance} | ${r.accessibility} | ${r.bestPractices} | ${r.seo} | ${r.lcp} | ${r.inp} | ${r.cls} |`),
+            '',
+            '*INP is field data when available; Lighthouse may not provide a lab value for every run.',
+          ];
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
+          NODE
