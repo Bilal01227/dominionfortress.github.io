@@ -28,6 +28,7 @@
 
 ## High-intent solution pages
 - Cybersecurity Audit: https://dominion-fortress.com/solutions/security-audit/
+- Illustrative Security Assessment Report: https://dominion-fortress.com/sample-security-assessment/
 - External Attack Surface Assessment: https://dominion-fortress.com/solutions/attack-surface/
 - AI Automation: https://dominion-fortress.com/solutions/ai-automation/
 - SaaS Development: https://dominion-fortress.com/solutions/saas-development/
