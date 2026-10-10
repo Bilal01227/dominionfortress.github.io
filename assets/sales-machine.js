@@ -14,9 +14,9 @@
   const START='df_session_started_at';
   let started=false;
   let sid='';
+  const noop=function(){};
   let activeTrack=noop;
   let startedAt=Date.now();
-  const noop=function(){};
   window.DFTrack=noop;
 
   function consent(){
