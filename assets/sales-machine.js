@@ -14,6 +14,7 @@
   const START='df_session_started_at';
   let started=false;
   let sid='';
+  let activeTrack=noop;
   let startedAt=Date.now();
   const noop=function(){};
   window.DFTrack=noop;
@@ -73,6 +74,7 @@
       if(consent()!=='accepted')return;
       send({event_name:String(eventName||'').slice(0,80),path:location.pathname.slice(0,500),...(extra||{})},payloadBase);
     }
+    activeTrack=track;
     window.DFTrack=track;
     track('page_view',{metadata:{title:(document.title||'').slice(0,200)}});
     document.addEventListener('click',e=>{
@@ -97,8 +99,8 @@
   }
 
   window.addEventListener('df:analytics-consent',event=>{
-    if(event.detail==='accepted')startTracking();
-    else if(event.detail==='rejected'){window.DFTrack=noop;started=false;sid='';}
+    if(event.detail==='accepted'){if(started)window.DFTrack=activeTrack;else startTracking();}
+    else if(event.detail==='rejected'){window.DFTrack=noop;}
   });
   if(consent()==='accepted')startTracking();
 })();
