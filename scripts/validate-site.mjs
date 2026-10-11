@@ -43,7 +43,7 @@ const pagesMissingRuntime = htmlFiles.filter(file => {
 });
 if (pagesMissingRuntime.length) throw new Error('Pages missing shared runtime: ' + pagesMissingRuntime.join(', '));
 const sourceFiles = files.filter(file => /\.(html|js|txt|xml)$/i.test(file));
-const oldEmailFiles = sourceFiles.filter(file => fs.readFileSync(path.join(root, file), 'utf8').includes('www.bilalanwar01@gmail.com'));
+const oldEmailFiles = sourceFiles.filter(file => { const content = fs.readFileSync(path.join(root, file), 'utf8'); return content.includes('contact@dominionfortress.com') || content.includes('contact.dominionfortress@gmail.com'); });
 if (oldEmailFiles.length) throw new Error('Old contact email found in: ' + oldEmailFiles.join(', '));
 const llms = fs.readFileSync(path.join(root, 'llms.txt'), 'utf8');
 const siteRoutes = new Set([...expectedRoutes]);
