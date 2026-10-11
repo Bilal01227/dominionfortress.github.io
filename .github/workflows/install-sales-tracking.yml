@@ -23,7 +23,7 @@ jobs:
               if p.name == '404.html' or '.git' in p.parts:
                   continue
               original = p.read_text(encoding='utf-8')
-              s = original.replace('contact@dominionfortress.com', 'www.bilalanwar01@gmail.com').replace('contact.dominionfortress@gmail.com', 'www.bilalanwar01@gmail.com')
+              s = original.replace('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com').replace('www.bilalanwar01@gmail.com', 'contact.dominionfortress@gmail.com')
               for version in ('20261010', '20261011', '20261012', '20261013'):
                   s = s.replace(f'df-experience.css?v={version}', 'df-experience.css?v=20261014')
                   s = s.replace(f'df-experience.js?v={version}', 'df-experience.js?v=20261014')
@@ -49,9 +49,9 @@ jobs:
               if any(item not in s for item in required):
                   raise SystemExit(f'Shared runtime version missing in {p}')
           home = Path('index.html').read_text(encoding='utf-8')
-          if 'www.bilalanwar01@gmail.com' not in home:
-              raise SystemExit('Current public contact email missing from homepage')
-          legacy_emails = ('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com')
+          if 'contact.dominionfortress@gmail.com' not in home:
+              raise SystemExit('Verified public contact email missing from homepage')
+          legacy_emails = ('contact@dominionfortress.com', 'www.bilalanwar01@gmail.com')
           for p in sorted(Path('.').rglob('*.html')):
               if p.name == '404.html' or '.git' in p.parts:
                   continue
