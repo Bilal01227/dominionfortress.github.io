@@ -54,7 +54,7 @@ const missingLlmsRoutes = [...new Set(llmsRoutes.filter(route => !siteRoutes.has
 if (missingLlmsRoutes.length) throw new Error('Broken routes in llms.txt: ' + missingLlmsRoutes.join(', '));
 if (!files.includes('.well-known/security.txt')) throw new Error('security.txt is missing.');
 const securityTxt = fs.readFileSync(path.join(root, '.well-known/security.txt'), 'utf8');
-if (!securityTxt.includes('mailto:www.bilalanwar01@gmail.com') || !securityTxt.includes('https://dominion-fortress.com/security-testing-policy/')) {
+if (!securityTxt.includes('mailto:contact.dominionfortress@gmail.com') || !securityTxt.includes('https://dominion-fortress.com/security-testing-policy/')) {
   throw new Error('security.txt contact or policy URL is incorrect.');
 }
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'site.webmanifest'), 'utf8'));
