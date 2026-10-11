@@ -43,7 +43,7 @@ const pagesMissingRuntime = htmlFiles.filter(file => {
 });
 if (pagesMissingRuntime.length) throw new Error('Pages missing shared runtime: ' + pagesMissingRuntime.join(', '));
 const sourceFiles = files.filter(file => /\.(html|js|txt|xml)$/i.test(file));
-const legacyEmails = ['contact@dominionfortress.com', 'www.bilalanwar01@gmail.com'];
+const legacyEmails = ['contact@dominionfortress.com', 'contact.dominionfortress@gmail.com'];
 const oldEmailFiles = sourceFiles.filter(file => { const content = fs.readFileSync(path.join(root, file), 'utf8'); return legacyEmails.some(email => content.includes(email)); });
 if (oldEmailFiles.length) throw new Error('Old contact email found in: ' + oldEmailFiles.join(', '));
 const llms = fs.readFileSync(path.join(root, 'llms.txt'), 'utf8');
@@ -64,7 +64,7 @@ for (const file of htmlFiles) {
   if (!html.includes('rel="icon"') || !html.includes('rel="manifest"')) throw new Error('Favicon/manifest link missing from ' + file);
 }
 const sharedJs = fs.readFileSync(path.join(root, 'assets/df-experience.js'), 'utf8');
-if (!sharedJs.includes('www.bilalanwar01@gmail.com')) throw new Error('Verified contact email missing from shared experience script.');
+if (!sharedJs.includes('contact.dominionfortress@gmail.com')) throw new Error('Verified contact email missing from shared experience script.');
 
 let checkedInlineScripts = 0;
 for (const file of htmlFiles) {
