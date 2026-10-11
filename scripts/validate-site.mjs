@@ -57,6 +57,12 @@ const securityTxt = fs.readFileSync(path.join(root, '.well-known/security.txt'),
 if (!securityTxt.includes('mailto:www.bilalanwar01@gmail.com') || !securityTxt.includes('https://dominion-fortress.com/security-testing-policy/')) {
   throw new Error('security.txt contact or policy URL is incorrect.');
 }
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'site.webmanifest'), 'utf8'));
+if (!manifest.icons?.some(icon => icon.src === '/Dominion%20Fortress%20Logo.jpg')) throw new Error('Favicon missing from web manifest.');
+for (const file of htmlFiles) {
+  const html = fs.readFileSync(path.join(root, file), 'utf8');
+  if (!html.includes('rel="icon"') || !html.includes('rel="manifest"')) throw new Error('Favicon/manifest link missing from ' + file);
+}
 const sharedJs = fs.readFileSync(path.join(root, 'assets/df-experience.js'), 'utf8');
 if (!sharedJs.includes('www.bilalanwar01@gmail.com')) throw new Error('Verified contact email missing from shared experience script.');
 
