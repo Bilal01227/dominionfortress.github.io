@@ -15,21 +15,29 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           old_tag = '<script src="/assets/sales-machine.js" defer></script>'
-          old_versioned_tag = '<script src="/assets/sales-machine.js?v=20261011" defer></script>'
-          old_versioned_tag2 = '<script src="/assets/sales-machine.js?v=20261012" defer></script>'
-          old_versioned_tag3 = '<script src="/assets/sales-machine.js?v=20261014" defer></script>'
+          old_versioned_tags = [
+              '<script src="/assets/sales-machine.js?v=20261011" defer></script>',
+              '<script src="/assets/sales-machine.js?v=20261012" defer></script>',
+              '<script src="/assets/sales-machine.js?v=20261013" defer></script>',
+              '<script src="/assets/sales-machine.js?v=20261014" defer></script>',
+          ]
           tag = '<script src="/assets/sales-machine.js?v=20261014" defer></script>'
-          for p in sorted(Path('.').rglob('*.html')):
+          for p in sorted(Path('.').rglob('*')):
+              if not p.is_file() or p.suffix.lower() not in ('.html', '.js', '.txt'):
+                  continue
               if p.name == '404.html' or '.git' in p.parts:
                   continue
               original = p.read_text(encoding='utf-8')
-              s = original.replace('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com').replace('www.bilalanwar01@gmail.com', 'contact.dominionfortress@gmail.com')
-              for version in ('20261010', '20261011', '20261012', '20261013'):
-                  s = s.replace(f'df-experience.css?v={version}', 'df-experience.css?v=20261014')
-                  s = s.replace(f'df-experience.js?v={version}', 'df-experience.js?v=20261014')
-              s = s.replace(old_tag, tag).replace(old_versioned_tag, tag).replace(old_versioned_tag2, tag).replace(old_versioned_tag3, tag)
-              if tag not in s:
-                  s = s.replace('</head>', f'    {tag}\n</head>', 1)
+              s = original.replace('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com')
+              s = s.replace('www.bilalanwar01@gmail.com', 'contact.dominionfortress@gmail.com')
+              if p.suffix.lower() == '.html':
+                  for version in ('20261010', '20261011', '20261012', '20261013'):
+                      s = s.replace(f'df-experience.css?v={version}', 'df-experience.css?v=20261014')
+                      s = s.replace(f'df-experience.js?v={version}', 'df-experience.js?v=20261014')
+                  for old in [old_tag, *old_versioned_tags]:
+                      s = s.replace(old, tag)
+                  if tag not in s:
+                      s = s.replace('</head>', f'    {tag}\n</head>', 1)
               if s != original:
                   p.write_text(s, encoding='utf-8')
           PY
@@ -66,7 +74,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A -- '*.html'
+          git add -A -- '*.html' '*.js' '*.txt'
           if git diff --cached --quiet; then
             echo 'Site pages are already synchronized.'
             exit 0
