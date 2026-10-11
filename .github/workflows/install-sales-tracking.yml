@@ -31,6 +31,12 @@ jobs:
               s = original.replace('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com')
               s = s.replace('www.bilalanwar01@gmail.com', 'contact.dominionfortress@gmail.com')
               if p.suffix.lower() == '.html':
+                  icon_tag = '<link rel="icon" href="/Dominion%20Fortress%20Logo.jpg" type="image/jpeg">'
+                  manifest_tag = '<link rel="manifest" href="/site.webmanifest">'
+                  if 'rel="icon"' not in s:
+                      s = s.replace('</head>', f'    {icon_tag}\\n    {manifest_tag}\\n</head>', 1)
+                  elif 'rel="manifest"' not in s:
+                      s = s.replace('</head>', f'    {manifest_tag}\\n</head>', 1)
                   for version in ('20261010', '20261011', '20261012', '20261013'):
                       s = s.replace(f'df-experience.css?v={version}', 'df-experience.css?v=20261014')
                       s = s.replace(f'df-experience.js?v={version}', 'df-experience.js?v=20261014')
@@ -56,6 +62,8 @@ jobs:
               ]
               if any(item not in s for item in required):
                   raise SystemExit(f'Shared runtime version missing in {p}')
+              if 'rel="icon"' not in s or 'rel="manifest"' not in s:
+                  raise SystemExit(f'Favicon or web manifest link missing in {p}')
           home = Path('index.html').read_text(encoding='utf-8')
           if 'contact.dominionfortress@gmail.com' not in home:
               raise SystemExit('Verified public contact email missing from homepage')
