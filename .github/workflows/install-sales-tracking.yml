@@ -22,7 +22,7 @@ jobs:
               if p.name == '404.html' or '.git' in p.parts:
                   continue
               original = p.read_text(encoding='utf-8')
-              s = original.replace('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com')
+              s = original.replace('contact@dominionfortress.com', 'www.bilalanwar01@gmail.com').replace('contact.dominionfortress@gmail.com', 'www.bilalanwar01@gmail.com')
               s = s.replace('df-experience.css?v=20261010', 'df-experience.css?v=20261012')
               s = s.replace('df-experience.css?v=20261011', 'df-experience.css?v=20261013')
               s = s.replace('df-experience.css?v=20261012', 'df-experience.css?v=20261013')
