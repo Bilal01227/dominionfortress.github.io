@@ -47,15 +47,15 @@ jobs:
           fetch_retry "$base/sitemap.xml" /tmp/sitemap.xml
           fetch_retry "$base/robots.txt" /tmp/robots.txt
           fetch_retry "$base/.well-known/security.txt" /tmp/security.txt
-          grep -q 'contact.dominionfortress@gmail.com' /tmp/home.html
-          grep -q 'contact.dominionfortress@gmail.com' /tmp/get-started.html
-          ! grep -q 'contact@dominionfortress.com' /tmp/home.html /tmp/get-started.html /tmp/privacy.html /tmp/security-policy.html /tmp/sample-report.html
+          grep -q 'www.bilalanwar01@gmail.com' /tmp/home.html
+          grep -q 'www.bilalanwar01@gmail.com' /tmp/get-started.html
+          ! grep -q 'www.bilalanwar01@gmail.com' /tmp/home.html /tmp/get-started.html /tmp/privacy.html /tmp/security-policy.html /tmp/sample-report.html
           grep -q 'privacy_acknowledged' /tmp/get-started.html
           grep -q 'Privacy Notice' /tmp/privacy.html
           grep -q 'Authorization is required' /tmp/security-policy.html
           grep -q 'Illustrative sample only' /tmp/sample-report.html
           grep -q 'https://dominion-fortress.com/sitemap.xml' /tmp/robots.txt
-          grep -q 'mailto:contact.dominionfortress@gmail.com' /tmp/security.txt
+          grep -q 'mailto:www.bilalanwar01@gmail.com' /tmp/security.txt
           grep -q 'https://dominion-fortress.com/security-testing-policy/' /tmp/security.txt
           public_key='sb_publishable_d1GZOixUAu5t_HwesfUxVA_7epWwvMV'
           functions_base='https://qowjbytxepdkmatvidcj.supabase.co/functions/v1'
