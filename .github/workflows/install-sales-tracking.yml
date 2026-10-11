@@ -51,6 +51,17 @@ jobs:
               if any(item not in s for item in required):
                   raise SystemExit(f'Shared runtime version missing in {p}')
           PY
+          home = Path('index.html').read_text(encoding='utf-8')
+          if 'www.bilalanwar01@gmail.com' not in home:
+              raise SystemExit('Current public contact email missing from homepage')
+          legacy_emails = ('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com')
+          for p in sorted(Path('.').rglob('*.html')):
+              if p.name == '404.html' or '.git' in p.parts:
+                  continue
+              content = p.read_text(encoding='utf-8')
+              if any(email in content for email in legacy_emails):
+                  raise SystemExit(f'Legacy contact email found in {p}')
+          PY
           node --check assets/df-experience.js
           node --check assets/sales-machine.js
           node scripts/validate-site.mjs
