@@ -50,7 +50,6 @@ jobs:
               ]
               if any(item not in s for item in required):
                   raise SystemExit(f'Shared runtime version missing in {p}')
-          PY
           home = Path('index.html').read_text(encoding='utf-8')
           if 'www.bilalanwar01@gmail.com' not in home:
               raise SystemExit('Current public contact email missing from homepage')
