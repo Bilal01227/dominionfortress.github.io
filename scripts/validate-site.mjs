@@ -43,7 +43,7 @@ const pagesMissingRuntime = htmlFiles.filter(file => {
 });
 if (pagesMissingRuntime.length) throw new Error('Pages missing shared runtime: ' + pagesMissingRuntime.join(', '));
 const sourceFiles = files.filter(file => /\.(html|js|txt|xml)$/i.test(file));
-const oldEmailFiles = sourceFiles.filter(file => fs.readFileSync(path.join(root, file), 'utf8').includes('contact@dominionfortress.com'));
+const oldEmailFiles = sourceFiles.filter(file => fs.readFileSync(path.join(root, file), 'utf8').includes('www.bilalanwar01@gmail.com'));
 if (oldEmailFiles.length) throw new Error('Old contact email found in: ' + oldEmailFiles.join(', '));
 const llms = fs.readFileSync(path.join(root, 'llms.txt'), 'utf8');
 const siteRoutes = new Set([...expectedRoutes]);
@@ -53,11 +53,11 @@ const missingLlmsRoutes = [...new Set(llmsRoutes.filter(route => !siteRoutes.has
 if (missingLlmsRoutes.length) throw new Error('Broken routes in llms.txt: ' + missingLlmsRoutes.join(', '));
 if (!files.includes('.well-known/security.txt')) throw new Error('security.txt is missing.');
 const securityTxt = fs.readFileSync(path.join(root, '.well-known/security.txt'), 'utf8');
-if (!securityTxt.includes('mailto:contact.dominionfortress@gmail.com') || !securityTxt.includes('https://dominion-fortress.com/security-testing-policy/')) {
+if (!securityTxt.includes('mailto:www.bilalanwar01@gmail.com') || !securityTxt.includes('https://dominion-fortress.com/security-testing-policy/')) {
   throw new Error('security.txt contact or policy URL is incorrect.');
 }
 const sharedJs = fs.readFileSync(path.join(root, 'assets/df-experience.js'), 'utf8');
-if (!sharedJs.includes('contact.dominionfortress@gmail.com')) throw new Error('Verified contact email missing from shared experience script.');
+if (!sharedJs.includes('www.bilalanwar01@gmail.com')) throw new Error('Verified contact email missing from shared experience script.');
 
 let checkedInlineScripts = 0;
 for (const file of htmlFiles) {
