@@ -34,9 +34,9 @@ jobs:
                   icon_tag = '<link rel="icon" href="/Dominion%20Fortress%20Logo.jpg" type="image/jpeg">'
                   manifest_tag = '<link rel="manifest" href="/site.webmanifest">'
                   if 'rel="icon"' not in s:
-                      s = s.replace('</head>', f'    {icon_tag}\\n    {manifest_tag}\\n</head>', 1)
+                      s = s.replace('</head>', f'    {icon_tag}\\n    {manifest_tag}\n</head>', 1)
                   elif 'rel="manifest"' not in s:
-                      s = s.replace('</head>', f'    {manifest_tag}\\n</head>', 1)
+                      s = s.replace('</head>', f'    {manifest_tag}\n</head>', 1)
                   for version in ('20261010', '20261011', '20261012', '20261013'):
                       s = s.replace(f'df-experience.css?v={version}', 'df-experience.css?v=20261014')
                       s = s.replace(f'df-experience.js?v={version}', 'df-experience.js?v=20261014')
