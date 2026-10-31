@@ -10,22 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Update shared asset versions and install opt-in analytics on all pages
+      - name: Normalize shared assets and deduplicate page runtime
         run: |
           python - <<'PY'
           from pathlib import Path
-          old_tag = '<script src="/assets/sales-machine.js" defer></script>'
-          old_versioned_tags = [
-              '<script src="/assets/sales-machine.js?v=20261011" defer></script>',
-              '<script src="/assets/sales-machine.js?v=20261012" defer></script>',
-              '<script src="/assets/sales-machine.js?v=20261013" defer></script>',
-              '<script src="/assets/sales-machine.js?v=20261014" defer></script>',
-          ]
-          tag = '<script src="/assets/sales-machine.js?v=20261014" defer></script>'
+          import re
+
+          tag = '<script src="/assets/sales-machine.js?v=20261101" defer></script>'
+          script_pattern = re.compile(r'\s*<script\s+src="/assets/sales-machine\.js(?:\?v=[^"]*)?"\s+defer>\s*</script>')
           for p in sorted(Path('.').rglob('*')):
               if not p.is_file() or p.suffix.lower() not in ('.html', '.js', '.txt'):
                   continue
-              if p.name == '404.html' or '.git' in p.parts:
+              if p.name == '404.html' or p.name.lower().startswith('google') or '.git' in p.parts:
                   continue
               original = p.read_text(encoding='utf-8')
               s = original.replace('contact@dominionfortress.com', 'contact.dominionfortress@gmail.com')
@@ -34,16 +30,15 @@ jobs:
                   icon_tag = '<link rel="icon" href="/Dominion%20Fortress%20Logo.jpg" type="image/jpeg">'
                   manifest_tag = '<link rel="manifest" href="/site.webmanifest">'
                   if 'rel="icon"' not in s:
-                      s = s.replace('</head>', f'    {icon_tag}\\n    {manifest_tag}\n</head>', 1)
+                      s = s.replace('</head>', f'    {icon_tag}\n    {manifest_tag}\n</head>', 1)
                   elif 'rel="manifest"' not in s:
                       s = s.replace('</head>', f'    {manifest_tag}\n</head>', 1)
-                  for version in ('20261010', '20261011', '20261012', '20261013'):
-                      s = s.replace(f'df-experience.css?v={version}', 'df-experience.css?v=20261014')
-                      s = s.replace(f'df-experience.js?v={version}', 'df-experience.js?v=20261014')
-                  for old in [old_tag, *old_versioned_tags]:
-                      s = s.replace(old, tag)
-                  if tag not in s:
-                      s = s.replace('</head>', f'    {tag}\n</head>', 1)
+                  for asset in ('df-experience.css', 'df-experience.js'):
+                      s = re.sub(r'(/assets/' + re.escape(asset) + r')(?:\?v=[^"\\s]*)?', r'\1?v=20261101', s)
+                  s = s.replace('type="image/jpeg">\\n', 'type="image/jpeg">\n')
+                  s = s.replace('href="/site.webmanifest">\\n', 'href="/site.webmanifest">\n')
+                  s = script_pattern.sub('', s)
+                  s = s.replace('</head>', f'    {tag}\n</head>', 1)
               if s != original:
                   p.write_text(s, encoding='utf-8')
           PY
@@ -51,25 +46,31 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
+          tag = '/assets/sales-machine.js?v=20261101'
           for p in sorted(Path('.').rglob('*.html')):
-              if p.name == '404.html' or '.git' in p.parts:
+              if p.name == '404.html' or p.name.lower().startswith('google') or '.git' in p.parts:
                   continue
               s = p.read_text(encoding='utf-8')
               required = [
-                  '/assets/sales-machine.js?v=20261014',
-                  '/assets/df-experience.css?v=20261014',
-                  '/assets/df-experience.js?v=20261014',
+                  tag,
+                  '/assets/df-experience.css?v=20261101',
+                  '/assets/df-experience.js?v=20261101',
               ]
               if any(item not in s for item in required):
                   raise SystemExit(f'Shared runtime version missing in {p}')
+              if s.count(tag) != 1:
+                  raise SystemExit(f'Duplicate sales runtime script in {p}')
               if 'rel="icon"' not in s or 'rel="manifest"' not in s:
                   raise SystemExit(f'Favicon or web manifest link missing in {p}')
+              if re.search(r'\\\\n\\s*<link', s):
+                  raise SystemExit(f'Escaped newline remains in HTML head: {p}')
           home = Path('index.html').read_text(encoding='utf-8')
           if 'contact.dominionfortress@gmail.com' not in home:
               raise SystemExit('Verified public contact email missing from homepage')
           legacy_emails = ('contact@dominionfortress.com', 'www.bilalanwar01@gmail.com')
           for p in sorted(Path('.').rglob('*.html')):
-              if p.name == '404.html' or '.git' in p.parts:
+              if p.name == '404.html' or p.name.lower().startswith('google') or '.git' in p.parts:
                   continue
               content = p.read_text(encoding='utf-8')
               if any(email in content for email in legacy_emails):
@@ -87,6 +88,6 @@ jobs:
             echo 'Site pages are already synchronized.'
             exit 0
           fi
-          git commit -m 'Synchronize site runtime across HTML pages'
+          git commit -m 'Synchronize refined site runtime across HTML pages'
           git pull --rebase origin main
           git push

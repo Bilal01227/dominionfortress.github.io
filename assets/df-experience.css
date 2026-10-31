@@ -138,3 +138,34 @@ body.df-content-page .note,body.df-content-page main article{background:#0c1421;
 body.df-content-page .btn{display:inline-block;background:#2563eb;color:#fff!important;padding:11px 14px;border-radius:8px;text-decoration:none;font-weight:700;margin:8px 8px 8px 0}
 body.df-content-page .btn.ghost{background:#111b2b;border:1px solid #566b87}
 body.df-content-page code{color:#b9f4ff;background:#101a29;padding:2px 5px;border-radius:4px}
+
+
+/* Site-wide refinement: consistent scale, responsive containment and calmer interaction. */
+html,body{max-width:100%;overflow-x:clip}
+img,svg,video,canvas,iframe{max-width:100%}
+img{height:auto}
+body{font-size:16px;line-height:1.68}
+body main{width:min(1120px,calc(100% - 44px));margin-inline:auto}
+body main>*{min-width:0}
+body main h1{max-width:19ch;font-size:clamp(2.1rem,4.25vw,3.75rem);line-height:1.08;letter-spacing:-.045em;text-wrap:balance}
+body main h2{font-size:clamp(1.45rem,2.45vw,2.1rem);line-height:1.2;letter-spacing:-.035em}
+body main h3{font-size:clamp(1.05rem,1.45vw,1.3rem);line-height:1.3}
+body main p,body main li{line-height:1.72}
+body main .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+body main .card,body main article{min-width:0;overflow-wrap:anywhere}
+body main .card:hover,body main article:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.15)}
+body main input,body main select,body main textarea,body main button{max-width:100%;min-width:0}
+body main table{display:block;max-width:100%;overflow-x:auto}
+body main pre,body main code{max-width:100%;overflow-wrap:anywhere}
+@media(max-width:760px){
+  body main{width:calc(100% - 34px);padding-inline:0}
+  body main h1{font-size:clamp(2rem,8.5vw,3rem);max-width:20ch}
+  body main h2{font-size:clamp(1.4rem,6vw,1.9rem)}
+  body main .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:13px}
+}
+@media(max-width:480px){
+  body main{width:calc(100% - 30px)}
+  body main h1{font-size:clamp(1.9rem,9.5vw,2.55rem)}
+  body main .grid{grid-template-columns:1fr}
+  body main .card,body main article{padding:17px}
+}

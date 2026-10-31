@@ -1,3 +1,6 @@
+(function(){
+if(window.__DF_SALES_MACHINE_BOOTED)return;
+window.__DF_SALES_MACHINE_BOOTED=true;
 /* Shared assets and privacy-respecting, opt-in first-party analytics. */
 (function(){
   if(!document.querySelector('link[href^="/assets/df-experience.css"]')){
@@ -100,4 +103,5 @@
     else if(event.detail==='rejected'){window.DFTrack=noop;}
   });
   if(consent()==='accepted')startTracking();
+})();
 })();
