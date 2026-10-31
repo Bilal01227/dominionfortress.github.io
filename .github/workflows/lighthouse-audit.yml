@@ -25,16 +25,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -s sitemap.xml
-          urls="$(grep -oP '(?<=<loc>).*?(?=</loc>)' sitemap.xml)"
-          count="$(printf '%s\n' "$urls" | sed '/^$/d' | wc -l)"
-          test "$count" -gt 0
-          {
-            echo 'urls<<SITEMAP_URLS'
-            printf '%s\n' "$urls"
-            echo 'SITEMAP_URLS'
-          } >> "$GITHUB_OUTPUT"
-          echo "Auditing $count sitemap URLs."
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const xml = fs.readFileSync('sitemap.xml', 'utf8');
+          const urls = [...xml.matchAll(/<loc>([^<]+)<\\/loc>/g)].map(match => match[1].trim());
+          if (!urls.length) throw new Error('No URLs found in sitemap.xml');
+          if (new Set(urls).size !== urls.length) throw new Error('Duplicate URLs found in sitemap.xml');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'urls<<SITEMAP_URLS\\n' + urls.join('\\n') + '\\nSITEMAP_URLS\\n');
+          console.log('Auditing ' + urls.length + ' sitemap URLs.');
+          NODE
       - name: Audit every published sitemap URL
         uses: treosh/lighthouse-ci-action@v12
         with:
