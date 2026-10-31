@@ -28,10 +28,10 @@ jobs:
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           const xml = fs.readFileSync('sitemap.xml', 'utf8');
-          const urls = [...xml.matchAll(/<loc>([^<]+)<\\/loc>/g)].map(match => match[1].trim());
+          const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1].trim());
           if (!urls.length) throw new Error('No URLs found in sitemap.xml');
           if (new Set(urls).size !== urls.length) throw new Error('Duplicate URLs found in sitemap.xml');
-          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'urls<<SITEMAP_URLS\\n' + urls.join('\\n') + '\\nSITEMAP_URLS\\n');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'urls<<SITEMAP_URLS\n' + urls.join('\n') + '\nSITEMAP_URLS\n');
           console.log('Auditing ' + urls.length + ' sitemap URLs.');
           NODE
       - name: Audit every published sitemap URL
