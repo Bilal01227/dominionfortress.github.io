@@ -27,11 +27,11 @@ jobs:
           set -euo pipefail
           test -s sitemap.xml
           urls="$(grep -oP '(?<=<loc>).*?(?=</loc>)' sitemap.xml)"
-          count="$(printf '%s\\n' "$urls" | sed '/^$/d' | wc -l)"
+          count="$(printf '%s\n' "$urls" | sed '/^$/d' | wc -l)"
           test "$count" -gt 0
           {
             echo 'urls<<SITEMAP_URLS'
-            printf '%s\\n' "$urls"
+            printf '%s\n' "$urls"
             echo 'SITEMAP_URLS'
           } >> "$GITHUB_OUTPUT"
           echo "Auditing $count sitemap URLs."
