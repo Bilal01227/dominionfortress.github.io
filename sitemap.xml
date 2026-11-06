@@ -66,4 +66,5 @@
   <url><loc>https://dominion-fortress.com/tools/security-headers-checker/</loc></url>
   <url><loc>https://dominion-fortress.com/tools/seo-audit/</loc></url>
   <url><loc>https://dominion-fortress.com/tools/website-audit/</loc></url>
+  <url><loc>https://dominion-fortress.com/capital-partners/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

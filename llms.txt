@@ -7,7 +7,6 @@
 - AI: AI agent development, workflow automation, LLM/RAG development and AI security/governance.
 - Software & IT: web development, SaaS, APIs/backend, software modernization, cloud infrastructure, DevOps and networking.
 - Data & growth: data engineering, business intelligence, machine learning, technical SEO, AI search visibility and content strategy.
-- Finance & consulting: financial reporting, financial modeling, FP&A and technology/automation consulting.
 
 ## Website
 - Home: https://dominion-fortress.com/
@@ -24,7 +23,6 @@
 - Data & Analytics: https://dominion-fortress.com/data/
 - Digital Growth: https://dominion-fortress.com/growth/
 - Technology Consulting: https://dominion-fortress.com/consulting/
-- Finance & Accounting: https://dominion-fortress.com/finance/
 
 ## High-intent solution pages
 - Cybersecurity Audit: https://dominion-fortress.com/solutions/security-audit/
