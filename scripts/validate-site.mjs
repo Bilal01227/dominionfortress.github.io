@@ -17,7 +17,27 @@ walk(root);
 const isVerificationPage = file => /^google[0-9a-f]+\.html$/i.test(path.basename(file));
 const htmlFiles = files.filter(file => file.endsWith('.html') && file !== '404.html' && !isVerificationPage(file));
 const routeFor = file => file === 'index.html' ? '/' : '/' + file.slice(0, -'index.html'.length);
-const expectedRoutes = new Set(htmlFiles.map(routeFor));
+// Only self-canonical, indexable pages belong in the XML sitemap. Keep alternate
+// canonical URLs and noindex pages live, but do not advertise them for indexing.
+const expectedRoutes = new Set();
+const alternateCanonicalRoutes = [];
+const noindexRoutes = [];
+for (const file of htmlFiles) {
+  const html = fs.readFileSync(path.join(root, file), 'utf8');
+  const route = routeFor(file);
+  const robots = html.match(/<meta\\b[^>]*name=["']robots["'][^>]*content=["']([^"']+)["']/i)?.[1] || '';
+  if (/\\bnoindex\\b/i.test(robots)) {
+    noindexRoutes.push(route);
+    continue;
+  }
+  const canonical = html.match(/<link\\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1];
+  if (!canonical) throw new Error('Indexable page is missing a canonical URL: ' + file);
+  const canonicalUrl = new URL(canonical);
+  if (canonicalUrl.origin !== 'https://dominion-fortress.com') throw new Error('Unexpected canonical host in ' + file + ': ' + canonical);
+  const canonicalRoute = canonicalUrl.pathname.endsWith('/') ? canonicalUrl.pathname : canonicalUrl.pathname + '/';
+  if (canonicalRoute === route) expectedRoutes.add(route);
+  else alternateCanonicalRoutes.push({ route, canonicalRoute });
+}
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
 const normalizedSitemap = sitemapUrls.map(url => {
@@ -106,6 +126,6 @@ if (brokenLinks.length) {
 }
 
 console.log('Site quality checks passed.');
-console.log('HTML routes in sitemap: ' + sitemapUrls.length);
+console.log('Indexable self-canonical HTML routes in sitemap: ' + sitemapUrls.length);\nconsole.log('Noindex routes excluded: ' + noindexRoutes.length);\nconsole.log('Alternate canonical routes excluded: ' + alternateCanonicalRoutes.length);
 console.log('Inline scripts syntax-checked: ' + checkedInlineScripts);
 console.log('Internal links checked: no broken root-relative links.');
