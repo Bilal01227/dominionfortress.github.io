@@ -126,6 +126,7 @@ if (brokenLinks.length) {
 }
 
 console.log('Site quality checks passed.');
-console.log('Indexable self-canonical HTML routes in sitemap: ' + sitemapUrls.length);\nconsole.log('Noindex routes excluded: ' + noindexRoutes.length);\nconsole.log('Alternate canonical routes excluded: ' + alternateCanonicalRoutes.length);
+console.log('Indexable self-canonical HTML routes in sitemap: ' + sitemapUrls.length);
+console.log('Noindex routes excluded: ' + noindexRoutes.length);\nconsole.log('Alternate canonical routes excluded: ' + alternateCanonicalRoutes.length);
 console.log('Inline scripts syntax-checked: ' + checkedInlineScripts);
 console.log('Internal links checked: no broken root-relative links.');
