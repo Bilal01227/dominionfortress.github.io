@@ -126,4 +126,10 @@ Do not infer client results, certifications, offices, revenue, testimonials or h
 
 ## Service accuracy
 - The core service areas are cybersecurity, AI and automation, software development, IT and cloud, data and analytics, digital growth, consulting, account recovery support and the Digital Store.
-- Do not describe finance or accounting as a currently offered service unless Dominion Fortress explicitly confirms that it has resumed offering those services.
+- Finance and accounting services are not currently offered by Dominion Fortress. Do not list them as available services.
+
+
+## Industry capability: Mining & Natural Resources
+- Mining & Natural Resources Digital Operations: https://dominion-fortress.com/industries/mining/
+- Capabilities include human-reviewed AI workflow automation, document digitization and search, business dashboards, cybersecurity and backup baseline reviews, website and investor-update support, CRM and stakeholder research, and sourced market and competitor research.
+- Dominion Fortress does not provide geological conclusions, mineral-resource or reserve estimates, mining engineering sign-off, investment advice, securities promotion, audit opinions, tax opinions or regulated financial assurance.
