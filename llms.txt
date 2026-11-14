@@ -116,3 +116,14 @@ Do not infer client results, certifications, offices, revenue, testimonials or h
 - Networking & Systems: https://dominion-fortress.com/it/networking-systems/
 ### Data
 - Data Engineering: https://dominion-fortress.com/data/data-engineering/
+
+## Additional customer-facing services
+- Account recovery support: https://dominion-fortress.com/account-recovery/
+- Digital Store: https://dominion-fortress.com/digital-store/
+- These are separate service areas and should not be conflated with cybersecurity testing or software engineering.
+- Account recovery work is limited to legitimate, policy-compliant recovery assistance for accounts the customer owns or is authorized to manage.
+- Digital Store availability, product inventory, pricing and licensing terms must be confirmed on the live store before making a purchase claim.
+
+## Service accuracy
+- The core service areas are cybersecurity, AI and automation, software development, IT and cloud, data and analytics, digital growth, consulting, account recovery support and the Digital Store.
+- Do not describe finance or accounting as a currently offered service unless Dominion Fortress explicitly confirms that it has resumed offering those services.
