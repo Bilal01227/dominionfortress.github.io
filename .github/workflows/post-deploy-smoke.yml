@@ -1,5 +1,15 @@
 name: Post-deployment smoke tests
 on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - '.well-known/security.txt'
+      - 'assets/**'
+      - '.github/workflows/post-deploy-smoke.yml'
+  workflow_dispatch:
   workflow_run:
     workflows: ["pages build and deployment"]
     types: [completed]
@@ -7,7 +17,7 @@ permissions:
   contents: read
 jobs:
   smoke-test:
-    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Verify deployed public routes and contact details
@@ -18,23 +28,45 @@ jobs:
           fetch_retry() {
             local url="$1"
             local output="$2"
-            for attempt in 1 2 3 4 5; do
+            for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
               if curl --fail --silent --show-error --location "$url" -o "$output"; then
                 return 0
               fi
-              sleep 8
+              sleep 10
             done
             echo "Could not fetch $url" >&2
             return 1
           }
           fetch_retry "$base/" /tmp/home.html
+          fetch_retry "$base/digital-store/" /tmp/digital-store.html
+          fetch_retry "$base/industries/mining/" /tmp/mining.html
           fetch_retry "$base/get-started/" /tmp/get-started.html
           fetch_retry "$base/privacy/" /tmp/privacy.html
           fetch_retry "$base/security-testing-policy/" /tmp/security-policy.html
           fetch_retry "$base/sample-security-assessment/" /tmp/sample-report.html
+          fetch_retry "$base/scan/" /tmp/scan.html
           fetch_retry "$base/sitemap.xml" /tmp/sitemap.xml
           fetch_retry "$base/robots.txt" /tmp/robots.txt
           fetch_retry "$base/.well-known/security.txt" /tmp/security.txt
+          fetch_retry "$base/assets/df-experience.css?v=20261101" /tmp/df-experience.css
+          fetch_retry "$base/assets/df-experience.js?v=20261101" /tmp/df-experience.js
+          fetch_retry "$base/assets/sales-machine.js?v=20261101" /tmp/sales-machine.js
+          fetch_retry "$base/Dominion%20Fortress%20Logo.jpg" /tmp/df-logo.jpg
+          fetch_retry "$base/site.webmanifest" /tmp/site.webmanifest
+          test -s /tmp/df-experience.css
+          test -s /tmp/df-experience.js
+          test -s /tmp/sales-machine.js
+          test -s /tmp/df-logo.jpg
+          grep -q 'href="/digital-store/"' /tmp/home.html
+          grep -q 'Digital Store' /tmp/home.html
+          grep -q 'Mining & Natural Resources Digital Operations' /tmp/mining.html
+          grep -q 'Digital operations that help mining teams work with clearer information' /tmp/mining.html
+          grep -q '44 tools listed' /tmp/digital-store.html
+          grep -q 'Official price' /tmp/digital-store.html
+          grep -q 'Domain Security Scanner' /tmp/scan.html
+          grep -q 'https://dominion-fortress.com/industries/mining/' /tmp/sitemap.xml
+          ! grep -q 'https://dominion-fortress.com/scan/' /tmp/sitemap.xml
+          grep -q 'Only self-canonical' /tmp/sitemap.xml
           grep -q 'contact.dominionfortress@gmail.com' /tmp/home.html
           grep -q 'contact.dominionfortress@gmail.com' /tmp/get-started.html
           ! grep -q 'www.bilalanwar01@gmail.com' /tmp/home.html /tmp/get-started.html /tmp/privacy.html /tmp/security-policy.html /tmp/sample-report.html
