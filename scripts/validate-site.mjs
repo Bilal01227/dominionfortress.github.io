@@ -25,12 +25,12 @@ const noindexRoutes = [];
 for (const file of htmlFiles) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   const route = routeFor(file);
-  const robots = html.match(/<meta\\b[^>]*name=["']robots["'][^>]*content=["']([^"']+)["']/i)?.[1] || '';
-  if (/\\bnoindex\\b/i.test(robots)) {
+  const robots = html.match(/<meta\b[^>]*name=["']robots["'][^>]*content=["']([^"']+)["']/i)?.[1] || '';
+  if (/\bnoindex\b/i.test(robots)) {
     noindexRoutes.push(route);
     continue;
   }
-  const canonical = html.match(/<link\\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1];
+  const canonical = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1];
   if (!canonical) throw new Error('Indexable page is missing a canonical URL: ' + file);
   const canonicalUrl = new URL(canonical);
   if (canonicalUrl.origin !== 'https://dominion-fortress.com') throw new Error('Unexpected canonical host in ' + file + ': ' + canonical);
