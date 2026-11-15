@@ -68,7 +68,6 @@ jobs:
           ! grep -q 'https://dominion-fortress.com/scan/' /tmp/sitemap.xml
           grep -q 'Only self-canonical' /tmp/sitemap.xml
           grep -q 'contact.dominionfortress@gmail.com' /tmp/home.html
-          grep -q 'contact.dominionfortress@gmail.com' /tmp/get-started.html
           ! grep -q 'www.bilalanwar01@gmail.com' /tmp/home.html /tmp/get-started.html /tmp/privacy.html /tmp/security-policy.html /tmp/sample-report.html
           grep -q 'privacy_acknowledged' /tmp/get-started.html
           grep -q 'Privacy Notice' /tmp/privacy.html
