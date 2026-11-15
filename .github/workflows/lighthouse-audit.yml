@@ -9,6 +9,7 @@ on:
       - 'llms.txt'
       - 'assets/**'
       - '.github/workflows/lighthouse-audit.yml'
+      - '.github/workflows/post-deploy-smoke.yml'
   schedule:
     - cron: '23 3 * * 1'
   workflow_dispatch:

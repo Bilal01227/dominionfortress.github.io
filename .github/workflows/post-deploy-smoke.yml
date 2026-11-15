@@ -9,6 +9,7 @@ on:
       - '.well-known/security.txt'
       - 'assets/**'
       - '.github/workflows/post-deploy-smoke.yml'
+      - '.github/workflows/lighthouse-audit.yml'
   workflow_dispatch:
   workflow_run:
     workflows: ["pages build and deployment"]
