@@ -95,7 +95,7 @@ main .card:hover:before,main article:hover:before{opacity:1}
 .df-footer-column h2{margin:0 0 5px;color:#f1f6ff;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .df-footer-column a{color:#aab8cc!important;text-decoration:none!important;font-size:12px;line-height:1.55;overflow-wrap:anywhere}
 .df-footer-column a:hover,.df-footer-top:hover{color:#67e8f9!important}
-.df-footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;color:#77879d;font-size:11px;line-height:1.6}
+.df-footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;color:#77879d;font-size:12px;line-height:1.6}
 .df-footer-top{color:#aab8cc!important;text-decoration:none!important;white-space:nowrap}
 @media(max-width:760px){.df-site-footer{margin-top:70px!important;padding-inline:18px!important}.df-footer-grid{grid-template-columns:1fr 1fr;gap:28px 20px;padding:32px 0 26px}.df-footer-about{grid-column:1/-1}.df-footer-bottom{align-items:flex-start;flex-direction:column;gap:7px}}
 @media(max-width:420px){.df-footer-grid{grid-template-columns:1fr}.df-footer-about{grid-column:auto}}
