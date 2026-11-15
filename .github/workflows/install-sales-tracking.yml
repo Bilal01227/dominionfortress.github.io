@@ -63,7 +63,7 @@ jobs:
                   raise SystemExit(f'Duplicate sales runtime script in {p}')
               if 'rel="icon"' not in s or 'rel="manifest"' not in s:
                   raise SystemExit(f'Favicon or web manifest link missing in {p}')
-              if re.search(r'\\\\n\\s*<link', s):
+              if re.search(r'\\n\s*<link', s):
                   raise SystemExit(f'Escaped newline remains in HTML head: {p}')
           home = Path('index.html').read_text(encoding='utf-8')
           if 'contact.dominionfortress@gmail.com' not in home:
