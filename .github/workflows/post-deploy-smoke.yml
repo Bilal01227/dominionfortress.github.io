@@ -23,7 +23,7 @@ jobs:
       - name: Verify deployed public routes and contact details
         shell: bash
         run: |
-          set -euo pipefail
+          set -euxo pipefail
           base='https://dominion-fortress.com'
           fetch_retry() {
             local url="$1"
@@ -84,13 +84,16 @@ jobs:
             -H 'Access-Control-Request-Method: POST' \
             -H 'Access-Control-Request-Headers: content-type,apikey' \
             "$functions_base/capture-sales-lead-v2")
+          echo "Supabase CORS preflight HTTP: $cors_status"
           test "$cors_status" = '204'
           lead_status=$(curl --silent --show-error --output /tmp/lead-api.json --write-out '%{http_code}' -X POST \
             -H 'Origin: https://dominion-fortress.com' -H 'Content-Type: application/json' -H "apikey: $public_key" \
             --data '{}' "$functions_base/capture-sales-lead-v2")
+          echo "Supabase lead validation HTTP: $lead_status"
           test "$lead_status" = '400'
           tracking_status=$(curl --silent --show-error --output /tmp/tracking-api.json --write-out '%{http_code}' -X POST \
             -H 'Origin: https://dominion-fortress.com' -H 'Content-Type: application/json' -H "apikey: $public_key" \
             --data '{}' "$functions_base/track-website-event")
+          echo "Supabase tracking validation HTTP: $tracking_status"
           test "$tracking_status" = '400'
           echo 'Deployed route, CORS, and API validation smoke tests passed.'
