@@ -169,3 +169,12 @@ body main pre,body main code{max-width:100%;overflow-wrap:anywhere}
   body main .grid{grid-template-columns:1fr}
   body main .card,body main article{padding:17px}
 }
+
+/* WCAG AA contrast corrections for interactive controls flagged by Lighthouse. */
+body.df-enhanced a.contact.wa{background-color:#117a45!important;color:#fff!important}
+body.df-enhanced .growth .btn:not(.alt){background-color:#2563eb!important;color:#fff!important}
+body.df-enhanced button#b,
+body.df-enhanced button#run,
+body.df-enhanced button#scanBtn{background-color:#0369a1!important;color:#fff!important}
+body.df-enhanced a.logo,
+body.df-enhanced a.logo:visited{color:#7dd3fc!important}
