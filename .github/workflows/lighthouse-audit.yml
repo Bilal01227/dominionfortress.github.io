@@ -95,6 +95,7 @@ jobs:
             '### Accessibility opportunities',
             ...uniqueRows.flatMap(r => r.accessibilityIssues.map(issue => `- ${r.url}: ${issue}`)),
           ];
-          console.log(lines.join('\\n'));
-          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\\n') + '\\n');
+          const summary = lines.join('\n');
+          console.log(summary);
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary + '\n');
           NODE
