@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://dominion-fortress.com/account-recovery/</loc></url>
+  <url><loc>https://dominion-fortress.com/account-recovery/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/about/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/ai/ai-agents/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/ai/ai-security/</loc></url>
@@ -32,8 +32,8 @@
 
 
 
-  <url><loc>https://dominion-fortress.com/get-started/</loc></url>
-  <url><loc>https://dominion-fortress.com/digital-store/</loc></url>
+  <url><loc>https://dominion-fortress.com/get-started/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://dominion-fortress.com/digital-store/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/growth/ai-search-visibility/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/growth/content-strategy/</loc></url>
   <url><loc>https://dominion-fortress.com/growth/</loc></url>
@@ -49,13 +49,13 @@
   <url><loc>https://dominion-fortress.com/privacy/</loc></url>
   <url><loc>https://dominion-fortress.com/sample-security-assessment/</loc></url>
   <url><loc>https://dominion-fortress.com/security-testing-policy/</loc></url>
-  <url><loc>https://dominion-fortress.com/tools/ai-search-readiness/</loc></url>
-  <url><loc>https://dominion-fortress.com/tools/domain-security-scanner/</loc></url>
-  <url><loc>https://dominion-fortress.com/tools/email-security-checker/</loc></url>
+  <url><loc>https://dominion-fortress.com/tools/ai-search-readiness/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://dominion-fortress.com/tools/domain-security-scanner/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://dominion-fortress.com/tools/email-security-checker/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/tools/</loc></url>
-  <url><loc>https://dominion-fortress.com/tools/security-headers-checker/</loc></url>
-  <url><loc>https://dominion-fortress.com/tools/seo-audit/</loc></url>
-  <url><loc>https://dominion-fortress.com/tools/website-audit/</loc></url>
+  <url><loc>https://dominion-fortress.com/tools/security-headers-checker/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://dominion-fortress.com/tools/seo-audit/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://dominion-fortress.com/tools/website-audit/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/capital-partners/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://dominion-fortress.com/industries/mining/</loc></url>
   <!-- Only self-canonical, indexable routes are listed; noindex redirects and alternate-canonical aliases stay live but are excluded. -->
