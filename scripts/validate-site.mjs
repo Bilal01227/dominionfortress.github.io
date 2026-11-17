@@ -86,15 +86,15 @@ for (const file of htmlFiles) {
 }
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const forbiddenHomepageClaims = [
-  /since\\s+2010/i,
+  /since\s+2010/i,
   /Sarah Johnson|Michael Chen|Emily Roberts/i,
-  /\\$297\\s*\\/\\s*month/i,
-  /finance\\s*(?:&|and)\\s*accounting/i,
+  /\$297\s*\/\s*month/i,
+  /finance\s*(?:&|and)\s*accounting/i,
 ];
 for (const pattern of forbiddenHomepageClaims) {
   if (pattern.test(homepage)) throw new Error('Unsupported or inactive homepage claim found: ' + pattern);
 }
-if (!/href=["']\\/digital-store\\/["']/i.test(homepage) || !/digital software store/i.test(homepage)) {
+if (!/href=["']\/digital-store\/["']/i.test(homepage) || !/digital software store/i.test(homepage)) {
   throw new Error('Homepage must retain the accurate Digital software store route.');
 }
 const intake = fs.readFileSync(path.join(root, 'get-started/index.html'), 'utf8');
