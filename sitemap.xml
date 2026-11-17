@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://dominion-fortress.com/account-recovery/</loc></url>
-  <url><loc>https://dominion-fortress.com/about/</loc></url>
+  <url><loc>https://dominion-fortress.com/about/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/ai/ai-agents/</loc></url>
   <url><loc>https://dominion-fortress.com/ai/ai-security/</loc></url>
   <url><loc>https://dominion-fortress.com/ai/</loc></url>
   <url><loc>https://dominion-fortress.com/ai/llm-rag/</loc></url>
   <url><loc>https://dominion-fortress.com/ai/workflow-automation/</loc></url>
-  <url><loc>https://dominion-fortress.com/case-studies/</loc></url>
-  <url><loc>https://dominion-fortress.com/client-experience/</loc></url>
+  <url><loc>https://dominion-fortress.com/client-experience/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://dominion-fortress.com/consulting/automation-consulting/</loc></url>
   <url><loc>https://dominion-fortress.com/consulting/</loc></url>
   <url><loc>https://dominion-fortress.com/cybersecurity/api-security/</loc></url>
