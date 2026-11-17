@@ -84,6 +84,23 @@ for (const file of htmlFiles) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   if (!html.includes('rel="icon"') || !html.includes('rel="manifest"')) throw new Error('Favicon/manifest link missing from ' + file);
 }
+const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const forbiddenHomepageClaims = [
+  /since\\s+2010/i,
+  /Sarah Johnson|Michael Chen|Emily Roberts/i,
+  /\\$297\\s*\\/\\s*month/i,
+  /finance\\s*(?:&|and)\\s*accounting/i,
+];
+for (const pattern of forbiddenHomepageClaims) {
+  if (pattern.test(homepage)) throw new Error('Unsupported or inactive homepage claim found: ' + pattern);
+}
+if (!/href=["']\\/digital-store\\/["']/i.test(homepage) || !/digital software store/i.test(homepage)) {
+  throw new Error('Homepage must retain the accurate Digital software store route.');
+}
+const intake = fs.readFileSync(path.join(root, 'get-started/index.html'), 'utf8');
+for (const required of ['id="project-form"', 'privacy_acknowledged', 'capture-sales-lead-v2', 'id="success"', 'id="error"']) {
+  if (!intake.includes(required)) throw new Error('Project intake is missing a required working-flow element: ' + required);
+}
 const sharedJs = fs.readFileSync(path.join(root, 'assets/df-experience.js'), 'utf8');
 if (!sharedJs.includes('contact.dominionfortress@gmail.com')) throw new Error('Verified contact email missing from shared experience script.');
 
