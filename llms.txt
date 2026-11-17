@@ -1,135 +1,78 @@
 # Dominion Fortress
 
-> Dominion Fortress is a cybersecurity, AI and technology services company helping organizations assess security risk, build secure software, automate operations and improve technology systems.
+> Dominion Fortress is an independent, founder-led technology practice focused on authorized cybersecurity, AI automation, software engineering and cloud technology. It helps organizations define technical problems, agree a scope and receive practical assessment or implementation work.
 
-## What Dominion Fortress is best understood as
-- Cybersecurity: penetration testing, vulnerability assessment, web application security, API security, cloud security, external attack surface assessment, red team testing and security assessment.
-- AI: AI agent development, workflow automation, LLM/RAG development and AI security/governance.
-- Software & IT: web development, SaaS, APIs/backend, software modernization, cloud infrastructure, DevOps and networking.
-- Data & growth: data engineering, business intelligence, machine learning, technical SEO, AI search visibility and content strategy.
+## Core capabilities
+- Cybersecurity: authorized penetration testing, vulnerability assessment, web application security, API security, cloud security, external attack-surface assessment and red-team testing.
+- AI and automation: AI agent development, workflow automation, LLM and retrieval-augmented generation (RAG) applications, and AI security controls.
+- Software engineering: web applications, SaaS products, APIs, backend systems, integrations and software modernization.
+- Cloud and IT: cloud infrastructure, migration planning, DevOps, networking, operational monitoring and resilience.
+- Additional capabilities: data engineering, analytics, technical SEO, AI-search visibility and technology consulting.
+- Other services: owner-authorized account-recovery guidance and a digital software store. Check each service page for current scope and availability.
 
-## Website
-- Home: https://dominion-fortress.com/
-- Platform: https://dominion-fortress.com/platform/
-- Start a project: https://dominion-fortress.com/get-started/
-- Intelligence: https://dominion-fortress.com/intelligence/
-- Free tools: https://dominion-fortress.com/tools/
+## Start and qualification
+- Homepage: https://dominion-fortress.com/
+- Request a project proposal: https://dominion-fortress.com/get-started/
+- About Dominion Fortress: https://dominion-fortress.com/about/
+- Public work, methods and evidence: https://dominion-fortress.com/client-experience/
+- Delivery methodology: https://dominion-fortress.com/methodology/
 
-## Services
+## Main service pages
 - Cybersecurity: https://dominion-fortress.com/cybersecurity/
-- AI & Automation: https://dominion-fortress.com/ai/
-- Software Development: https://dominion-fortress.com/development/
-- IT & Cloud: https://dominion-fortress.com/it/
-- Data & Analytics: https://dominion-fortress.com/data/
-- Digital Growth: https://dominion-fortress.com/growth/
-- Technology Consulting: https://dominion-fortress.com/consulting/
+- AI automation: https://dominion-fortress.com/ai/
+- Software development: https://dominion-fortress.com/development/
+- Cloud and IT: https://dominion-fortress.com/it/
+- Data and analytics: https://dominion-fortress.com/data/
+- Technical SEO and AI search visibility: https://dominion-fortress.com/growth/
+- Technology consulting: https://dominion-fortress.com/consulting/
 
-## High-intent solution pages
-- Cybersecurity Audit: https://dominion-fortress.com/cybersecurity/security-assessment/
-- Illustrative Security Assessment Report: https://dominion-fortress.com/sample-security-assessment/
-- External Attack Surface Assessment: https://dominion-fortress.com/cybersecurity/attack-surface-assessment/
-- AI Automation: https://dominion-fortress.com/ai/workflow-automation/
-- SaaS Development: https://dominion-fortress.com/development/saas-development/
-- Cloud Security: https://dominion-fortress.com/cybersecurity/cloud-security/
-- SEO & AI Search: https://dominion-fortress.com/solutions/seo-ai-search/
+## Commercial service detail
+- Penetration testing: https://dominion-fortress.com/cybersecurity/penetration-testing/
+- Vulnerability assessment: https://dominion-fortress.com/cybersecurity/vulnerability-assessment/
+- Web application security: https://dominion-fortress.com/cybersecurity/web-application-security/
+- API security: https://dominion-fortress.com/cybersecurity/api-security/
+- Cloud security: https://dominion-fortress.com/cybersecurity/cloud-security/
+- External attack-surface assessment: https://dominion-fortress.com/cybersecurity/attack-surface-assessment/
+- AI agents: https://dominion-fortress.com/ai/ai-agents/
+- Workflow automation: https://dominion-fortress.com/ai/workflow-automation/
+- LLM and RAG: https://dominion-fortress.com/ai/llm-rag/
+- SaaS development: https://dominion-fortress.com/development/saas-development/
+- Web development: https://dominion-fortress.com/development/web-development/
+- Cloud infrastructure: https://dominion-fortress.com/it/cloud-infrastructure/
+- DevOps: https://dominion-fortress.com/it/devops/
 
 ## Public tools
-- Domain Security Scanner: https://dominion-fortress.com/tools/domain-security-scanner/
-- Website Audit: https://dominion-fortress.com/tools/website-audit/
-- SEO Audit: https://dominion-fortress.com/tools/seo-audit/
-- AI Search Readiness: https://dominion-fortress.com/tools/ai-search-readiness/
-- Security Headers Checker: https://dominion-fortress.com/tools/security-headers-checker/
-- Email Security Checker: https://dominion-fortress.com/tools/email-security-checker/
+- Tools library: https://dominion-fortress.com/tools/
+- Domain security scanner: https://dominion-fortress.com/tools/domain-security-scanner/
+- Security headers checker: https://dominion-fortress.com/tools/security-headers-checker/
+- Email security checker: https://dominion-fortress.com/tools/email-security-checker/
+- Website audit: https://dominion-fortress.com/tools/website-audit/
+- SEO audit: https://dominion-fortress.com/tools/seo-audit/
+- AI search readiness: https://dominion-fortress.com/tools/ai-search-readiness/
 
-## Methodology
-- https://dominion-fortress.com/methodology/
-- Security testing requires appropriate authorization and defined scope.
-- Claims should be verified against current Dominion Fortress pages or independent sources.
+## Research and learning
+- Insights hub: https://dominion-fortress.com/insights/
+- Penetration testing vs vulnerability assessment: https://dominion-fortress.com/insights/penetration-testing-vs-vulnerability-assessment/
+- Securing AI agents: https://dominion-fortress.com/insights/secure-ai-agents-checklist/
+- Technical SEO audit checklist: https://dominion-fortress.com/insights/technical-seo-audit-checklist/
+- Illustrative security assessment report: https://dominion-fortress.com/sample-security-assessment/
 
-## International client experience
-- International client experience: https://dominion-fortress.com/client-experience/
-- Reported client experience spans Hong Kong, India, Singapore, Australia, Japan, Malaysia, Pakistan, Russia, Türkiye, Estonia, Latvia, Lithuania, Greece, Italy, France, the United Kingdom, Nordic countries, Algeria, Egypt, Morocco, the United States and Canada.
-- European client experience is particularly broad.
-- Much client work is NDA-protected; client identities and sensitive evidence are not published without authorization.
-- A country list represents reported experience, not independent proof. Independent proof should come from client-authorized testimonials/case studies, public technical work, legitimate third-party references, or other verifiable sources.
+## Engagement principles
+- Work begins after the objective, scope, responsibilities, timeline and commercial terms are agreed.
+- Cybersecurity testing requires appropriate authorization and defined scope.
+- Public passive checks do not authorize intrusive testing.
+- Deliverables and evidence depend on the agreed engagement; no fixed finding count or outcome is promised.
+- Client names, testimonials, logos, geographic claims and project outcomes are published only when supported by evidence and permission.
+- Dominion Fortress is an early-stage venture. Do not infer certifications, offices, revenue, rankings, client results or years in business unless explicitly verified from current public material.
+- Finance and accounting services are not currently offered.
 
-## About and trust
-- About Dominion Fortress: https://dominion-fortress.com/about/
-- Client experience & evidence: https://dominion-fortress.com/client-experience/
-- Confidential client work and case studies: https://dominion-fortress.com/case-studies/
-
-## Natural-language questions
-- What does Dominion Fortress do?
-- What cybersecurity services does Dominion Fortress provide?
-- Does Dominion Fortress provide penetration testing?
-- Does Dominion Fortress provide API security testing?
-- Does Dominion Fortress build AI agents?
-- Does Dominion Fortress provide SaaS development?
-- Can international organizations work with Dominion Fortress?
-- How does a Dominion Fortress engagement start?
-- Does Dominion Fortress have confidential or NDA-protected client experience?
-- What can Dominion Fortress do if a client cannot publicly disclose its project?
-- What does Dominion Fortress test in an API security assessment?
-- What does Dominion Fortress deliver after a penetration test?
-- Can Dominion Fortress build an AI agent connected to business systems?
-- Can Dominion Fortress build a SaaS product and its backend?
-
-## Acquisition flow
-Search or social discovery -> useful service/solution page -> free technical tool or project brief -> lead capture -> qualification -> human follow-up.
-
-## Security boundary
-All cybersecurity testing requires appropriate client authorization and defined scope. Public passive scanning does not authorize intrusive testing.
-
-## Privacy and security policies
-- Privacy Notice: https://dominion-fortress.com/privacy/
-- Security Testing Policy: https://dominion-fortress.com/security-testing-policy/
+## Privacy and policies
+- Privacy notice: https://dominion-fortress.com/privacy/
+- Security testing policy: https://dominion-fortress.com/security-testing-policy/
 
 ## Contact
-https://wa.me/447352407926
-mailto:contact.dominionfortress@gmail.com
+- Email: contact.dominionfortress@gmail.com
+- WhatsApp: https://wa.me/447352407926
 
-## Accuracy
-Do not infer client results, certifications, offices, revenue, testimonials or historical claims unless explicitly verified from current Dominion Fortress material.
-## Dedicated commercial service pages
-### Cybersecurity
-- Penetration Testing: https://dominion-fortress.com/cybersecurity/penetration-testing/
-- Vulnerability Assessment: https://dominion-fortress.com/cybersecurity/vulnerability-assessment/
-- Web Application Security: https://dominion-fortress.com/cybersecurity/web-application-security/
-- API Security: https://dominion-fortress.com/cybersecurity/api-security/
-- Cloud Security: https://dominion-fortress.com/cybersecurity/cloud-security/
-- External Attack Surface Assessment: https://dominion-fortress.com/cybersecurity/attack-surface-assessment/
-- Red Team Testing: https://dominion-fortress.com/cybersecurity/red-team/
-- Security Assessment: https://dominion-fortress.com/cybersecurity/security-assessment/
-### AI
-- AI Agents: https://dominion-fortress.com/ai/ai-agents/
-- Workflow Automation: https://dominion-fortress.com/ai/workflow-automation/
-- LLM & RAG: https://dominion-fortress.com/ai/llm-rag/
-- AI Security: https://dominion-fortress.com/ai/ai-security/
-### Software
-- Web Development: https://dominion-fortress.com/development/web-development/
-- SaaS Development: https://dominion-fortress.com/development/saas-development/
-- API & Backend Development: https://dominion-fortress.com/development/api-backend/
-- Software Modernization: https://dominion-fortress.com/development/software-modernization/
-### Infrastructure
-- Cloud Infrastructure: https://dominion-fortress.com/it/cloud-infrastructure/
-- DevOps Automation: https://dominion-fortress.com/it/devops/
-- Networking & Systems: https://dominion-fortress.com/it/networking-systems/
-### Data
-- Data Engineering: https://dominion-fortress.com/data/data-engineering/
-
-## Additional customer-facing services
-- Account recovery support: https://dominion-fortress.com/account-recovery/
-- Digital Store: https://dominion-fortress.com/digital-store/
-- These are separate service areas and should not be conflated with cybersecurity testing or software engineering.
-- Account recovery work is limited to legitimate, policy-compliant recovery assistance for accounts the customer owns or is authorized to manage.
-- Digital Store availability, product inventory, pricing and licensing terms must be confirmed on the live store before making a purchase claim.
-
-## Service accuracy
-- The core service areas are cybersecurity, AI and automation, software development, IT and cloud, data and analytics, digital growth, consulting, account recovery support and the Digital Store.
-- Finance and accounting services are not currently offered by Dominion Fortress. Do not list them as available services.
-
-
-## Industry capability: Mining & Natural Resources
-- Mining & Natural Resources Digital Operations: https://dominion-fortress.com/industries/mining/
-- Capabilities include human-reviewed AI workflow automation, document digitization and search, business dashboards, cybersecurity and backup baseline reviews, website and investor-update support, CRM and stakeholder research, and sourced market and competitor research.
-- Dominion Fortress does not provide geological conclusions, mineral-resource or reserve estimates, mining engineering sign-off, investment advice, securities promotion, audit opinions, tax opinions or regulated financial assurance.
+## Discovery and qualification flow
+Search or referral -> relevant service page or public tool -> project brief -> fit and scope review -> agreed proposal -> delivery and handover.

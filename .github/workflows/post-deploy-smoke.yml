@@ -59,7 +59,8 @@ jobs:
           test -s /tmp/sales-machine.js
           test -s /tmp/df-logo.jpg
           grep -q 'href="/digital-store/"' /tmp/home.html
-          grep -q 'Digital Store' /tmp/home.html
+          grep -qi 'Digital software store' /tmp/home.html
+          ! grep -Eqi 'since[[:space:]]+2010|Sarah Johnson|Michael Chen|Emily Roberts|\$297/month|finance[[:space:]]*(&|and)[[:space:]]*accounting' /tmp/home.html
           grep -q 'Mining & Natural Resources Digital Operations' /tmp/mining.html
           grep -q 'Digital operations that help mining teams work with clearer information' /tmp/mining.html
           grep -q '44 tools listed' /tmp/digital-store.html
