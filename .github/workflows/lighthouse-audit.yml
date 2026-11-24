@@ -43,7 +43,7 @@ jobs:
           for attempt in $(seq 1 18); do
             if curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' -H 'Pragma: no-cache' "$base/?release-check=$GITHUB_RUN_ID" -o /tmp/home.html \
               && grep -q 'Make your technology' /tmp/home.html \
-              && grep -q 'df-experience.css?v=20261125' /tmp/home.html \
+              && grep -q 'df-experience.css?v=20261126' /tmp/home.html \
               && grep -q 'df-v2-hero' /tmp/home.html \
               && ! grep -Eqi 'since[[:space:]]+2010|Sarah Johnson|Michael Chen|Emily Roberts|\\$297/month|finance[[:space:]]*(&|and)[[:space:]]*accounting' /tmp/home.html; then
               echo 'Current homepage release is visible.'
