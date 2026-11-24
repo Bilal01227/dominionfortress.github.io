@@ -41,8 +41,8 @@ jobs:
           for attempt in $(seq 1 18); do
             if curl --fail --silent --show-error --location -H 'Cache-Control: no-cache' -H 'Pragma: no-cache' "$base/?release-check=$GITHUB_RUN_ID" -o /tmp/home.html \
               && grep -qi 'Digital software store' /tmp/home.html \
-              && grep -q 'Secure what matters' /tmp/home.html \
-              && grep -q 'df-experience.css?v=20261124' /tmp/home.html \
+              && grep -q 'Make your technology' /tmp/home.html \
+              && grep -q 'df-experience.css?v=20261125' /tmp/home.html \
               && ! grep -Eqi 'since[[:space:]]+2010|Sarah Johnson|Michael Chen|Emily Roberts|\\$297/month|finance[[:space:]]*(&|and)[[:space:]]*accounting' /tmp/home.html; then
               echo 'Current homepage release is visible.'
               break
@@ -53,10 +53,10 @@ jobs:
             fi
             sleep 10
           done
-          grep -q 'Secure what matters' /tmp/home.html
-          grep -q 'df-home-hero' /tmp/home.html
-          grep -q 'df-experience.css?v=20261124' /tmp/home.html
-          grep -q 'df-experience.js?v=20261124' /tmp/home.html
+          grep -q 'Make your technology' /tmp/home.html
+          grep -q 'df-v2-hero' /tmp/home.html
+          grep -q 'df-experience.css?v=20261125' /tmp/home.html
+          grep -q 'df-experience.js?v=20261125' /tmp/home.html
           fetch_retry "$base/digital-store/" /tmp/digital-store.html
           fetch_retry "$base/industries/mining/" /tmp/mining.html
           fetch_retry "$base/get-started/" /tmp/get-started.html
@@ -77,9 +77,9 @@ jobs:
           fetch_retry "$base/scan/" /tmp/scan.html
           fetch_retry "$base/robots.txt" /tmp/robots.txt
           fetch_retry "$base/.well-known/security.txt" /tmp/security.txt
-          fetch_retry "$base/assets/df-experience.css?v=20261124" /tmp/df-experience.css
-          fetch_retry "$base/assets/df-experience.js?v=20261124" /tmp/df-experience.js
-          fetch_retry "$base/assets/sales-machine.js?v=20261124" /tmp/sales-machine.js
+          fetch_retry "$base/assets/df-experience.css?v=20261125" /tmp/df-experience.css
+          fetch_retry "$base/assets/df-experience.js?v=20261125" /tmp/df-experience.js
+          fetch_retry "$base/assets/sales-machine.js?v=20261125" /tmp/sales-machine.js
           fetch_retry "$base/Dominion%20Fortress%20Logo.jpg" /tmp/df-logo.jpg
           fetch_retry "$base/site.webmanifest" /tmp/site.webmanifest
           test -s /tmp/df-experience.css
