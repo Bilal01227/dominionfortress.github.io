@@ -70,22 +70,53 @@ window.__DF_SALES_MACHINE_BOOTED=true;
       utm_term:(params.get('utm_term')||'').slice(0,150),
       utm_content:(params.get('utm_content')||'').slice(0,150)
     };
+    function serviceSlug(pathname,serviceValue){
+      if(serviceValue){
+        return String(serviceValue).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,100)||'general-enquiry';
+      }
+      const parts=String(pathname||'/').split('/').filter(Boolean);
+      return parts.length?parts.slice(0,2).join('/').slice(0,100):'home';
+    }
     function track(eventName,extra){
       if(consent()!=='accepted')return;
-      send({event_name:String(eventName||'').slice(0,80),path:location.pathname.slice(0,500),...(extra||{})},payloadBase);
+      const metadata=extra&&extra.metadata&&typeof extra.metadata==='object'?extra.metadata:{};
+      const slug=(extra&&extra.service_slug)||serviceSlug(location.pathname,eventName==='lead_submitted'?metadata.service:'');
+      send({event_name:String(eventName||'').slice(0,80),path:location.pathname.slice(0,500),service_slug:slug,...(extra||{})},payloadBase);
     }
     activeTrack=track;
     window.DFTrack=track;
     track('page_view',{metadata:{title:(document.title||'').slice(0,200)}});
+    const trackedForms=new WeakSet();
+    document.addEventListener('focusin',e=>{
+      const field=e.target;
+      if(!field||!field.closest||!field.matches('input,textarea,select'))return;
+      const form=field.closest('form');
+      if(!form||trackedForms.has(form))return;
+      trackedForms.add(form);
+      track('form_interaction',{metadata:{form_id:(form.id||'').slice(0,80)}});
+    });
     document.addEventListener('click',e=>{
       const a=e.target&&e.target.closest&&e.target.closest('a,button');
       if(!a)return;
       const label=(a.innerText||a.getAttribute('aria-label')||'').trim().slice(0,100);
+      const normalizedLabel=label.toLowerCase();
+      if(/allow analytics|reject analytics|privacy choices|open navigation menu|close navigation menu/.test(normalizedLabel))return;
+      const rawHref=a.getAttribute('href')||'';
       const href=a.href?safeHref(a.href):'';
-      if(a.href&&/whatsapp|wa\.me/i.test(a.href))track('whatsapp_click',{metadata:{label}});
-      else if(a.href&&/domain-security-scanner|\/scan\//i.test(a.href))track('scanner_cta_click',{metadata:{label}});
-      else if(a.closest('form'))track('form_interaction',{metadata:{label}});
-      else track('cta_click',{metadata:{label,href}});
+      if(a.href&&/whatsapp|wa\.me/i.test(a.href)){
+        track('whatsapp_click',{metadata:{label}});
+        return;
+      }
+      if(a.href&&/domain-security-scanner|\/scan\//i.test(a.href)){
+        track('scanner_cta_click',{metadata:{label}});
+        return;
+      }
+      if(a.closest('form'))return;
+      const isCta=a.matches('[data-track-cta],.btn,.button,.submit-button,.df-global-cta')
+        ||!!a.closest('.cta,.closing')
+        ||/\/get-started\//i.test(rawHref)
+        ||/^mailto:/i.test(rawHref);
+      if(isCta)track('cta_click',{metadata:{label,href}});
     });
     let hiddenAt=0;
     document.addEventListener('visibilitychange',()=>{
