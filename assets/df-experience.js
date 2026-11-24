@@ -20,8 +20,8 @@ let nav=document.createElement('header');
 nav.className='df-global-nav';
 nav.innerHTML='<a class="df-global-brand" href="/" aria-label="Dominion Fortress home">'+mark+'</a><nav class="df-global-links" id="df-site-links" aria-label="Primary navigation"><a href="/cybersecurity/">Cybersecurity</a><a href="/ai/">AI &amp; Automation</a><a href="/development/">Software</a><a href="/it/">Cloud &amp; IT</a><a href="/data/">Data</a><a href="/growth/">Growth</a><a href="/insights/">Insights</a><a href="/tools/">Free Tools</a></nav><div class="df-global-actions"><a class="df-global-cta" href="/get-started/">Request a proposal <span aria-hidden="true">↗</span></a><button class="df-menu-toggle" type="button" aria-controls="df-site-links" aria-expanded="false" aria-label="Open navigation menu"><span></span><span></span></button></div>';
 body.insertBefore(nav,body.firstChild);
-const currentPath=location.pathname.replace(/index\\.html$/,'').replace(/\\/$/,'')||'/';
-nav.querySelectorAll('.df-global-links a').forEach(a=>{const target=new URL(a.href,location.origin).pathname.replace(/\\/$/,'')||'/';if(target===currentPath)a.setAttribute('aria-current','page')});
+const currentPath=location.pathname.replace(/index[.]html$/,'').replace(/[/]$/,'')||'/';
+nav.querySelectorAll('.df-global-links a').forEach(a=>{const target=new URL(a.href,location.origin).pathname.replace(/[/]$/,'')||'/';if(target===currentPath)a.setAttribute('aria-current','page')});
 const menu=nav.querySelector('.df-menu-toggle');
 const links=nav.querySelector('.df-global-links');
 if(menu&&!menu.dataset.dfBound){menu.dataset.dfBound='1';menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));links.classList.toggle('df-open',!open);menu.setAttribute('aria-label',open?'Open navigation menu':'Close navigation menu')});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.setAttribute('aria-expanded','false');links.classList.remove('df-open')}))}
