@@ -344,7 +344,7 @@ body main.wrap,body main.container,body main.page-wrap{width:min(1180px,calc(100
 :root{--df-v2-ink:#101d33;--df-v2-muted:#5d6b80;--df-v2-blue:#285bd7;--df-v2-line:#e2e7ef;--df-v2-paper:#f7f8fa}
 body.df-home-page{background:#fff;color:var(--df-v2-ink)}
 body.df-home-page:before{display:none}
-.df-home-v2{width:min(1240px,calc(100% - 64px))!important;max-width:1240px!important;padding:0 0 84px!important}
+.df-home-v2{width:min(1240px,calc(100% - 64px))!important;max-width:1240px!important;margin-inline:auto!important;padding:0 0 84px!important;}
 .df-v2-hero{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(430px,.98fr);align-items:center;gap:clamp(34px,5vw,76px);min-height:650px;padding:64px 0 72px}
 .df-v2-hero-copy{max-width:640px}
 .df-v2-eyebrow{display:flex;align-items:center;gap:10px;margin:0;color:#315fc4!important;font-size:10px!important;font-weight:850!important;letter-spacing:.17em!important;line-height:1.5!important}
