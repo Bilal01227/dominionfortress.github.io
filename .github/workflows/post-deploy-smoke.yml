@@ -51,6 +51,10 @@ jobs:
             fi
             sleep 10
           done
+          grep -q 'Secure what matters' /tmp/home.html
+          grep -q 'df-home-hero' /tmp/home.html
+          grep -q 'df-experience.css?v=20261124' /tmp/home.html
+          grep -q 'df-experience.js?v=20261124' /tmp/home.html
           fetch_retry "$base/digital-store/" /tmp/digital-store.html
           fetch_retry "$base/industries/mining/" /tmp/mining.html
           fetch_retry "$base/get-started/" /tmp/get-started.html
@@ -79,6 +83,8 @@ jobs:
           test -s /tmp/df-experience.css
           test -s /tmp/df-experience.js
           test -s /tmp/sales-machine.js
+          grep -q 'df-global-nav' /tmp/df-experience.js
+          grep -q 'df-site-links' /tmp/df-experience.js
           test -s /tmp/df-logo.jpg
           grep -q 'href="/digital-store/"' /tmp/home.html
           grep -qi 'Digital software store' /tmp/home.html
