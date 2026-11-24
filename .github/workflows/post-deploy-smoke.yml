@@ -51,6 +51,10 @@ jobs:
             fi
             sleep 10
           done
+          grep -q 'Secure what matters' /tmp/home.html
+          grep -q 'df-home-hero' /tmp/home.html
+          grep -q 'df-experience.css?v=20261124' /tmp/home.html
+          grep -q 'df-experience.js?v=20261124' /tmp/home.html
           fetch_retry "$base/digital-store/" /tmp/digital-store.html
           fetch_retry "$base/industries/mining/" /tmp/mining.html
           fetch_retry "$base/get-started/" /tmp/get-started.html
@@ -71,14 +75,16 @@ jobs:
           fetch_retry "$base/scan/" /tmp/scan.html
           fetch_retry "$base/robots.txt" /tmp/robots.txt
           fetch_retry "$base/.well-known/security.txt" /tmp/security.txt
-          fetch_retry "$base/assets/df-experience.css?v=20261101" /tmp/df-experience.css
-          fetch_retry "$base/assets/df-experience.js?v=20261101" /tmp/df-experience.js
-          fetch_retry "$base/assets/sales-machine.js?v=20261101" /tmp/sales-machine.js
+          fetch_retry "$base/assets/df-experience.css?v=20261124" /tmp/df-experience.css
+          fetch_retry "$base/assets/df-experience.js?v=20261124" /tmp/df-experience.js
+          fetch_retry "$base/assets/sales-machine.js?v=20261124" /tmp/sales-machine.js
           fetch_retry "$base/Dominion%20Fortress%20Logo.jpg" /tmp/df-logo.jpg
           fetch_retry "$base/site.webmanifest" /tmp/site.webmanifest
           test -s /tmp/df-experience.css
           test -s /tmp/df-experience.js
           test -s /tmp/sales-machine.js
+          grep -q 'df-global-nav' /tmp/df-experience.js
+          grep -q 'df-site-links' /tmp/df-experience.js
           test -s /tmp/df-logo.jpg
           grep -q 'href="/digital-store/"' /tmp/home.html
           grep -qi 'Digital software store' /tmp/home.html
