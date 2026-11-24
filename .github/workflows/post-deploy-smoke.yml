@@ -57,6 +57,16 @@ jobs:
           fetch_retry "$base/privacy/" /tmp/privacy.html
           fetch_retry "$base/security-testing-policy/" /tmp/security-policy.html
           fetch_retry "$base/sample-security-assessment/" /tmp/sample-report.html
+          fetch_retry "$base/insights/" /tmp/insights.html
+          fetch_retry "$base/78821ddcb47948e1beaeef9af7e12d5d.txt" /tmp/indexnow-key.txt
+          for slug in saas-mvp-scope-checklist cloud-migration-readiness-checklist data-pipeline-reliability-checklist international-b2b-seo-service-pages account-recovery-owner-checklist business-software-subscription-buying-checklist automation-consulting-discovery-checklist; do
+            fetch_retry "$base/insights/$slug/" "/tmp/$slug.html"
+            grep -qi "https://dominion-fortress.com/insights/$slug/" "/tmp/$slug.html"
+            grep -qi '<h1' "/tmp/$slug.html"
+            grep -q "https://dominion-fortress.com/insights/$slug/" /tmp/sitemap.xml
+            grep -q "/insights/$slug/" /tmp/insights.html
+          done
+          grep -qx '78821ddcb47948e1beaeef9af7e12d5d' /tmp/indexnow-key.txt
           fetch_retry "$base/scan/" /tmp/scan.html
           fetch_retry "$base/sitemap.xml" /tmp/sitemap.xml
           fetch_retry "$base/robots.txt" /tmp/robots.txt
