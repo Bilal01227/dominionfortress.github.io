@@ -71,9 +71,9 @@ jobs:
           fetch_retry "$base/scan/" /tmp/scan.html
           fetch_retry "$base/robots.txt" /tmp/robots.txt
           fetch_retry "$base/.well-known/security.txt" /tmp/security.txt
-          fetch_retry "$base/assets/df-experience.css?v=20261101" /tmp/df-experience.css
-          fetch_retry "$base/assets/df-experience.js?v=20261101" /tmp/df-experience.js
-          fetch_retry "$base/assets/sales-machine.js?v=20261101" /tmp/sales-machine.js
+          fetch_retry "$base/assets/df-experience.css?v=20261124" /tmp/df-experience.css
+          fetch_retry "$base/assets/df-experience.js?v=20261124" /tmp/df-experience.js
+          fetch_retry "$base/assets/sales-machine.js?v=20261124" /tmp/sales-machine.js
           fetch_retry "$base/Dominion%20Fortress%20Logo.jpg" /tmp/df-logo.jpg
           fetch_retry "$base/site.webmanifest" /tmp/site.webmanifest
           test -s /tmp/df-experience.css
